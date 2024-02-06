@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "arte-acucar-client",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
