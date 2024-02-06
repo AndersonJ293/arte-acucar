@@ -9,6 +9,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './page/sign-in/sign-in.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { SignInComponent } from './page/sign-in/sign-in.component';
     SignInComponent,
     MenuComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })

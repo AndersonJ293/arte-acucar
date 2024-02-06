@@ -3,17 +3,43 @@
 header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100vw;
   padding: 0px 50px;
   background-color: $primary-color;
   height: 100px;
-  gap: 10px;
 }
 
-span {
-  color: #000;
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 33px;
-  height: 33px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  img {
+    max-width: auto;
+    max-height: 80px;
+  }
+
+  span {
+    color: #000;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 33px;
+    height: 33px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+
+  .options {
+    max-height: 40px;
+    max-width: 40px;
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 40px;
+    }
+  }
 }
