@@ -8,19 +8,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { PricingComponent } from './page/pricing/pricing.component';
 import { SignInComponent } from './page/sign-in/sign-in.component';
+import { PricingComponent } from './page/pricing/pricing.component';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, DisplayComponent, SignInComponent, PricingComponent],
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    DisplayComponent,
-    SignInComponent,
-    MenuComponent,
-  ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
