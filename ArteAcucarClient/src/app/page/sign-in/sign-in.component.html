@@ -26,7 +26,12 @@
           #userPassword
           required
         />
-        <button class="btn btnPrimary" value="Log in" type="submit">
+        <button
+          class="btn btnPrimary"
+          value="Log in"
+          type="submit"
+          (click)="authService.SignIn(userEmail.value, userPassword.value)"
+        >
           Entrar
         </button>
       </div>
