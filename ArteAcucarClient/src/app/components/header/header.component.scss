@@ -36,6 +36,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     border-radius: 6px;
     border: 1px solid $secondary-color;
     background-color: $primary-color;
@@ -50,8 +51,9 @@ header {
   .options {
     height: 40px;
     width: 40px;
-    img {
-      height: 90%;
+    fa-icon {
+      font-size: 28px;
+      color: $secondary-color;
     }
   }
 }
