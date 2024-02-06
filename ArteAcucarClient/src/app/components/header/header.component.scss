@@ -5,41 +5,53 @@ header {
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  padding: 0px 50px;
+  padding: 10px 50px;
   background-color: $primary-color;
   height: 100px;
 }
 
 .logo {
   display: flex;
+  height: 100%;
   align-items: center;
   gap: 10px;
   img {
     max-width: auto;
-    max-height: 80px;
+    max-height: 100%;
   }
 
   span {
-    color: #000;
     font-size: 48px;
-    font-weight: 400;
-    line-height: 33px;
-    height: 33px;
+    font-weight: 500;
   }
 }
 
 .buttons {
   display: flex;
+  align-items: center;
+  height: 100%;
   gap: 10px;
 
-  .options {
-    max-height: 40px;
-    max-width: 40px;
+  button {
     display: flex;
     align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid $secondary-color;
+    background-color: $primary-color;
+    cursor: pointer;
+    transition: 0.5s;
+  }
 
+  button:hover {
+    filter: brightness(0.93);
+  }
+
+  .options {
+    height: 40px;
+    width: 40px;
     img {
-      height: 40px;
+      height: 90%;
     }
   }
 }
