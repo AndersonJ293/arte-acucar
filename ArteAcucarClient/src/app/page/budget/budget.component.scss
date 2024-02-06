@@ -121,7 +121,6 @@ select {
 @media (max-width: 768px) {
   .container {
     padding: 0 24px;
-    background-color: #00cc66;
   }
 
   .headerTop {
@@ -133,4 +132,10 @@ select {
     margin-top: 16px;
     margin-bottom: 16px;
   }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
 }
