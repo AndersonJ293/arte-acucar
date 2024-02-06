@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "arte-e-acucar": {
+      "hosting": {
+        "arte-acucar-client": [
+          "arte-e-acucar"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "arte-e-acucar"
+  }
+}

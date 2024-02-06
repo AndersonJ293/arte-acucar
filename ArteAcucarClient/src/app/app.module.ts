@@ -11,6 +11,11 @@ import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './page/sign-in/sign-in.component';
 import { BudgetComponent } from './page/budget/budget.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { environment } from './environment/environment';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     FormsModule,
     FontAwesomeModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
   providers: [],
   bootstrap: [AppComponent],
