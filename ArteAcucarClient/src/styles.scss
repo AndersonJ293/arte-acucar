@@ -1,7 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 
 $primary-color: #f9e8f2;
 $secondary-color: #541514;
+$background-image: linear-gradient(
+  -20deg,
+  #ddd6f3 0%,
+  #faaca8 100%,
+  #faaca8 100%
+);
+
+$title-font: "Courgette", cursive;
 
 * {
   padding: 0;
@@ -19,14 +28,4 @@ ol {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  color: #070c17;
 }
