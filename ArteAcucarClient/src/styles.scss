@@ -35,14 +35,26 @@ ol {
   border-radius: 12px;
   font-size: 14px;
 
-  &.true {
-    color: rgba(0, 204, 102, 0.6);
-    border: 1px solid rgba(0, 204, 102, 0.6);
+  &.finalizado {
+    color: rgba(0, 204, 102, 0.8);
+    border: 1px solid rgba(0, 204, 102, 0.8);
     background: rgba(0, 204, 102, 0.2);
   }
 
-  &.false {
-    color: rgba(255, 51, 51, 0.6);
+  &.pendente {
+    color: rgba(226, 92, 8, 0.8);
+    border: 1px solid rgba(226, 92, 8, 0.8);
+    background: rgba(226, 92, 8, 0.2);
+  }
+
+  &.producao {
+    color: rgba(241, 210, 8, 0.8);
+    border: 1px solid rgba(241, 210, 8, 0.8);
+    background: rgba(241, 210, 8, 0.2);
+  }
+
+  &.cancelado {
+    color: rgba(255, 51, 51, 0.8);
     border: 1px solid rgba(255, 51, 51, 0.6);
     background: rgba(255, 51, 51, 0.2);
   }
@@ -88,4 +100,20 @@ ol {
 .btnCancel:hover,
 .btnSave:hover {
   filter: contrast(2);
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+input {
+  padding: 2px 10px;
+  height: 40px;
+  color: $secondary-color;
+  background-color: transparent;
+  border-radius: 8px;
+  border: 1px solid #212121;
 }
