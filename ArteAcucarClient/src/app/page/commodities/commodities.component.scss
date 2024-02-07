@@ -1,0 +1,17 @@
+.container {
+  padding: 0 50px;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+}
+
+.cardList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 50px;
+  gap: 24px;
+}

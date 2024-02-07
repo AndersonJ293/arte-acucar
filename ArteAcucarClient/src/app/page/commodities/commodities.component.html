@@ -1,0 +1,22 @@
+<section class="container">
+  <header class="headerTop">
+    <select class="custom-select">
+      <option value="todos">Todos</option>
+      <option value="true">Com Estoque</option>
+      <option value="false">Sem Estoque</option>
+    </select>
+    <h2>Insumos</h2>
+    <input type="text" name="" id="" />
+  </header>
+
+  <div class="cardList">
+    <ng-container>
+      <app-commoditie-card
+        name="Nome Insumo"
+        brand="Marca"
+        [price]="25.0"
+        [stock]="4"
+      ></app-commoditie-card>
+    </ng-container>
+  </div>
+</section>
