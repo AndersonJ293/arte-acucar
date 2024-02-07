@@ -25,6 +25,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { SidebarMenuComponent } from './components/sidebar-menu/sidebar-menu.component';
 import { MenuItemComponent } from './components/sidebar-menu/menu-item/menu-item.component';
 import { ConfigComponent } from './page/config/config.component';
+import { DashboardComponent } from './page/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ConfigComponent } from './page/config/config.component';
     SidebarMenuComponent,
     MenuItemComponent,
     ConfigComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
