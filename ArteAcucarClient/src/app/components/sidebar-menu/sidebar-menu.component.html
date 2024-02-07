@@ -1,6 +1,6 @@
 <div
   [class]="menuOpen ? 'containerOpen' : 'containerClose'"
-  (click)="handleMenu()"
+  (click)="closeMenu()"
 >
   <div [class]="menuOpen ? 'sideMenuOpen' : 'sideMenuClose'">
     <div>
@@ -13,17 +13,19 @@
         ></app-menu-item>
       </ng-container>
     </div>
-    <app-menu-item
-      titulo="Configuração"
-      link="/painel/config"
-      [icon]="faGear"
-      [menuOpen]="menuOpen"
-    ></app-menu-item>
-    <app-menu-item
-      titulo="Sair"
-      link="/sign-in"
-      [icon]="faSignOut"
-      [menuOpen]="menuOpen"
-    ></app-menu-item>
+    <div>
+      <app-menu-item
+        titulo="Configuração"
+        link="/painel/config"
+        [icon]="faGear"
+        [menuOpen]="menuOpen"
+      ></app-menu-item>
+      <app-menu-item
+        titulo="Sair"
+        link="/sign-in"
+        [icon]="faSignOut"
+        [menuOpen]="menuOpen"
+      ></app-menu-item>
+    </div>
   </div>
 </div>

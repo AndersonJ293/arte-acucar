@@ -6,6 +6,7 @@ import { PricingComponent } from './page/pricing/pricing.component';
 import { BudgetComponent } from './page/budget/budget.component';
 import { ConfigComponent } from './page/config/config.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { CommoditiesComponent } from './page/commodities/commodities.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'precificacao', component: PricingComponent },
       { path: 'orcamento', component: BudgetComponent },
       { path: 'config', component: ConfigComponent },
+      { path: 'insumos', component: CommoditiesComponent },
     ],
   },
 ];

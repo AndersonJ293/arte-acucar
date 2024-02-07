@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="cardDetail">
+    <h3>{{ name }}</h3>
+  </div>
+  <div class="cardMore">
+    <div class="more">
+      <h4>Marca:</h4>
+      <input
+        [class]="editMode ? '' : 'editFalse'"
+        [value]="brand"
+        [disabled]="!editMode"
+      />
+    </div>
+    <div class="more">
+      <h4>Valor:</h4>
+      <input
+        [class]="editMode ? '' : 'editFalse'"
+        [value]="price | currency : 'BRL'"
+        [disabled]="!editMode"
+      />
+    </div>
+    <div class="more">
+      <h4>Estoque:</h4>
+      <input
+        [class]="editMode ? '' : 'editFalse'"
+        [value]="stock"
+        [disabled]="!editMode"
+      />
+    </div>
+  </div>
+  <div class="buttons">
+    <button class="btnSave" (click)="handleEditButton()">
+      {{ editMode ? "Salvar" : "Editar" }}
+    </button>
+    <button class="btnCancel" (click)="handleDeleteButton()">
+      {{ editMode ? "Cancelar" : "Excluir" }}
+    </button>
+  </div>
+</div>

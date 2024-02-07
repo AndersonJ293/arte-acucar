@@ -1,0 +1,49 @@
+.card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 250px;
+  border-radius: 16px;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.cardDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardMore {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.more {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.editFalse {
+  border: none;
+  color: #000;
+  font-size: 14px;
+}
+
+input {
+  text-align: end;
+  padding: 4px;
+  width: 50%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
