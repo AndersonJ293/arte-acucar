@@ -1,4 +1,4 @@
-<div class="menuItem">
+<div [class]="menuOpen ? 'menuItemOpen' : 'menuItemClose'">
   <a [routerLink]="link" class="menuItem">
     <fa-icon [icon]="icon" class="icon"></fa-icon>
     <span class="title">{{ titulo }}</span>

@@ -11,4 +11,5 @@ export class MenuItemComponent {
   @Input() titulo?: string;
   @Input() icon: IconProp = faHome;
   @Input() link?: string;
+  @Input() menuOpen?: boolean;
 }

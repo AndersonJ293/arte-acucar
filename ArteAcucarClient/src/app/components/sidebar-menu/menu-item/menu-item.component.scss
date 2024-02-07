@@ -1,24 +1,43 @@
 @import "../../../../styles.scss";
 
-.menuItem {
-  display: flex;
+.menuItemClose,
+.menuItemOpen {
   width: 100%;
-  gap: 10px;
-  padding: 10px 15px;
-  align-items: center;
-  justify-content: center;
-  background-color: inherit;
+  padding: 10px;
 
   a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
     width: 100%;
-    cursor: pointer;
     border: 0.5px solid black;
     border-radius: 15px;
+    cursor: pointer;
+
     text-decoration: none;
     color: $secondary-color;
   }
 
   a:hover {
     background-color: $primary-color;
+  }
+}
+
+.menuItemOpen {
+  a {
+    gap: 16px;
+  }
+
+  span {
+    display: inline;
+  }
+}
+
+.menuItemClose {
+  padding: 10px 0;
+
+  span {
+    display: none;
   }
 }
