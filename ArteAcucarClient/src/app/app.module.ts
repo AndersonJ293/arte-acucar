@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DisplayComponent } from './page/display/display.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SignInComponent } from './page/sign-in/sign-in.component';
@@ -33,7 +32,6 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
     HeaderComponent,
     DisplayComponent,
     SignInComponent,
-    MenuComponent,
     BudgetComponent,
     SidebarMenuComponent,
     MenuItemComponent,
