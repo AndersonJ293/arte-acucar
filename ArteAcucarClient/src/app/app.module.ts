@@ -22,6 +22,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { SidebarMenuComponent } from './components/sidebar-menu/sidebar-menu.component';
+import { MenuItemComponent } from './components/sidebar-menu/menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     SignInComponent,
     MenuComponent,
     BudgetComponent,
+    SidebarMenuComponent,
+    MenuItemComponent,
   ],
   imports: [
     BrowserModule,

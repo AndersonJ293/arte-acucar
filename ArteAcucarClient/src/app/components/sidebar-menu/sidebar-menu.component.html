@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="sideMenuOpen">
+    <ng-container *ngFor="let menuItem of listaMenuItens">
+      <app-menu-item
+        [titulo]="menuItem.nome"
+        [link]="menuItem.link"
+        [icon]="menuItem.icone"
+      ></app-menu-item>
+    </ng-container>
+  </div>
+</div>
