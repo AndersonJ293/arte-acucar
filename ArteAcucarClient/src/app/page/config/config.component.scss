@@ -1,0 +1,47 @@
+.container {
+  padding: 50px;
+}
+
+.card {
+  padding: 24px;
+  background-color: white;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+h2 {
+  margin-bottom: 40px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+}
+
+h3 {
+  margin-top: 16px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 16px;
+  gap: 16px;
+
+  .btnCancel {
+    width: 100%;
+  }
+
+  .btnSave {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}

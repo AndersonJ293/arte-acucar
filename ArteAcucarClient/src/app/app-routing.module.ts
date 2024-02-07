@@ -4,6 +4,7 @@ import { SignInComponent } from './page/sign-in/sign-in.component';
 import { DisplayComponent } from './page/display/display.component';
 import { PricingComponent } from './page/pricing/pricing.component';
 import { BudgetComponent } from './page/budget/budget.component';
+import { ConfigComponent } from './page/config/config.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
     children: [
       { path: 'precificacao', component: PricingComponent },
       { path: 'orcamento', component: BudgetComponent },
+      { path: 'config', component: ConfigComponent },
     ],
   },
 ];
