@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
-import { faSignOut } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faMoneyBill,
+  faSignOut,
+  faGear,
+} from '@fortawesome/free-solid-svg-icons';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
@@ -11,6 +14,7 @@ import { MenuService } from '../../services/menu.service';
 })
 export class SidebarMenuComponent {
   faSignOut = faSignOut;
+  faGear = faGear;
   listaMenuItens = [
     { nome: 'DashBoard', link: '/painel', icone: faHome },
     { nome: 'Precificação', link: '/painel/precificacao', icone: faMoneyBill },
