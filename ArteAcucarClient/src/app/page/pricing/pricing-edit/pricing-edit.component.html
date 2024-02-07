@@ -1,0 +1,49 @@
+<div class="container">
+    <section>
+      <header>
+        <i class="fa fa-check"></i>
+        <h3>Adicionar exercícios</h3>
+        <button class="fechar-modal">
+          <i class="fa fa-times"></i>
+        </button>
+      </header>
+      <form>
+        <div class="line">
+          <div class="groupName">
+            <label for="Nome">Nome </label>
+            <input type="text" id="Nome" name="Nome" required />
+          </div>
+  
+          <div class="groupCategory">
+            <label for="categoria">Categoria</label>
+            <select class="custom-select" name="categoria" id="categoria">
+              <option></option>
+            </select>
+          </div>
+        </div>
+        <label for="Link">Link do de um video </label>
+        <input type="text" id="Link" name="Link" required />
+  
+        <div id="drop-area">
+          <img alt="Preview" />
+          <img class="picture" src="../../../../assets/img/picture.png" alt="" />
+          Solte a imagem ou o gif aqui ou clique para fazer upload.
+          <input
+            type="file"
+            id="imagem"
+            name="imagem"
+            accept="image/*"
+            style="display: none"
+          />
+          <label for="imagem"
+            >Clique aqui para selecionar uma imagem ou um gif</label
+          >
+        </div>
+        <div class="buttons">
+          <button type="reset" class="btnCancel">Cancelar</button>
+          <button type="submit" class="btnSave">Salvar</button>
+        </div>
+      </form>
+    </section>
+  </div>
+  

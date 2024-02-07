@@ -25,6 +25,7 @@ import { SidebarMenuComponent } from './components/sidebar-menu/sidebar-menu.com
 import { MenuItemComponent } from './components/sidebar-menu/menu-item/menu-item.component';
 import { ConfigComponent } from './page/config/config.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { PricingEditComponent } from './page/pricing/pricing-edit/pricing-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
     MenuItemComponent,
     ConfigComponent,
     DashboardComponent,
+    PricingEditComponent,
   ],
   imports: [
     BrowserModule,
