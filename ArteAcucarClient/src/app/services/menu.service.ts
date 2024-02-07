@@ -12,4 +12,8 @@ export class MenuService {
     MenuService.menuOpen = !MenuService.menuOpen;
     console.log(MenuService.menuOpen);
   }
+
+  closeMenu() {
+    MenuService.menuOpen = false;
+  }
 }

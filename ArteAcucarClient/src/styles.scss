@@ -20,7 +20,8 @@ $title-font: "Courgette", cursive;
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
+  max-width: 100vw;
 }
 
 ul,

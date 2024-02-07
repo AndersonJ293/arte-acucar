@@ -30,5 +30,5 @@ export class SidebarMenuComponent {
     return MenuService.menuOpen;
   }
 
-  handleMenu = this.menuService.handleMenu;
+  closeMenu = this.menuService.closeMenu;
 }
