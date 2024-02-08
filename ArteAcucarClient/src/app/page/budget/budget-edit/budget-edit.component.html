@@ -1,7 +1,7 @@
 <div class="container">
   <section>
     <header>
-      <h3>Adicionar Precificação</h3>
+      <h3>Adicionar Orçamento</h3>
       <button class="fechar-modal">
         <i class="fa fa-times"></i>
       </button>
@@ -9,46 +9,67 @@
     <form>
       <div class="line">
         <div class="groupName">
-          <label for="Nome">Nome </label>
-          <input type="text" id="Nome" name="Nome" required />
+          <label for="name">Nome </label>
+          <input type="text" id="name" name="name" required />
         </div>
-
-        <div class="groupCategory">
-          <label for="qtde">Quantidade</label>
+      </div>
+      <div class="line">
+        <div class="groupAdditional">
+          <label for="deliveryDate">Data entrega</label>
           <input
-            type="number"
-            class="custom-select"
-            name="qtde"
-            id="qtde"
+            type="datetime-local"
+            id="deliveryDate"
+            name="deliveryDate"
+            required
+          />
+        </div>
+        <div class="groupAdditional">
+          <label for="budgetDate">Data orçamento</label>
+          <input
+            type="datetime-local"
+            id="budgetDate"
+            name="budgetDate"
             required
           />
         </div>
       </div>
+
+      <div class="line">
+        <div class="groupProfitPercentage">
+          <label for="nameKid">Tema</label>
+          <input
+            type="text"
+            class="custom-select"
+            name="nameKid"
+            id="nameKid"
+            required
+          />
+        </div>
+        <div class="groupAdditional">
+          <label for="phone">Telefone</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+      </div>
+      <div class="line">
+        <div class="groupProfitPercentage">
+          <label for="qtde">Nome da criança</label>
+          <input
+            type="text"
+            class="custom-select"
+            name="theme"
+            id="theme"
+            required
+          />
+        </div>
+        <div class="groupAdditional">
+          <label for="age">Idade</label>
+          <input type="number" id="age" name="age" required />
+        </div>
+      </div>
       <div class="commoditiesArea">
         <div class="header">
-          <h3>Adicionar insumos</h3>
-          <button class="btnSave" (click)="openModal()">+</button>
-        </div>
-        <div id="drop-area" *ngIf="selectedItems.length > 0">
-          <div *ngFor="let selectedItem of selectedItems" class="selectedItem">
-            <h3>{{ selectedItem.name }}</h3>
-            <p>Marca: {{ selectedItem.brand }}</p>
-            <p>Preço: {{ selectedItem.value }}</p>
-            <p>Quantidade: {{ selectedItem.quantity }}</p>
-            <input
-              type="number"
-              [(ngModel)]="selectedItem.pricePerUnit"
-              placeholder="Preço por unidade"
-            />
-            <input
-              type="number"
-              [(ngModel)]="selectedItem.usedQuantity"
-              placeholder="Quantidade Usada"
-            />
-            <p>
-              Valor Usado: {{ selectedItem.value * selectedItem.usedQuantity }}
-            </p>
-          </div>
+          <h3>Adicionar produtos</h3>
+          <button class="btnSave">+</button>
         </div>
       </div>
       <div class="line">
@@ -84,30 +105,30 @@
         </div>
         <div class="groupSalary">
           <label for="salary">Salário</label>
-          <p>{{ 54 | currency : "BRL" }}</p>
+          <p>54</p>
         </div>
       </div>
 
       <div class="line">
         <div class="groupCostTotal">
           <label for="costTotal">Custo Total</label>
-          {{ 54 | currency : "BRL" }}
+          54
         </div>
 
         <div class="groupProductionCost">
           <label for="productionCost">Custo Prod</label>
-          {{ 54 | currency : "BRL" }}
+          54
         </div>
       </div>
 
       <div class="line">
         <div class="groupSellingPrice">
           <label for="sellingPrice">Preço</label>
-          {{ 54 | currency : "BRL" }}
+          54
         </div>
         <div class="groupProfitPercentage">
           <label for="profit">Lucro</label>
-          {{ 54 | currency : "BRL" }}
+          54
         </div>
       </div>
 
@@ -124,8 +145,3 @@
     </form>
   </section>
 </div>
-<app-pricing-modal
-  (save)="handleSave($event)"
-  [items]="items"
-  *ngIf="open"
-></app-pricing-modal>

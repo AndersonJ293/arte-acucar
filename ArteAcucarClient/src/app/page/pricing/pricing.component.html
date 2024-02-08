@@ -14,7 +14,7 @@
       <div class="itemContent">
         <div class="header">
           <h3>Massa de bolo</h3>
-          <div class="status true">
+          <div class="status finalizado">
             <span>Ativo</span>
           </div>
         </div>
@@ -27,24 +27,9 @@
       <button>Editar</button>
     </div>
   </div>
-  <div class="listItem">
-    <div class="item">
-      <div class="itemContent">
-        <div class="header">
-          <div class="status true"></div>
-          <h3>Massa de bolo</h3>
-        </div>
-        <p>Adicionado dia 30/01/2024</p>
-        <p>Custo Total: R$ 100,00</p>
-        <p>Salario: R$ 250,00</p>
-        <p>Lucro: 50%</p>
-        <p>Valor total: R$ 300,00</p>
-      </div>
-      <button>Editar</button>
-    </div>
-  </div>
-  <div class="floatButton">
-    <fa-icon [icon]="faAdd" class="icon"></fa-icon>
-  </div>
+
+  <a routerLink="/painel/precificacao/adicionar">
+    <div class="floatButton">
+      <fa-icon [icon]="faAdd" class="icon"></fa-icon></div
+  ></a>
 </section>
-<router-outlet></router-outlet>
