@@ -87,10 +87,10 @@ export class CommoditieCardComponent implements OnInit {
 
   validateForm(): boolean {
     return (
-      this.name!.length !== 0 &&
-      this.quantity !== 0 &&
-      this.stock !== 0 &&
-      this.price !== 0
+      this.name!.length > 0 &&
+      this.quantity !== null &&
+      this.stock !== null &&
+      this.price !== undefined
     );
   }
 

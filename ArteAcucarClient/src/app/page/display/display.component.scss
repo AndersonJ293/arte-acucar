@@ -5,6 +5,7 @@ section {
 
 .display {
   width: 100%;
+  padding-bottom: 50px;
   height: calc(100vh - 100px);
   background-color: #f8f8fa;
   overflow: auto;
@@ -15,4 +16,3 @@ section {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-

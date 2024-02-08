@@ -35,18 +35,8 @@ export class CommoditiesComponent implements OnInit {
     this.commoditiesList.push(new TCommoditie()); // adiciona um item vazio na lista
   }
 }
-class TCommoditie implements Commoditie {
-  id? = undefined;
+class TCommoditie {
   newItem = true;
-  data?:
-    | {
-        name: string;
-        brand: string;
-        quantity: number;
-        stock: number;
-        price: number;
-      }
-    | undefined;
 }
 
 interface Commoditie {
