@@ -13,9 +13,14 @@ export class CommoditiesComponent implements OnInit {
 
   getCommodities() {
     this.firebaseService
-      .getCollection('commodities')
-      .subscribe((commodities) => {
-        this.commoditiesList = commodities;
+      .getCollectionWithIds('commodities')
+      .subscribe((docs) => {
+        this.commoditiesList = [];
+        docs.forEach((doc) => {
+          const id = doc.id;
+          const data = doc.data;
+          this.commoditiesList.push({ id, ...data });
+        });
       });
   }
 

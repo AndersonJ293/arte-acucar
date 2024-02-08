@@ -13,7 +13,7 @@ export class CommoditieCardComponent {
   @Input() brand?: string;
   @Input() quantity?: number;
   @Input() stock?: number;
-  @Input() price?: number;
+  @Input() price: number = 0;
 
   editMode: boolean = false;
 
@@ -22,7 +22,7 @@ export class CommoditieCardComponent {
     private toastService: ToastrService
   ) {}
 
-  handleEdit() {
+  handleEditMode() {
     this.editMode = !this.editMode;
   }
 
@@ -34,23 +34,29 @@ export class CommoditieCardComponent {
         return;
       }
 
+      if (this.id) {
+        this.handleEdit();
+        this.handleEditMode();
+        return;
+      }
+
       this.handleSave();
-      this.handleEdit();
+      this.handleEditMode();
 
       return;
     }
     // enter edit
     if (!this.editMode) {
-      console.log('Edit');
-      this.handleEdit();
+      this.handleEditMode();
     }
   }
 
   handleDeleteButton() {
-    if (!this.editMode) console.log('Delete');
+    if (!this.editMode) {
+      this.firebaseService.excluirItem('commodities', this.id!);
+    }
     if (this.editMode) {
-      console.log('Cancel');
-      this.handleEdit();
+      this.handleEditMode();
     }
   }
 
@@ -76,5 +82,15 @@ export class CommoditieCardComponent {
     };
 
     this.firebaseService.postFirebase(data);
+  }
+
+  handleEdit() {
+    this.firebaseService.editarItem('commodities', this.id!, {
+      name: this.name,
+      brand: this.brand,
+      quantity: this.quantity,
+      stock: this.stock,
+      price: this.price,
+    });
   }
 }

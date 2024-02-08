@@ -30,7 +30,7 @@
       <h4>Valor:</h4>
       <input
         [class]="editMode ? '' : 'editFalse'"
-        [value]="price | currency : 'BRL'"
+        [value]="editMode ? price : (price | currency : 'BRL' : '00.00')"
         [disabled]="!editMode"
         [(ngModel)]="price"
       />
