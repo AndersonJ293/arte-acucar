@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -139,24 +141,4 @@ select {
   display: flex;
   justify-content: space-between;
   margin-top: 16px;
-}
-
-.float-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  line-height: 60px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
-}
-
-.float-button:hover {
-  background-color: #0056b3;
 }

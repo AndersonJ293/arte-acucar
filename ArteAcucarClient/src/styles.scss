@@ -126,3 +126,30 @@ select {
   font-weight: 500;
   background-color: transparent;
 }
+
+.floatButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: $secondary-color;
+  color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  margin-right: 84px;
+}
+
+.floatButton:hover {
+  filter: contrast(0.8);
+}
+
+@media (max-width: 768px) {
+  .floatButton {
+    margin: 0;
+  }
+}
