@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FirebaseService } from '../../../services/firebase.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -7,13 +7,14 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './commoditie-card.component.html',
   styleUrl: './commoditie-card.component.scss',
 })
-export class CommoditieCardComponent {
+export class CommoditieCardComponent implements OnInit {
+  cancelled: boolean = false;
   @Input() id?: string;
   @Input() name?: string;
   @Input() brand?: string;
-  @Input() quantity: number = 0;
-  @Input() stock: number = 0;
-  @Input() price: number = 0;
+  @Input() quantity?: number = 0;
+  @Input() stock?: number = 0;
+  @Input() price?: number = 0;
 
   editMode: boolean = false;
 
@@ -21,6 +22,13 @@ export class CommoditieCardComponent {
     private firebaseService: FirebaseService,
     private toastService: ToastrService
   ) {}
+
+  ngOnInit(): void {
+    if (!this.id) {
+      this.editMode = true;
+      this.name = '';
+    }
+  }
 
   handleEditMode() {
     this.editMode = !this.editMode;
@@ -31,7 +39,9 @@ export class CommoditieCardComponent {
     if (this.editMode) {
       // validação dos campos
       if (!this.validateForm()) {
-        this.toastService.error('Por favor preencha todos os campos', 'Erro');
+        console.log('Preencha todos os campos');
+
+        this.toastService.error('Preencha todos os campos', 'Erro');
         return;
       }
 
@@ -56,9 +66,17 @@ export class CommoditieCardComponent {
   }
 
   handleDeleteButton() {
+    // cancelar inclusão
+    if (this.editMode && !this.id) {
+      this.cancelled = true;
+      return;
+    }
+
     // excluir
     if (!this.editMode) {
-      this.firebaseService.excluirItem('commodities', this.id!);
+      if (window.confirm('Deseja excluir este item?'))
+        this.firebaseService.excluirItem('commodities', this.id!);
+      return;
     }
 
     // cancelar
@@ -97,7 +115,7 @@ export class CommoditieCardComponent {
       brand: this.brand,
       quantity: this.quantity,
       stock: this.stock,
-      price: this.price,
+      price: this.price as number,
     });
   }
 }
