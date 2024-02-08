@@ -52,63 +52,68 @@
         </div>
       </div>
       <div class="line">
-        <div class="groupCostTotal">
-          <label for="costTotal">Custo Total</label>
-          <input type="number" id="costTotal" name="costTotal" required />
-        </div>
-
-        <div class="groupProductionCost">
-          <label for="productionCost">Custo Prod</label>
+        <div class="groupAdditional">
+          <label for="additional">Adicional %</label>
           <input
             type="number"
-            id="productionCost"
-            name="productionCost"
+            step="0.1"
+            min="0"
+            id="additional"
+            name="additional"
             required
           />
         </div>
-      </div>
 
-      <div class="line">
-        <div class="groupAdditional">
-          <label for="additional">Adicional %</label>
-          <input type="number" id="additional" name="additional" required />
-        </div>
-        <div class="groupProfitPercentage">
-          <label for="profit">Lucro</label>
-          <input type="number" id="profit" name="profit" required />
-        </div>
-      </div>
-
-      <div class="line">
-        <div class="groupWorkHours">
-          <label for="workHours">Horas</label>
-          <input type="number" id="workHours" name="workHours" required />
-        </div>
-        <div class="groupSalary">
-          <label for="salary">Salário</label>
-          <input type="number" id="salary" name="salary" required />
-        </div>
-      </div>
-
-      <div class="line">
         <div class="groupProfitPercentage">
           <label for="profitPercentage">Lucro %</label>
           <input
             type="number"
             id="profitPercentage"
             name="profitPercentage"
+            step="0.1"
+            min="0"
             required
           />
         </div>
+      </div>
+
+      <div class="line">
+        <div class="groupWorkHours">
+          <label for="workHours">Horas</label>
+          <input type="time" id="workHours" name="workHours" required />
+        </div>
+        <div class="groupSalary">
+          <label for="salary">Salário</label>
+          <p>{{ 54 | currency : "BRL" }}</p>
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="groupCostTotal">
+          <label for="costTotal">Custo Total</label>
+          {{ 54 | currency : "BRL" }}
+        </div>
+
+        <div class="groupProductionCost">
+          <label for="productionCost">Custo Prod</label>
+          {{ 54 | currency : "BRL" }}
+        </div>
+      </div>
+
+      <div class="line">
         <div class="groupSellingPrice">
           <label for="sellingPrice">Preço</label>
-          <input type="number" id="sellingPrice" name="sellingPrice" required />
+          {{ 54 | currency : "BRL" }}
+        </div>
+        <div class="groupProfitPercentage">
+          <label for="profit">Lucro</label>
+          {{ 54 | currency : "BRL" }}
         </div>
       </div>
 
       <div class="buttons">
-        <button type="reset" class="btnCancel">Cancelar</button>
         <button type="submit" class="btnSave">Salvar</button>
+        <button type="reset" class="btnCancel">Cancelar</button>
       </div>
     </form>
   </section>

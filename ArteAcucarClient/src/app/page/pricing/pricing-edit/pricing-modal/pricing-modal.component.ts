@@ -34,9 +34,4 @@ export class PricingModalComponent implements OnInit {
   saveSelection() {
     this.save.emit(this.selectedItems);
   }
-
-  closeModal() {
-    const modal = document.querySelector('.modal');
-    modal!.classList.remove('show');
-  }
 }
