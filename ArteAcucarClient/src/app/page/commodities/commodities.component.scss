@@ -12,6 +12,21 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0 50px;
   gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .headerTop {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .headerTop > h2 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
 }

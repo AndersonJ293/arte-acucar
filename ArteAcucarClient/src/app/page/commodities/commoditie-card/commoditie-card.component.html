@@ -1,6 +1,11 @@
 <div class="card">
   <div class="cardDetail">
-    <h3>{{ name }}</h3>
+    <input
+      [class]="editMode ? 'titleEdit' : 'title'"
+      [value]="name"
+      [disabled]="!editMode"
+      [(ngModel)]="name"
+    />
   </div>
   <div class="cardMore">
     <div class="more">
@@ -9,6 +14,16 @@
         [class]="editMode ? '' : 'editFalse'"
         [value]="brand"
         [disabled]="!editMode"
+        [(ngModel)]="brand"
+      />
+    </div>
+    <div class="more">
+      <h4>Quantidade:</h4>
+      <input
+        [class]="editMode ? '' : 'editFalse'"
+        [value]="quantity"
+        [disabled]="!editMode"
+        [(ngModel)]="quantity"
       />
     </div>
     <div class="more">
@@ -17,6 +32,7 @@
         [class]="editMode ? '' : 'editFalse'"
         [value]="price | currency : 'BRL'"
         [disabled]="!editMode"
+        [(ngModel)]="price"
       />
     </div>
     <div class="more">
@@ -25,6 +41,7 @@
         [class]="editMode ? '' : 'editFalse'"
         [value]="stock"
         [disabled]="!editMode"
+        [(ngModel)]="stock"
       />
     </div>
   </div>

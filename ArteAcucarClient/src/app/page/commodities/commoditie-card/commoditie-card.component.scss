@@ -14,6 +14,15 @@
   align-items: center;
 }
 
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  color: #000;
+  width: 100%;
+  text-align: center;
+}
+
 .cardMore {
   margin-top: 5px;
   margin-bottom: 10px;
@@ -43,7 +52,19 @@ input {
   width: 50%;
 }
 
+.titleEdit {
+  font-size: 16px;
+  text-align: center;
+  width: 80%;
+}
+
 .buttons {
   display: flex;
   justify-content: space-around;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
 }

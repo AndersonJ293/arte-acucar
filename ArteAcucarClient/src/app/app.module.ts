@@ -25,6 +25,10 @@ import { SidebarMenuComponent } from './components/sidebar-menu/sidebar-menu.com
 import { MenuItemComponent } from './components/sidebar-menu/menu-item/menu-item.component';
 import { ConfigComponent } from './page/config/config.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { CommoditiesComponent } from './page/commodities/commodities.component';
+import { CommoditieCardComponent } from './page/commodities/commoditie-card/commoditie-card.component';
+import { PricingComponent } from './page/pricing/pricing.component';
+import { PricingEditComponent } from './page/pricing/pricing-edit/pricing-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,10 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
     MenuItemComponent,
     ConfigComponent,
     DashboardComponent,
+    CommoditiesComponent,
+    CommoditieCardComponent,
+    PricingComponent,
+    PricingEditComponent,
   ],
   imports: [
     BrowserModule,

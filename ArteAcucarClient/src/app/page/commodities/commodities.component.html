@@ -10,12 +10,14 @@
   </header>
 
   <div class="cardList">
-    <ng-container>
+    <ng-container *ngFor="let commoditie of commoditiesList">
       <app-commoditie-card
-        name="Nome Insumo"
-        brand="Marca"
-        [price]="25.0"
-        [stock]="4"
+        [id]="commoditie.id"
+        [name]="commoditie.name"
+        [brand]="commoditie.brand"
+        [quantity]="commoditie.quantity"
+        [price]="commoditie.price"
+        [stock]="commoditie.stock"
       ></app-commoditie-card>
     </ng-container>
   </div>
