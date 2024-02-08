@@ -17,25 +17,36 @@ export class CommoditiesComponent implements OnInit {
     this.firebaseService
       .getCollectionWithIds('commodities')
       .subscribe((docs) => {
-        this.commoditiesList = [];
-        docs.forEach((doc) => {
-          const id = doc.id;
-          const data = doc.data;
-          this.commoditiesList.push({ id, ...data });
-        });
+        this.commoditiesList = docs;
       });
   }
 
   ngOnInit(): void {
     this.getCommodities();
   }
+
+  addCommoditie() {
+    let index = this.commoditiesList.findIndex((item) => item.newItem);
+
+    if (index !== -1) {
+      this.commoditiesList.splice(index, 1);
+    }
+
+    this.commoditiesList.push(new TCommoditie()); // adiciona um item vazio na lista
+  }
+}
+class TCommoditie {
+  newItem = true;
 }
 
 interface Commoditie {
-  id: string;
-  name: string;
-  brand: string;
-  quantity: number;
-  stock: number;
-  price: number;
+  id?: string;
+  newItem?: boolean;
+  data?: {
+    name: string;
+    brand: string;
+    quantity: number;
+    stock: number;
+    price: number;
+  };
 }

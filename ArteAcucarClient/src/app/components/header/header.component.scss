@@ -60,9 +60,12 @@ header {
 }
 
 @media (max-width: 768px) {
+  header {
+    padding: 10px 24px;
+  }
   .logo {
     span {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
     }
   }
 }

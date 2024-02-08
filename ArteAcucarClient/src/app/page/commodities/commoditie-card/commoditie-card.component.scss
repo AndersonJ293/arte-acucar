@@ -52,6 +52,11 @@ input {
   width: 50%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .titleEdit {
   font-size: 16px;
   text-align: center;

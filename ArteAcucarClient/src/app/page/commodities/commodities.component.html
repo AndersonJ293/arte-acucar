@@ -13,15 +13,15 @@
     <ng-container *ngFor="let commoditie of commoditiesList">
       <app-commoditie-card
         [id]="commoditie.id"
-        [name]="commoditie.name"
-        [brand]="commoditie.brand"
-        [quantity]="commoditie.quantity"
-        [price]="commoditie.price"
-        [stock]="commoditie.stock"
+        [name]="commoditie.data?.name"
+        [brand]="commoditie.data?.brand"
+        [quantity]="commoditie.data?.quantity"
+        [price]="commoditie.data?.price"
+        [stock]="commoditie.data?.stock"
       ></app-commoditie-card>
     </ng-container>
   </div>
-  <div class="floatButton">
+  <div class="floatButton" (click)="addCommoditie()">
     <fa-icon [icon]="faAdd" class="icon"></fa-icon>
   </div>
 </section>

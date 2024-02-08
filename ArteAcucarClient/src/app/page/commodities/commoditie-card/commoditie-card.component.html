@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card" *ngIf="!cancelled">
   <div class="cardDetail">
     <input
       [class]="editMode ? 'titleEdit' : 'title'"
-      [value]="name"
       [disabled]="!editMode"
       [(ngModel)]="name"
+      autofocus
     />
   </div>
   <div class="cardMore">
@@ -12,7 +12,6 @@
       <h4>Marca:</h4>
       <input
         [class]="editMode ? '' : 'editFalse'"
-        [value]="brand"
         [disabled]="!editMode"
         [(ngModel)]="brand"
       />
@@ -21,19 +20,19 @@
       <h4>Quantidade:</h4>
       <input
         [class]="editMode ? '' : 'editFalse'"
-        [value]="quantity"
         [disabled]="!editMode"
         [(ngModel)]="quantity"
+        type="number"
       />
     </div>
     <div class="more">
       <h4>Valor:</h4>
       <input
         [class]="editMode ? '' : 'editFalse'"
-        [value]="editMode ? price : (price | currency : 'BRL')"
         [disabled]="!editMode"
-        [(ngModel)]="price"
-        type="number"
+        [ngModel]="editMode ? price : (price | currency : 'BRL')"
+        (ngModelChange)="price = $event"
+        [type]="editMode ? 'number' : 'text'"
         step="0.1"
       />
     </div>
@@ -41,9 +40,9 @@
       <h4>Estoque:</h4>
       <input
         [class]="editMode ? '' : 'editFalse'"
-        [value]="stock"
         [disabled]="!editMode"
         [(ngModel)]="stock"
+        type="number"
       />
     </div>
   </div>
