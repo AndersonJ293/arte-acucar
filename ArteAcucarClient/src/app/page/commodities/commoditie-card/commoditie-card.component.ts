@@ -11,8 +11,8 @@ export class CommoditieCardComponent {
   @Input() id?: string;
   @Input() name?: string;
   @Input() brand?: string;
-  @Input() quantity?: number;
-  @Input() stock?: number;
+  @Input() quantity: number = 0;
+  @Input() stock: number = 0;
   @Input() price: number = 0;
 
   editMode: boolean = false;
@@ -27,19 +27,23 @@ export class CommoditieCardComponent {
   }
 
   handleEditButton() {
-    // save
+    // se estiver em modo edição
     if (this.editMode) {
+      // validação dos campos
       if (!this.validateForm()) {
         this.toastService.error('Por favor preencha todos os campos', 'Erro');
         return;
       }
 
+      // se tiver id é uma edição
       if (this.id) {
         this.handleEdit();
         this.handleEditMode();
+
         return;
       }
 
+      // se não tiver id é um novo item
       this.handleSave();
       this.handleEditMode();
 
@@ -52,9 +56,12 @@ export class CommoditieCardComponent {
   }
 
   handleDeleteButton() {
+    // excluir
     if (!this.editMode) {
       this.firebaseService.excluirItem('commodities', this.id!);
     }
+
+    // cancelar
     if (this.editMode) {
       this.handleEditMode();
     }
