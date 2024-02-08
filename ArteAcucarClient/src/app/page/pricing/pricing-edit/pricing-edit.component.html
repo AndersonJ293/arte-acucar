@@ -30,7 +30,7 @@
           <button class="btnSave" (click)="openModal()">+</button>
         </div>
         <div id="drop-area" *ngIf="selectedItems.length > 0">
-          <div *ngFor="let selectedItem of selectedItems" class="selected-item">
+          <div *ngFor="let selectedItem of selectedItems" class="selectedItem">
             <h3>{{ selectedItem.name }}</h3>
             <p>Marca: {{ selectedItem.brand }}</p>
             <p>Preço: {{ selectedItem.value }}</p>

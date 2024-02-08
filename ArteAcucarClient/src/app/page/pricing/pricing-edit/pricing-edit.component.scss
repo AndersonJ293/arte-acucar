@@ -125,7 +125,7 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
   border: 2px dashed #000;
   border-radius: 8px;
   padding: 20px;
@@ -135,31 +135,28 @@ select {
   margin-top: 24px;
 }
 
-.selected-item {
+.selectedItem {
   background-color: #f9f9f9;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 8px;
 }
 
-.selected-item h3 {
+.selectedItem h3 {
   margin: 0;
 }
 
-.selected-item p {
+.selectedItem p {
   margin: 5px 0;
 }
 
-.selected-item input {
+.selectedItem input {
   margin-top: 5px;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.selected-item p:last-child {
-  margin-top: 10px;
-}
 .picture {
   width: 40px;
   height: 40px;
