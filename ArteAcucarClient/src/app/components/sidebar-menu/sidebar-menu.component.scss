@@ -1,51 +1,48 @@
 @import "../../../styles.scss";
 
-.containerClose {
+.containerClose,
+.containerOpen {
   display: flex;
-  align-items: flex-end;
   flex-direction: column;
-  width: 80px;
   height: calc(100vh - 100px);
   transition: 0.3s;
+}
+
+.containerClose {
+  width: 80px;
 }
 
 .containerOpen {
   width: 350px;
+}
+
+.sideMenuClose,
+.sideMenuOpen {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
-  transition: 0.3s;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #fff;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+  overflow: auto;
+  transition: all 0.3s;
+
+  &::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 .sideMenuOpen {
-  z-index: 1;
-  width: 100%;
-  background-color: #fff;
-  height: 100%;
   padding: 20px;
-  transition: all 0.3s;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: 0.3s;
 }
 
 .sideMenuClose {
-  width: 100%;
-  background-color: #fff;
-  height: 100%;
   padding: 10px;
-  transition: all 0.3s;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: 0.3s;
 }
 
 @media (max-width: 768px) {

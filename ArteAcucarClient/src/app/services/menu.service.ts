@@ -10,7 +10,6 @@ export class MenuService {
 
   handleMenu() {
     MenuService.menuOpen = !MenuService.menuOpen;
-    console.log(MenuService.menuOpen);
   }
 
   closeMenu() {

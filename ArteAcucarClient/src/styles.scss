@@ -19,7 +19,9 @@ $title-font: "Courgette", cursive;
   font-family: "Poppins";
 }
 
-body {
+body,
+html {
+  max-height: 100vh;
   overflow: hidden;
 }
 
