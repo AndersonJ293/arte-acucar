@@ -7,6 +7,7 @@ import { BudgetComponent } from './page/budget/budget.component';
 import { ConfigComponent } from './page/config/config.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { CommoditiesComponent } from './page/commodities/commodities.component';
+import { PricingEditComponent } from './page/pricing/pricing-edit/pricing-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -16,7 +17,12 @@ const routes: Routes = [
     component: DisplayComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'precificacao', component: PricingComponent },
+      {
+        path: 'precificacao',
+        component: PricingComponent,
+        children: [{ path: 'editar', component: PricingEditComponent }],
+      },
+      { path: 'precificacao/adicionar', component: PricingEditComponent },
       { path: 'orcamento', component: BudgetComponent },
       { path: 'config', component: ConfigComponent },
       { path: 'insumos', component: CommoditiesComponent },

@@ -3,14 +3,16 @@ section {
   overflow: hidden;
 }
 
-.menu {
-  max-width: 30%;
-  height: calc(100vh - 100px);
-}
-
 .display {
   width: 100%;
   height: calc(100vh - 100px);
-  background-color: #f5f5f5;
+  background-color: #f8f8fa;
   overflow: auto;
 }
+
+.display::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

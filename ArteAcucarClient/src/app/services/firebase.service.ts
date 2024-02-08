@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -58,13 +58,77 @@ export class FirebaseService {
     }
   }
 
-  getCollection(collection: string, typeFilter?: string): Observable<any[]> {
+  getCollectionWithIds(
+    collection: string,
+    typeFilter?: string
+  ): Observable<any[]> {
     if (typeFilter) {
       return this.firestore
         .collection(collection, (ref) => ref.where('type', '==', typeFilter))
-        .valueChanges();
-    } else {
-      return this.firestore.collection(collection).valueChanges();
+        .snapshotChanges()
+        .pipe(
+          map((actions) =>
+            actions.map((a) => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              return { id, data };
+            })
+          )
+        );
     }
+
+    return this.firestore
+      .collection(collection)
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, data };
+          })
+        )
+      );
+  }
+
+  async editarItem(
+    collection: string,
+    id: string,
+    newData: any
+  ): Promise<void> {
+    try {
+      const now = new Date();
+      await this.firestore
+        .collection(collection)
+        .doc(id)
+        .update({
+          ...newData,
+          updated_at: now.toISOString(),
+        });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async excluirItem(collection: string, id: string): Promise<void> {
+    try {
+      await this.firestore.collection(collection).doc(id).delete();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  getDocumentById(collection: string, id: string): Observable<any> {
+    return this.firestore
+      .collection(collection)
+      .doc(id)
+      .snapshotChanges()
+      .pipe(
+        map((doc) => {
+          const data = doc.payload.data();
+          const id = doc.payload.id;
+          return { id, data };
+        })
+      );
   }
 }

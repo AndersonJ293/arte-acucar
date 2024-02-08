@@ -1,0 +1,36 @@
+<div class="modalBackground"></div>
+<div class="modalContent">
+  <div class="modalHeader">
+    <h2>Selecionar Insumos</h2>
+    <span class="close">&times;</span>
+  </div>
+  <div class="modalBody">
+    <input
+      type="text"
+      placeholder="Buscar insumos"
+      [(ngModel)]="searchInput"
+      class="searchInput"
+    />
+    <div class="cardsContainer">
+      <div
+        class="card"
+        *ngFor="let item of items"
+        (click)="toggleSelection(item)"
+        [class.selected]="item.selected"
+      >
+        <h3>{{ item.name }}</h3>
+        <p>Marca: {{ item.brand }}</p>
+        <p>Valor: {{ item.value }}</p>
+        <input
+          type="number"
+          [(ngModel)]="item.quantity"
+          placeholder="Quantidade"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="modalFooter">
+    <button class="btnCancel">Cancelar</button>
+    <button class="btnSave" (click)="saveSelection()">Salvar</button>
+  </div>
+</div>
