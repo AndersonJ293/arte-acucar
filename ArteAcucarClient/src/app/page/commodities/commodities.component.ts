@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
+import { faAdd } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-commodities',
@@ -8,6 +9,7 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class CommoditiesComponent implements OnInit {
   commoditiesList: Array<Commoditie> = [];
+  faAdd = faAdd;
 
   constructor(private firebaseService: FirebaseService) {}
 
