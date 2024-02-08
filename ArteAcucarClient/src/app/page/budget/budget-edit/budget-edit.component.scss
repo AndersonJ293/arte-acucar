@@ -1,0 +1,184 @@
+.container {
+  padding: 50px;
+}
+
+section {
+  padding: 24px;
+  height: min;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+header {
+  display: flex;
+  margin-bottom: 24px;
+  align-items: center;
+  text-align: center;
+}
+
+header > i {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  color: #00cc66;
+  background-color: #00cc6633;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.fechar-modal {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #000;
+  margin-left: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.groupName {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.groupCategory {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.commoditiesArea > .header {
+  display: flex;
+  gap: 16px;
+}
+
+.groupCategory,
+.groupCostTotal,
+.groupAdditional,
+.groupWorkHours,
+.groupProfitPercentage,
+.groupProductionCost,
+.groupSalary,
+.groupSellingPrice {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.groupName label,
+.groupCategory label,
+.groupCostTotal label,
+.groupAdditional label,
+.groupWorkHours label,
+.groupProfitPercentage label,
+.groupProductionCost label,
+.groupSalary label,
+.groupSellingPrice label {
+  margin-bottom: 8px;
+}
+
+.groupName input,
+.groupCategory input,
+.groupCostTotal input,
+.groupAdditional input,
+.groupWorkHours input,
+.groupProfitPercentage input,
+.groupProductionCost input,
+.groupSalary input,
+.groupSellingPrice input {
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid #212121;
+  margin-bottom: 24px;
+  padding: 4px;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+input,
+select {
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid #212121;
+  margin-bottom: 24px;
+  padding: 4px;
+}
+
+#drop-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 2px dashed #000;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  margin-top: 24px;
+}
+
+.selectedItem {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.selectedItem h3 {
+  margin: 0;
+}
+
+.selectedItem p {
+  margin: 5px 0;
+}
+
+.selectedItem input {
+  margin-top: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.picture {
+  width: 40px;
+  height: 40px;
+}
+
+#imagem {
+  display: none;
+}
+
+.buttons {
+  margin-top: 24px;
+  display: flex;
+  gap: 24px;
+  justify-content: end;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 24px;
+  }
+}

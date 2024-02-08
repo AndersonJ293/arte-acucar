@@ -30,6 +30,7 @@ import { CommoditieCardComponent } from './page/commodities/commoditie-card/comm
 import { PricingComponent } from './page/pricing/pricing.component';
 import { PricingEditComponent } from './page/pricing/pricing-edit/pricing-edit.component';
 import { PricingModalComponent } from './page/pricing/pricing-edit/pricing-modal/pricing-modal.component';
+import { BudgetEditComponent } from './page/budget/budget-edit/budget-edit.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { PricingModalComponent } from './page/pricing/pricing-edit/pricing-modal
     PricingComponent,
     PricingEditComponent,
     PricingModalComponent,
+    BudgetEditComponent,
   ],
   imports: [
     BrowserModule,
