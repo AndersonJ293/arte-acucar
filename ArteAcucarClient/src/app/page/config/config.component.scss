@@ -17,7 +17,14 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 450px;
+  gap: 20px;
+}
+
+.sectionContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
 }
 
 h3 {
@@ -26,22 +33,41 @@ h3 {
 
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
   margin-top: 16px;
   gap: 16px;
 
+  button {
+    max-width: 300px;
+  }
+
   .btnCancel {
-    width: 100%;
+    width: 45%;
   }
 
   .btnSave {
-    width: 100%;
+    width: 45%;
   }
+}
+
+.inputGroup {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+input {
+  flex-grow: 1;
 }
 
 @media (max-width: 768px) {
   .container {
     padding: 0 24px;
+  }
+
+  .buttons {
+    justify-content: space-between;
   }
 }
