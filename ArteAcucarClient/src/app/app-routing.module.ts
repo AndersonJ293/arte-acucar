@@ -10,6 +10,7 @@ import { CommoditiesComponent } from './page/commodities/commodities.component';
 import { PricingEditComponent } from './page/pricing/pricing-edit/pricing-edit.component';
 import { BudgetEditComponent } from './page/budget/budget-edit/budget-edit.component';
 import { ProductComponent } from './page/product/product.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   {
     path: 'painel',
     component: DisplayComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardComponent },
       {
