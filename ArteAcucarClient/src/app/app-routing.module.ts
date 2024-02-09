@@ -9,6 +9,7 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { CommoditiesComponent } from './page/commodities/commodities.component';
 import { PricingEditComponent } from './page/pricing/pricing-edit/pricing-edit.component';
 import { BudgetEditComponent } from './page/budget/budget-edit/budget-edit.component';
+import { ProductComponent } from './page/product/product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'orcamento', component: BudgetComponent },
       { path: 'orcamento/adicionar', component: BudgetEditComponent },
       { path: 'orcamento/editar', component: BudgetEditComponent },
+      { path: 'produto', component: ProductComponent },
       { path: 'config', component: ConfigComponent },
       { path: 'insumos', component: CommoditiesComponent },
     ],

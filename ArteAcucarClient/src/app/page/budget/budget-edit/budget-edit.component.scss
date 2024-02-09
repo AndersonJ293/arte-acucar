@@ -120,7 +120,7 @@ select {
   padding: 4px;
 }
 
-#drop-area {
+#commodities-area {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,6 +156,29 @@ select {
   border-radius: 5px;
 }
 
+#drop-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px dashed #000;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 100px;
+}
+
+#drop-area.active {
+  border-color: #007bff;
+}
+
+#drop-area img {
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px;
+}
+
 .picture {
   width: 40px;
   height: 40px;
@@ -163,6 +186,15 @@ select {
 
 #imagem {
   display: none;
+}
+
+label[for="imagem"] {
+  cursor: pointer;
+}
+
+label[for="imagem"] {
+  color: #ff3333;
+  cursor: pointer;
 }
 
 .buttons {

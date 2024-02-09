@@ -66,12 +66,35 @@
           <input type="number" id="age" name="age" required />
         </div>
       </div>
+      <div
+        id="drop-area"
+        (drop)="onDrop($event)"
+        (dragover)="onDragOver($event)"
+      >
+        <img *ngIf="previewUrl" [src]="previewUrl" alt="Preview" />
+        <img
+          class="picture"
+          *ngIf="!previewUrl"
+          src="../../../../assets/img/picture.png"
+          alt=""
+        />
+        Solte a imagem aqui ou clique para fazer upload.
+        <input
+          type="file"
+          id="imagem"
+          name="imagem"
+          accept="image/*"
+          style="display: none"
+          (change)="onFileSelected($event)"
+        />
+        <label for="imagem">Clique aqui para selecionar uma imagem</label>
+      </div>
       <div class="commoditiesArea">
         <div class="header">
           <h3>Adicionar produtos</h3>
           <button class="btnSave" (click)="openModal()">+</button>
         </div>
-        <div id="drop-area" *ngIf="selectedItems.length > 0">
+        <div id="commodities-area" *ngIf="selectedItems.length > 0">
           <ng-container *ngFor="let selectedItem of selectedItems">
             <div class="selectedItem">
               <h3>{{ selectedItem.name }}</h3>

@@ -22,7 +22,7 @@ export class SidebarMenuComponent {
   listaMenuItens = [
     { nome: 'DashBoard', link: '/painel', icone: faBarChart },
     { nome: 'Orçamento', link: '/painel/orcamento', icone: faFileText },
-    { nome: 'Produto', link: '/painel/', icone: faShoppingBag },
+    { nome: 'Produto', link: '/painel/produto', icone: faShoppingBag },
     { nome: 'Precificação', link: '/painel/precificacao', icone: faMoneyBill },
     { nome: 'Insumos', link: '/painel/insumos', icone: faBox },
   ];
