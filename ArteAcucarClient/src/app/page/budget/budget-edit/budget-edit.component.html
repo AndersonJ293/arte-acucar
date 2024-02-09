@@ -94,58 +94,10 @@
           </ng-container>
         </div>
       </div>
-      <div class="line">
-        <div class="groupAdditional">
-          <label for="additional">Adicional %</label>
-          <input
-            type="number"
-            step="0.1"
-            min="0"
-            id="additional"
-            name="additional"
-            required
-          />
-        </div>
-
-        <div class="groupProfitPercentage">
-          <label for="profitPercentage">Lucro %</label>
-          <input
-            type="number"
-            id="profitPercentage"
-            name="profitPercentage"
-            step="0.1"
-            min="0"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="line">
-        <div class="groupWorkHours">
-          <label for="workHours">Horas</label>
-          <input type="time" id="workHours" name="workHours" required />
-        </div>
-        <div class="groupSalary">
-          <label for="salary">Salário</label>
-          <p>{{ 54 | currency : "BRL" }}</p>
-        </div>
-      </div>
 
       <div class="line">
         <div class="groupCostTotal">
-          <label for="costTotal">Custo Total</label>
-          {{ 54 | currency : "BRL" }}
-        </div>
-
-        <div class="groupProductionCost">
-          <label for="productionCost">Custo Prod</label>
-          {{ 54 | currency : "BRL" }}
-        </div>
-      </div>
-
-      <div class="line">
-        <div class="groupSellingPrice">
-          <label for="sellingPrice">Preço</label>
+          <label for="costTotal">Custo Insumos</label>
           {{ 54 | currency : "BRL" }}
         </div>
         <div class="groupProfitPercentage">
@@ -154,13 +106,28 @@
         </div>
       </div>
 
+      <div class="line">
+        <div class="groupProductionCost">
+          <label for="productionCost">Custo Total</label>
+          {{ 54 | currency : "BRL" }}
+        </div>
+        <div class="groupSalary">
+          <label for="salary">Salário</label>
+          <p>{{ 54 | currency : "BRL" }}</p>
+        </div>
+      </div>
+
+      <div class="line">
+        <div></div>
+        <div class="groupSellingPrice">
+          <label for="sellingPrice">Preço Total</label>
+          {{ 54 | currency : "BRL" }}
+        </div>
+      </div>
+
       <div class="buttons">
         <button type="submit" class="btnSave">Salvar</button>
-        <button
-          routerLink="/painel/precificacao"
-          type="reset"
-          class="btnCancel"
-        >
+        <button routerLink="/painel/orcamento" type="reset" class="btnCancel">
           Cancelar
         </button>
       </div>
