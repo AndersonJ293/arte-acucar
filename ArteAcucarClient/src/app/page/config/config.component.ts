@@ -53,6 +53,9 @@ export class ConfigComponent implements OnInit {
       this.configAtual.id,
       this.configForm.value
     );
+
+    this.configAtual.data = this.configForm.value;
+
     this.toastService.success('Configurações salvas com sucesso!');
   }
 }
