@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './budget-edit.component.scss',
 })
 export class BudgetEditComponent {
+  previewUrl: string = '';
   open: boolean = false;
   selectedItems: any[] = [];
 
@@ -43,6 +44,31 @@ export class BudgetEditComponent {
   handleSave(selectedItems: any[]) {
     this.selectedItems = selectedItems;
     this.closeModal();
+  }
+
+  onDrop(event: any): void {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    this.handleFile(file);
+  }
+
+  onDragOver(event: any): void {
+    event.preventDefault();
+  }
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    this.handleFile(file);
+  }
+
+  handleFile(file: any): void {
+    const reader = new FileReader();
+
+    reader.onload = async (e: any) => {
+      this.previewUrl = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
   }
 
   closeModal() {
