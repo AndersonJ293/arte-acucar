@@ -11,6 +11,7 @@ import { PricingEditComponent } from './page/pricing/pricing-edit/pricing-edit.c
 import { BudgetEditComponent } from './page/budget/budget-edit/budget-edit.component';
 import { ProductComponent } from './page/product/product.component';
 import { AuthGuard } from './guard/auth.guard';
+import { ProductEditComponent } from './page/product/product-edit/product-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -31,6 +32,8 @@ const routes: Routes = [
       { path: 'orcamento/adicionar', component: BudgetEditComponent },
       { path: 'orcamento/editar', component: BudgetEditComponent },
       { path: 'produto', component: ProductComponent },
+      { path: 'produto/adicionar', component: ProductEditComponent },
+      { path: 'produto/editar', component: ProductEditComponent },
       { path: 'config', component: ConfigComponent },
       { path: 'insumos', component: CommoditiesComponent },
     ],
