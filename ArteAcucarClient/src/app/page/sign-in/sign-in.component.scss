@@ -118,8 +118,16 @@ p > a {
 }
 
 @media (max-width: 768px) {
+  .glassEffect {
+    height: 80%;
+  }
+
   .image {
     display: none;
+  }
+
+  header {
+    margin-bottom: 20px;
   }
 
   h2 {
