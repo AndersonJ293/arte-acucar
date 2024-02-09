@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .container {
   padding: 50px;
 }
@@ -51,20 +53,48 @@ h3 {
   }
 }
 
+.msgGroup,
 .inputGroup {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+}
+
+.inputGroup {
   min-width: 300px;
 }
 
+.msgGroup {
+  width: 100%;
+}
+
 input {
-  flex-grow: 1;
+  max-width: 100%;
+}
+
+textarea {
+  color: $secondary-color;
+  border-radius: 8px;
+  border: 1px solid #212121;
+  padding: 10px;
+  width: 100%;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  resize: none;
 }
 
 @media (max-width: 768px) {
   .container {
     padding: 0 24px;
+  }
+
+  .inputGroup {
+    min-width: 100%;
   }
 
   .buttons {
