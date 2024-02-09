@@ -18,14 +18,10 @@
         (click)="toggleSelection(item)"
         [class.selected]="item.selected"
       >
-        <h3>{{ item.name }}</h3>
-        <p>Marca: {{ item.brand }}</p>
-        <p>Valor: {{ item.value }}</p>
-        <input
-          type="number"
-          [(ngModel)]="item.quantity"
-          placeholder="Quantidade"
-        />
+        <h3>{{ item.data.name }}</h3>
+        <p>Marca: {{ item.data.brand }}</p>
+        <p>Valor: {{ item.data.price }}</p>
+        <p>Quantidade: {{ item.data.quantity }}</p>
       </div>
     </div>
   </div>

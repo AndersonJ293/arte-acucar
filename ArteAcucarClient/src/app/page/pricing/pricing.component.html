@@ -10,19 +10,21 @@
   </header>
 
   <div class="listItem">
-    <div class="item">
+    <div class="item" *ngFor="let pricing of pricings">
       <div class="itemContent">
         <div class="header">
-          <h3>Massa de bolo</h3>
+          <h3>{{ pricing.data.nome }}</h3>
           <div class="status finalizado">
             <span>Ativo</span>
           </div>
         </div>
-        <p>Adicionado dia 30/01/2024</p>
-        <p>Custo Total: R$ 100,00</p>
-        <p>Salario: R$ 250,00</p>
-        <p>Lucro: 50%</p>
-        <p>Valor total: R$ 300,00</p>
+        <p>
+          Adicionado dia {{ pricing.data.created_at | date : "dd/MM/yyyy" }}
+        </p>
+        <p>Custo Total: {{ pricing.data.custoTotal | currency : "BRL" }}</p>
+        <p>Salario: {{ pricing.data.salario | currency : "BRL" }}</p>
+        <p>Lucro: {{ pricing.data.lucro | currency : "BRL" }}</p>
+        <p>Valor total: {{ pricing.data.precoTotal | currency : "BRL" }}</p>
       </div>
       <button>Editar</button>
     </div>
