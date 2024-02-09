@@ -71,6 +71,28 @@
           <h3>Adicionar produtos</h3>
           <button class="btnSave" (click)="openModal()">+</button>
         </div>
+        <div id="drop-area" *ngIf="selectedItems.length > 0">
+          <ng-container *ngFor="let selectedItem of selectedItems">
+            <div class="selectedItem">
+              <h3>{{ selectedItem.name }}</h3>
+              <p>Custo: {{ selectedItem.custo }}</p>
+              <p>Lucro: {{ selectedItem.lucro }}</p>
+              <p>Valor de venda: {{ selectedItem.venda }}</p>
+              <input
+                type="number"
+                [(ngModel)]="selectedItem.usedQuantity"
+                placeholder="Quantidade Usada"
+              />
+              <p>
+                Valor Usado:
+                {{
+                  selectedItem.usedQuantity *
+                    (selectedItem.value / selectedItem.quantity)
+                }}
+              </p>
+            </div>
+          </ng-container>
+        </div>
       </div>
       <div class="line">
         <div class="groupAdditional">
@@ -105,30 +127,30 @@
         </div>
         <div class="groupSalary">
           <label for="salary">Salário</label>
-          <p>54</p>
+          <p>{{ 54 | currency : "BRL" }}</p>
         </div>
       </div>
 
       <div class="line">
         <div class="groupCostTotal">
           <label for="costTotal">Custo Total</label>
-          54
+          {{ 54 | currency : "BRL" }}
         </div>
 
         <div class="groupProductionCost">
           <label for="productionCost">Custo Prod</label>
-          54
+          {{ 54 | currency : "BRL" }}
         </div>
       </div>
 
       <div class="line">
         <div class="groupSellingPrice">
           <label for="sellingPrice">Preço</label>
-          54
+          {{ 54 | currency : "BRL" }}
         </div>
         <div class="groupProfitPercentage">
           <label for="profit">Lucro</label>
-          54
+          {{ 54 | currency : "BRL" }}
         </div>
       </div>
 
@@ -145,4 +167,9 @@
     </form>
   </section>
 </div>
-<app-budget-modal *ngIf="open"></app-budget-modal>
+<app-budget-modal
+  (save)="handleSave($event)"
+  [items]="items"
+  *ngIf="open"
+  [selectedItems]="selectedItems"
+></app-budget-modal>

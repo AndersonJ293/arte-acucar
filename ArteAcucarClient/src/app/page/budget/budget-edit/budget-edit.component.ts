@@ -10,9 +10,30 @@ export class BudgetEditComponent {
   selectedItems: any[] = [];
 
   items = [
-    { id: 1, name: 'Insumo 1', brand: 'Marca 1', value: 10, quantity: 1 },
-    { id: 2, name: 'Insumo 2', brand: 'Marca 2', value: 15, quantity: 1 },
-    { id: 3, name: 'Insumo 3', brand: 'Marca 3', value: 20, quantity: 1 },
+    {
+      id: 1,
+      name: 'Produto 1',
+      custo: '10',
+      lucro: 25,
+      venda: 40,
+      quantidade: 0,
+    },
+    {
+      id: 2,
+      name: 'Produto 2',
+      custo: '15',
+      lucro: 30,
+      venda: 45,
+      quantidade: 0,
+    },
+    {
+      id: 3,
+      name: 'Produto 3',
+      custo: '20',
+      lucro: 35,
+      venda: 50,
+      quantidade: 0,
+    },
   ];
 
   openModal() {

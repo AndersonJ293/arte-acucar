@@ -19,8 +19,9 @@
         [class.selected]="item.selected"
       >
         <h3>{{ item.name }}</h3>
-        <p>Marca: {{ item.brand }}</p>
-        <p>Valor: {{ item.value }}</p>
+        <p>Custo: {{ item.custo }}</p>
+        <p>Lucro: {{ item.lucro }}</p>
+        <p>Valor de venda: {{ item.venda }}</p>
         <input
           type="number"
           [(ngModel)]="item.quantity"
