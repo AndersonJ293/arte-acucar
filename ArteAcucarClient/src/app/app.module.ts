@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { DisplayComponent } from './page/display/display.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './page/sign-in/sign-in.component';
 import { BudgetComponent } from './page/budget/budget.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -67,6 +67,7 @@ import { ProductComponent } from './page/product/product.component';
     AngularFirestoreModule,
     AngularFireAuthGuardModule,
     AngularFireStorageModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },

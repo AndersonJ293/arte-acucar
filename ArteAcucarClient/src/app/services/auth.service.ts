@@ -101,9 +101,8 @@ export class AuthService {
           displayName: user.displayName,
           photoURL: user.photoURL,
           emailVerified: user.emailVerified,
-          companyCode: doc.data().company,
+          companyCode: doc.data().companyCode,
         };
-        console.log(userData);
 
         localStorage.setItem('companyCode', userData.companyCode);
 
@@ -120,6 +119,7 @@ export class AuthService {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       localStorage.removeItem('companyCode');
+      localStorage.removeItem('config');
       this.router.navigate(['sign-in']);
     });
   }

@@ -9,6 +9,7 @@ import {
   faBox,
 } from '@fortawesome/free-solid-svg-icons';
 import { MenuService } from '../../services/menu.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -26,7 +27,10 @@ export class SidebarMenuComponent {
     { nome: 'Insumos', link: '/painel/insumos', icone: faBox },
   ];
 
-  constructor(private menuService: MenuService) {}
+  constructor(
+    private menuService: MenuService,
+    public authService: AuthService
+  ) {}
 
   get menuOpen(): boolean {
     return MenuService.menuOpen;
