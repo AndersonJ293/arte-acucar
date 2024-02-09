@@ -21,7 +21,11 @@
       ></app-commoditie-card>
     </ng-container>
   </div>
-  <div class="floatButton" (click)="addCommoditie()">
+  <div
+    class="floatButton"
+    (click)="addCommoditie()"
+    [style]="menuOpen ? 'right: 300px' : ''"
+  >
     <fa-icon [icon]="faAdd" class="icon"></fa-icon>
   </div>
 </section>

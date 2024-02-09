@@ -28,8 +28,11 @@
     </div>
   </div>
 
-  <a routerLink="/painel/precificacao/adicionar">
-    <div class="floatButton">
-      <fa-icon [icon]="faAdd" class="icon"></fa-icon></div
-  ></a>
+  <div
+    routerLink="/painel/precificacao/adicionar"
+    class="floatButton"
+    [style]="menuOpen ? 'right: 300px' : ''"
+  >
+    <fa-icon [icon]="faAdd" class="icon"></fa-icon>
+  </div>
 </section>

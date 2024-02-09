@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faAdd } from '@fortawesome/free-solid-svg-icons';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-budget',
@@ -8,4 +9,8 @@ import { faAdd } from '@fortawesome/free-solid-svg-icons';
 })
 export class BudgetComponent {
   faAdd = faAdd;
+
+  get menuOpen() {
+    return MenuService.menuOpen;
+  }
 }
