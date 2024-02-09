@@ -7,6 +7,7 @@ import {
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from './user';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,8 @@ export class AuthService {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private configService: ConfigService
   ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -101,12 +103,14 @@ export class AuthService {
           displayName: user.displayName,
           photoURL: user.photoURL,
           emailVerified: user.emailVerified,
-          companyCode: doc.data().company,
+          companyCode: doc.data().companyCode,
         };
-        console.log(userData);
 
         localStorage.setItem('companyCode', userData.companyCode);
-
+        localStorage.setItem(
+          'config',
+          JSON.stringify(this.configService.loadConfig())
+        );
         userRef.set(userData, {
           merge: true,
         });
@@ -120,6 +124,7 @@ export class AuthService {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       localStorage.removeItem('companyCode');
+      localStorage.removeItem('config');
       this.router.navigate(['sign-in']);
     });
   }

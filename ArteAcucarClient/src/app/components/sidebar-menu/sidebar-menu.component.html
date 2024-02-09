@@ -22,7 +22,7 @@
       ></app-menu-item>
       <app-menu-item
         titulo="Sair"
-        link="/sign-in"
+        (click)="authService.SignOut()"
         [icon]="faSignOut"
         [menuOpen]="menuOpen"
       ></app-menu-item>

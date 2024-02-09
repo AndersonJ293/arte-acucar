@@ -1,37 +1,77 @@
 <section class="container">
   <div class="card">
     <h2>Configurações</h2>
-    <div class="formGroup">
+    <form
+      [formGroup]="configForm"
+      autocomplete="off"
+      (ngSubmit)="onSubmit()"
+      class="formGroup"
+    >
       <div class="sectionContainer">
         <div class="inputGroup">
           <label for="salarioM">Salário mensal desejado</label>
-          <input type="number" id="salarioM" />
+          <input type="number" id="salarioM" formControlName="salarioMensal" />
         </div>
         <div class="inputGroup">
           <label for="diasTrabalho">Dias de trabalho mensal</label>
-          <input type="number" id="diasTrabalho" />
+          <input
+            type="number"
+            id="diasTrabalho"
+            formControlName="diasTrabalhoMensal"
+          />
         </div>
         <div class="inputGroup">
           <label for="horasTrabalhadas">Horas trabalhadas por dia</label>
-          <input type="number" id="horasTrabalhadas" />
+          <input
+            type="number"
+            id="horasTrabalhadas"
+            formControlName="horasTrabalhoDiario"
+          />
         </div>
         <div class="inputGroup">
           <label for="salarioH">Salário por hora</label>
-          <input type="number" id="salarioH" disabled />
+          <input
+            type="number"
+            id="salarioH"
+            formControlName="salarioHora"
+            [value]="
+              (
+                configForm.value.salarioMensal /
+                configForm.value.diasTrabalhoMensal /
+                configForm.value.horasTrabalhoDiario
+              ).toFixed(2)
+            "
+          />
         </div>
         <div class="inputGroup">
           <label for="validade">Validade do orçamento (dias)</label>
-          <input type="number" id="validade" />
+          <input
+            type="number"
+            id="validade"
+            formControlName="validadeOrcamento"
+          />
         </div>
 
         <div class="msgGroup">
           <label for="mensagemInicio">Inicio mensagem do orçamento</label>
-          <textarea name="" id="mensagemInicio" cols="30" rows="10"></textarea>
+          <textarea
+            name=""
+            id="mensagemInicio"
+            cols="30"
+            rows="10"
+            formControlName="inicioMensagemOrcamento"
+          ></textarea>
         </div>
 
         <div class="msgGroup">
           <label for="mensagemFim">Fim mensagem do orçamento</label>
-          <textarea name="" id="mensagemFim" cols="30" rows="10"></textarea>
+          <textarea
+            name=""
+            id="mensagemFim"
+            cols="30"
+            rows="10"
+            formControlName="fimMensagemOrcamento"
+          ></textarea>
         </div>
       </div>
 
@@ -39,21 +79,31 @@
       <div class="sectionContainer">
         <div class="inputGroup">
           <label for="orcamento">Meta Qtde. de Orçamento</label>
-          <input type="number" id="orcamento" />
+          <input
+            type="number"
+            id="orcamento"
+            formControlName="metaQtdeOrcamento"
+          />
         </div>
         <div class="inputGroup">
           <label for="venda">Meta Qtde. de Vendas</label>
-          <input type="number" id="venda" />
+          <input type="number" id="venda" formControlName="metaQtdeVendas" />
         </div>
         <div class="inputGroup">
           <label for="recebimento">Meta recebimento</label>
-          <input type="number" id="recebimento" />
+          <input
+            type="number"
+            id="recebimento"
+            formControlName="metaRecebimento"
+          />
         </div>
       </div>
       <div class="buttons">
-        <button href="" class="btnSave">Salvar</button>
-        <button href="" class="btnCancel">Limpar</button>
+        <button href="" class="btnSave" type="submit">Salvar</button>
+        <button href="" class="btnCancel" (click)="configForm.reset()">
+          Limpar
+        </button>
       </div>
-    </div>
+    </form>
   </div>
 </section>
