@@ -135,10 +135,19 @@ select {
     margin-top: 16px;
     margin-bottom: 16px;
   }
+
+  .card {
+    width: 100%;
+  }
+
+  .cardList {
+    padding: 0;
+  }
 }
 
 .buttons {
   display: flex;
+  gap: 16px;
   justify-content: space-between;
   margin-top: 16px;
 }

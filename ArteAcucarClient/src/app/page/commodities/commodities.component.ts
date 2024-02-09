@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { faAdd } from '@fortawesome/free-solid-svg-icons';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-commodities',
@@ -33,6 +34,10 @@ export class CommoditiesComponent implements OnInit {
     }
 
     this.commoditiesList.push(new TCommoditie()); // adiciona um item vazio na lista
+  }
+
+  get menuOpen() {
+    return MenuService.menuOpen;
   }
 }
 class TCommoditie {
