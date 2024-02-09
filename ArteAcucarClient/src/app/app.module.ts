@@ -34,6 +34,7 @@ import { BudgetEditComponent } from './page/budget/budget-edit/budget-edit.compo
 import { BudgetModalComponent } from './page/budget/budget-modal/budget-modal.component';
 import { ProductComponent } from './page/product/product.component';
 import { ProductEditComponent } from './page/product/product-edit/product-edit.component';
+import { ProductModalComponent } from './page/product/product-modal/product-modal.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ProductEditComponent } from './page/product/product-edit/product-edit.c
     BudgetModalComponent,
     ProductComponent,
     ProductEditComponent,
+    ProductModalComponent,
   ],
   imports: [
     BrowserModule,
