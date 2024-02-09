@@ -69,7 +69,7 @@
       <div class="commoditiesArea">
         <div class="header">
           <h3>Adicionar produtos</h3>
-          <button class="btnSave">+</button>
+          <button class="btnSave" (click)="openModal()">+</button>
         </div>
       </div>
       <div class="line">
@@ -145,3 +145,4 @@
     </form>
   </section>
 </div>
+<app-budget-modal *ngIf="open"></app-budget-modal>
