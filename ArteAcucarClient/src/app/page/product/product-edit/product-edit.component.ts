@@ -13,7 +13,7 @@ export class ProductEditComponent {
   items = [
     {
       id: 1,
-      name: 'Produto 1',
+      name: 'Precificação 1',
       custo: '10',
       lucro: 25,
       venda: 40,
@@ -21,7 +21,7 @@ export class ProductEditComponent {
     },
     {
       id: 2,
-      name: 'Produto 2',
+      name: 'Precificação 2',
       custo: '15',
       lucro: 30,
       venda: 45,
@@ -29,7 +29,7 @@ export class ProductEditComponent {
     },
     {
       id: 3,
-      name: 'Produto 3',
+      name: 'Precificação 3',
       custo: '20',
       lucro: 35,
       venda: 50,

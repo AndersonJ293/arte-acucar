@@ -44,9 +44,10 @@
       <div class="commoditiesArea">
         <div class="header">
           <h3>Adicionar Precificação</h3>
-          <button class="btnSave">+</button>
+          <button class="btnSave" (click)="openModal()">+</button>
         </div>
       </div>
+
       <div class="line">
         <div class="groupAdditional">
           <label for="additionalPor">Adicional %</label>
@@ -71,8 +72,6 @@
           />
         </div>
       </div>
-
-      
 
       <div class="line">
         <div class="groupCostTotal">
@@ -120,9 +119,10 @@
     </div>
   </section>
 </div>
-<!-- <app-pricing-modal
+<app-budget-modal
   (save)="handleSave($event)"
   [items]="items"
   *ngIf="open"
   [selectedItems]="selectedItems"
-></app-pricing-modal> -->
+>
+</app-budget-modal>
