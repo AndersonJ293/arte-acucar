@@ -38,7 +38,11 @@
       </div>
     </div>
   </div>
-  <div class="floatButton" [style]="menuOpen ? 'right: 300px' : ''">
+  <div
+    routerLink="/painel/orcamento/adicionar"
+    class="floatButton"
+    [style]="menuOpen ? 'right: 300px' : ''"
+  >
     <fa-icon [icon]="faAdd" class="icon"></fa-icon>
   </div>
 </section>

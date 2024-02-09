@@ -18,6 +18,7 @@
   border-radius: 16px;
   z-index: 2;
   max-width: 80%;
+  height: 80%;
   overflow-y: auto;
 }
 
@@ -87,4 +88,11 @@ button {
   padding: 8px 20px;
   margin-left: 10px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    height: 90%;
+    max-width: 90%;
+  }
 }
