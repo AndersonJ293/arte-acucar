@@ -2,10 +2,8 @@
   <header class="headerTop">
     <select class="custom-select">
       <option value="todos">Todos</option>
-      <option value="true">Finalizado</option>
-      <option value="false">Pendente</option>
-      <option value="false">Produção</option>
-      <option value="false">Cancelado</option>
+      <option value="true">Ativo</option>
+      <option value="false">Inativo</option>
     </select>
     <h2>Produto</h2>
     <input type="text" name="" id="" />
@@ -13,36 +11,23 @@
   <div class="cardList">
     <div class="card">
       <div class="cardDetail">
-        <h3>Nome Orçamento</h3>
-        <div class="date">
-          <p>30/01/2024</p>
-          <div class="status cancelado">
-            <span>Cancelado</span>
-          </div>
+        <h3>Nome produto</h3>
+        <div class="status finalizado">
+          <span>Ativo</span>
         </div>
       </div>
       <img src="assets/Arte e açúcar (1) 1.svg" alt="" />
       <div class="cardMore">
-        <div class="more">
-          <h4>Tema:</h4>
-          <h4>Valor Total:</h4>
-        </div>
-        <div class="more">
-          <p>Carros</p>
-          <p>R$ 125,00</p>
-        </div>
-      </div>
-      <div class="buttons">
-        <button class="btnCancel">Excluir</button>
-        <button class="btnSave">Transformar pedido</button>
+        <h4>Preço de venda</h4>
+        <p>{{ 125 | currency : "BRL" }}</p>
       </div>
     </div>
   </div>
-  <!-- <div
-      routerLink="/painel/orcamento/adicionar"
-      class="floatButton"
-      [style]="menuOpen ? 'right: 300px' : ''"
-    >
-      <fa-icon [icon]="faAdd" class="icon"></fa-icon>
-    </div> -->
+  <div
+    routerLink="/painel/produto/adicionar"
+    class="floatButton"
+    [style]="menuOpen ? 'right: 300px' : ''"
+  >
+    <fa-icon [icon]="faAdd" class="icon"></fa-icon>
+  </div>
 </section>
