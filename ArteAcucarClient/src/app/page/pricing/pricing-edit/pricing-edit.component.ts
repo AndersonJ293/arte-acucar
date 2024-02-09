@@ -8,6 +8,7 @@ import { PricingModalComponent } from './pricing-modal/pricing-modal.component';
 })
 export class PricingEditComponent {
   open: boolean = false;
+  selectedItems: any[] = [];
 
   items = [
     { id: 1, name: 'Insumo 1', brand: 'Marca 1', value: 10, quantity: 1 },
@@ -15,14 +16,11 @@ export class PricingEditComponent {
     { id: 3, name: 'Insumo 3', brand: 'Marca 3', value: 20, quantity: 1 },
   ];
 
-  selectedItems: any[] = [];
-
   openModal() {
     this.open = true;
   }
 
   handleSave(selectedItems: any[]) {
-    console.log('Itens selecionados:', selectedItems);
     this.selectedItems = selectedItems;
     this.closeModal();
   }
