@@ -1,0 +1,153 @@
+@import "../../../styles.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 50px;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+}
+
+.headerTop > h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+select {
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: transparent;
+}
+
+header {
+  width: 100%;
+}
+
+select {
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: transparent;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 50px;
+  gap: 24px;
+}
+
+.card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 350px;
+  border-radius: 16px 16px 16px 16px;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.card img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 16px 16px 0px 0px;
+}
+
+.cardDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cardDetail p {
+  font-weight: bold;
+  margin-right: auto;
+  font-size: 14px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  height: 30px;
+}
+
+.cardDetail a {
+  text-decoration: none;
+  color: #00cc66;
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.date {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+
+  p {
+    height: 90%;
+  }
+}
+
+.cardMore {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.more {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .headerTop {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .headerTop > h2 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .cardList {
+    padding: 0;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-top: 16px;
+}

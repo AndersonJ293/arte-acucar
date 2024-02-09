@@ -32,6 +32,7 @@ import { PricingEditComponent } from './page/pricing/pricing-edit/pricing-edit.c
 import { PricingModalComponent } from './page/pricing/pricing-modal/pricing-modal.component';
 import { BudgetEditComponent } from './page/budget/budget-edit/budget-edit.component';
 import { BudgetModalComponent } from './page/budget/budget-modal/budget-modal.component';
+import { ProductComponent } from './page/product/product.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { BudgetModalComponent } from './page/budget/budget-modal/budget-modal.co
     PricingModalComponent,
     BudgetEditComponent,
     BudgetModalComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
