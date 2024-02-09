@@ -16,7 +16,7 @@ export class PricingModalComponent {
     item.selected = !item.selected;
 
     if (item.selected) {
-      this.selectedItems.push(item);
+      this.selectedItems.push({ ...item, usedQuantity: 0 });
       return;
     }
 

@@ -8,13 +8,14 @@
     <div>
       <div class="line">
         <div class="groupName">
-          <label for="Nome">Nome </label>
+          <label for="Nome">Nome</label>
           <input
             type="text"
             id="Nome"
             name="Nome"
             required
             autocomplete="off"
+            [(ngModel)]="nome"
           />
         </div>
 
@@ -25,7 +26,9 @@
             class="custom-select"
             name="qtde"
             id="qtde"
+            min="0"
             required
+            [(ngModel)]="quantidade"
           />
         </div>
       </div>
@@ -38,20 +41,22 @@
         <div id="drop-area" *ngIf="selectedItems.length > 0">
           <ng-container *ngFor="let selectedItem of selectedItems">
             <div class="selectedItem">
-              <h3>{{ selectedItem.name }}</h3>
-              <p>Marca: {{ selectedItem.brand }}</p>
-              <p>Preço: {{ selectedItem.value }}</p>
-              <p>Quantidade: {{ selectedItem.quantity }}</p>
+              <h3>{{ selectedItem.data.name }}</h3>
+              <p>Marca: {{ selectedItem.data.brand }}</p>
+              <p>Preço: {{ selectedItem.data.price }}</p>
+              <p>Quantidade: {{ selectedItem.data.quantity }}</p>
               <input
                 type="number"
-                [(ngModel)]="selectedItem.usedQuantity"
                 placeholder="Quantidade Usada"
+                min="0"
+                [(ngModel)]="selectedItem.usedQuantity"
               />
               <p>
                 Valor Usado:
                 {{
                   selectedItem.usedQuantity *
-                    (selectedItem.value / selectedItem.quantity)
+                    (selectedItem.data.price / selectedItem.data.quantity)
+                    | currency : "BRL"
                 }}
               </p>
             </div>
@@ -67,6 +72,7 @@
             min="0"
             id="additional"
             name="additional"
+            [(ngModel)]="adicional"
             required
           />
         </div>
@@ -79,6 +85,7 @@
             name="profitPercentage"
             step="0.1"
             min="0"
+            [(ngModel)]="porcentagemLucro"
             required
           />
         </div>
@@ -87,29 +94,35 @@
       <div class="line">
         <div class="groupWorkHours">
           <label for="workHours">Horas Trabalhadas</label>
-          <input type="time" id="workHours" name="workHours" required />
+          <input
+            type="time"
+            id="workHours"
+            name="workHours"
+            required
+            [(ngModel)]="horasTrabalhadas"
+          />
         </div>
       </div>
 
       <div class="line">
         <div class="groupCostTotal">
           <label for="costTotal">Custo Insumos</label>
-          {{ 54 | currency : "BRL" }}
+          {{ custoInsumos | currency : "BRL" }}
         </div>
         <div class="groupProfitPercentage">
           <label for="profit">Lucro</label>
-          {{ 54 | currency : "BRL" }}
+          {{ lucro | currency : "BRL" }}
         </div>
       </div>
 
       <div class="line">
         <div class="groupProductionCost">
           <label for="productionCost">Custo Total</label>
-          {{ 54 | currency : "BRL" }}
+          {{ custoTotal | currency : "BRL" }}
         </div>
         <div class="groupSalary">
           <label for="salary">Salário</label>
-          <p>{{ 54 | currency : "BRL" }}</p>
+          <p>{{ salario | currency : "BRL" }}</p>
         </div>
       </div>
 
@@ -117,12 +130,14 @@
         <div></div>
         <div class="groupSellingPrice">
           <label for="sellingPrice">Preço Total</label>
-          {{ 54 | currency : "BRL" }}
+          {{ precoTotal | currency : "BRL" }}
         </div>
       </div>
 
       <div class="buttons">
-        <button type="submit" class="btnSave">Salvar</button>
+        <button type="submit" class="btnSave" (click)="savePricing()">
+          Salvar
+        </button>
         <button
           routerLink="/painel/precificacao"
           type="reset"
