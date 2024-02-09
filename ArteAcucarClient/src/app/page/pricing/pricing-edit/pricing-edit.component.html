@@ -2,15 +2,20 @@
   <section>
     <header>
       <h3>Adicionar Precificação</h3>
-      <button class="fechar-modal">
-        <i class="fa fa-times"></i>
-      </button>
     </header>
-    <form>
+
+    <!-- testando tirar o form -->
+    <div>
       <div class="line">
         <div class="groupName">
           <label for="Nome">Nome </label>
-          <input type="text" id="Nome" name="Nome" required />
+          <input
+            type="text"
+            id="Nome"
+            name="Nome"
+            required
+            autocomplete="off"
+          />
         </div>
 
         <div class="groupCategory">
@@ -29,26 +34,28 @@
           <h3>Adicionar insumos</h3>
           <button class="btnSave" (click)="openModal()">+</button>
         </div>
+
         <div id="drop-area" *ngIf="selectedItems.length > 0">
-          <div *ngFor="let selectedItem of selectedItems" class="selectedItem">
-            <h3>{{ selectedItem.name }}</h3>
-            <p>Marca: {{ selectedItem.brand }}</p>
-            <p>Preço: {{ selectedItem.value }}</p>
-            <p>Quantidade: {{ selectedItem.quantity }}</p>
-            <input
-              type="number"
-              [(ngModel)]="selectedItem.pricePerUnit"
-              placeholder="Preço por unidade"
-            />
-            <input
-              type="number"
-              [(ngModel)]="selectedItem.usedQuantity"
-              placeholder="Quantidade Usada"
-            />
-            <p>
-              Valor Usado: {{ selectedItem.value * selectedItem.usedQuantity }}
-            </p>
-          </div>
+          <ng-container *ngFor="let selectedItem of selectedItems">
+            <div class="selectedItem">
+              <h3>{{ selectedItem.name }}</h3>
+              <p>Marca: {{ selectedItem.brand }}</p>
+              <p>Preço: {{ selectedItem.value }}</p>
+              <p>Quantidade: {{ selectedItem.quantity }}</p>
+              <input
+                type="number"
+                [(ngModel)]="selectedItem.usedQuantity"
+                placeholder="Quantidade Usada"
+              />
+              <p>
+                Valor Usado:
+                {{
+                  selectedItem.usedQuantity *
+                    (selectedItem.value / selectedItem.quantity)
+                }}
+              </p>
+            </div>
+          </ng-container>
         </div>
       </div>
       <div class="line">
@@ -79,8 +86,26 @@
 
       <div class="line">
         <div class="groupWorkHours">
-          <label for="workHours">Horas</label>
+          <label for="workHours">Horas Trabalhadas</label>
           <input type="time" id="workHours" name="workHours" required />
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="groupCostTotal">
+          <label for="costTotal">Custo Insumos</label>
+          {{ 54 | currency : "BRL" }}
+        </div>
+        <div class="groupProfitPercentage">
+          <label for="profit">Lucro</label>
+          {{ 54 | currency : "BRL" }}
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="groupProductionCost">
+          <label for="productionCost">Custo Total</label>
+          {{ 54 | currency : "BRL" }}
         </div>
         <div class="groupSalary">
           <label for="salary">Salário</label>
@@ -89,24 +114,9 @@
       </div>
 
       <div class="line">
-        <div class="groupCostTotal">
-          <label for="costTotal">Custo Total</label>
-          {{ 54 | currency : "BRL" }}
-        </div>
-
-        <div class="groupProductionCost">
-          <label for="productionCost">Custo Prod</label>
-          {{ 54 | currency : "BRL" }}
-        </div>
-      </div>
-
-      <div class="line">
+        <div></div>
         <div class="groupSellingPrice">
-          <label for="sellingPrice">Preço</label>
-          {{ 54 | currency : "BRL" }}
-        </div>
-        <div class="groupProfitPercentage">
-          <label for="profit">Lucro</label>
+          <label for="sellingPrice">Preço Total</label>
           {{ 54 | currency : "BRL" }}
         </div>
       </div>
@@ -121,11 +131,12 @@
           Cancelar
         </button>
       </div>
-    </form>
+    </div>
   </section>
 </div>
 <app-pricing-modal
   (save)="handleSave($event)"
   [items]="items"
   *ngIf="open"
+  [selectedItems]="selectedItems"
 ></app-pricing-modal>
