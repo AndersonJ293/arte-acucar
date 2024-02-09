@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { PricingModalComponent } from './pricing-modal/pricing-modal.component';
+import { PricingModalComponent } from '../pricing-modal/pricing-modal.component';
 
 @Component({
   selector: 'app-pricing-edit',

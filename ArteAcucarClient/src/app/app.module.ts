@@ -29,9 +29,9 @@ import { CommoditiesComponent } from './page/commodities/commodities.component';
 import { CommoditieCardComponent } from './page/commodities/commoditie-card/commoditie-card.component';
 import { PricingComponent } from './page/pricing/pricing.component';
 import { PricingEditComponent } from './page/pricing/pricing-edit/pricing-edit.component';
-import { PricingModalComponent } from './page/pricing/pricing-edit/pricing-modal/pricing-modal.component';
+import { PricingModalComponent } from './page/pricing/pricing-modal/pricing-modal.component';
 import { BudgetEditComponent } from './page/budget/budget-edit/budget-edit.component';
-import { BudgetModalComponent } from './page/budget/budget-edit/budget-modal/budget-modal.component';
+import { BudgetModalComponent } from './page/budget/budget-modal/budget-modal.component';
 
 @NgModule({
   declarations: [
