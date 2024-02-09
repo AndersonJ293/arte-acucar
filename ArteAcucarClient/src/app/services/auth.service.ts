@@ -93,21 +93,33 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-    };
-    return userRef.set(userData, {
-      merge: true,
+    userRef.get().subscribe((doc) => {
+      if (doc.exists) {
+        const userData: User = {
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+          emailVerified: user.emailVerified,
+          companyCode: doc.data().company,
+        };
+        console.log(userData);
+
+        localStorage.setItem('companyCode', userData.companyCode);
+
+        userRef.set(userData, {
+          merge: true,
+        });
+      } else {
+        console.log('Documento não encontrado!');
+      }
     });
   }
 
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
+      localStorage.removeItem('companyCode');
       this.router.navigate(['sign-in']);
     });
   }

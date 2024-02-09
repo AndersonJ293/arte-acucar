@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +13,11 @@ export class FirebaseService {
     private fireStorage: AngularFireStorage,
     private firestore: AngularFirestore
   ) {}
+
+  getCompanyCode(): string | null {
+    const code = localStorage.getItem('companyCode');
+    return code !== null ? code : null;
+  }
 
   async postFirebaseFile(file: any, data: any): Promise<string | null> {
     this.uploading$.next(true);
@@ -26,6 +31,7 @@ export class FirebaseService {
       await this.firestore.collection(data.collection).ref.add({
         ...data.firestoreData,
         urlImage: url,
+        company: this.getCompanyCode(),
         updated_at: now.toISOString(),
         created_at: now.toISOString(),
       });
@@ -46,6 +52,7 @@ export class FirebaseService {
 
       await this.firestore.collection(data.collection).add({
         ...data.firestoreData,
+        company: this.getCompanyCode(),
         updated_at: now.toISOString(),
         created_at: now.toISOString(),
       });
@@ -62,9 +69,19 @@ export class FirebaseService {
     collection: string,
     typeFilter?: string
   ): Observable<any[]> {
+    const companyCode = this.getCompanyCode();
+
+    if (!companyCode) {
+      return throwError(() => new Error('Usuário não associado a uma empresa'));
+    }
+
     if (typeFilter) {
       return this.firestore
-        .collection(collection, (ref) => ref.where('type', '==', typeFilter))
+        .collection(collection, (ref) =>
+          ref
+            .where('type', '==', typeFilter)
+            .where('company', '==', companyCode)
+        )
         .snapshotChanges()
         .pipe(
           map((actions) =>
@@ -78,7 +95,7 @@ export class FirebaseService {
     }
 
     return this.firestore
-      .collection(collection)
+      .collection(collection, (ref) => ref.where('company', '==', companyCode))
       .snapshotChanges()
       .pipe(
         map((actions) =>
