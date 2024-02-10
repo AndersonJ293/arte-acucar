@@ -19,8 +19,9 @@ jobs:
       with:
         node-version: 20.x    
     - name: Install dependencies
-      run: cd ArteAcucarClient
-      run: npm i
+      run: |
+        cd ArteAcucarClient
+        npm i
     - name: Build
       run: npm run build -- --prod
     - uses: w9jds/firebase-action@master
