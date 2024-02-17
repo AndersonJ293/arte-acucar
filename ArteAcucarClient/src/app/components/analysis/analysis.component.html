@@ -1,0 +1,9 @@
+<div class="title">
+  <h3>Análise</h3>
+  <app-graph-selector
+    (graphTypeChanged)="onGraphTypeChanged($event)"
+  ></app-graph-selector>
+</div>
+<div class="content">
+  <app-graph [graphType]="graphType"></app-graph>
+</div>

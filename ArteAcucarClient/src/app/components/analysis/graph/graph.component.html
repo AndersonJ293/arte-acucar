@@ -1,0 +1,29 @@
+<div *ngIf="graphType === 'semanal'">
+  <canvas
+    baseChart
+    [datasets]="semanalData"
+    [labels]="graphLabels"
+    [options]="graphOptions"
+    [legend]="graphLegend"
+  ></canvas>
+</div>
+
+<div *ngIf="graphType === 'mensal'">
+  <canvas
+    baseChart
+    [datasets]="mensalData"
+    [labels]="graphLabels"
+    [options]="graphOptions"
+    [legend]="graphLegend"
+  ></canvas>
+</div>
+
+<div *ngIf="graphType === 'anual'">
+  <canvas
+    baseChart
+    [datasets]="anualData"
+    [labels]="graphLabels"
+    [options]="graphOptions"
+    [legend]="graphLegend"
+  ></canvas>
+</div>

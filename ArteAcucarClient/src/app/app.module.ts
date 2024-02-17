@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
+import { NgChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,9 @@ import { BudgetModalComponent } from './page/budget/budget-modal/budget-modal.co
 import { ProductComponent } from './page/product/product.component';
 import { ProductEditComponent } from './page/product/product-edit/product-edit.component';
 import { ProductModalComponent } from './page/product/product-modal/product-modal.component';
+import { AnalysisComponent } from './components/analysis/analysis.component';
+import { GraphComponent } from './components/analysis/graph/graph.component';
+import { GraphSelectorComponent } from './components/analysis/graph-selector/graph-selector.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,9 @@ import { ProductModalComponent } from './page/product/product-modal/product-moda
     ProductComponent,
     ProductEditComponent,
     ProductModalComponent,
+    AnalysisComponent,
+    GraphComponent,
+    GraphSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +79,7 @@ import { ProductModalComponent } from './page/product/product-modal/product-moda
     AngularFireAuthGuardModule,
     AngularFireStorageModule,
     ReactiveFormsModule,
+    NgChartsModule,
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
