@@ -39,6 +39,9 @@ import { ProductModalComponent } from './page/product/product-modal/product-moda
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { GraphComponent } from './components/analysis/graph/graph.component';
 import { GraphSelectorComponent } from './components/analysis/graph-selector/graph-selector.component';
+import { DeliveryComponent } from './components/delivery/delivery.component';
+import { DeliveryListComponent } from './components/delivery/delivery-list/delivery-list.component';
+import { LegendComponent } from './components/delivery/legend/legend.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,9 @@ import { GraphSelectorComponent } from './components/analysis/graph-selector/gra
     AnalysisComponent,
     GraphComponent,
     GraphSelectorComponent,
+    DeliveryComponent,
+    DeliveryListComponent,
+    LegendComponent,
   ],
   imports: [
     BrowserModule,

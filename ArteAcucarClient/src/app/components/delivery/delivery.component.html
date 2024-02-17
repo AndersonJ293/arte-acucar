@@ -1,0 +1,26 @@
+<div class="card full">
+  <div class="header">
+    <button
+      [class]="todaySelected ? 'btn btnSave' : 'btn btnCancel'"
+      (click)="showTodayDeliveries()"
+    >
+      Entregas de hoje
+    </button>
+    <button
+      [class]="nextSelected ? 'btn btnSave' : 'btn btnCancel'"
+      (click)="showNextTwoWeeksDeliveries()"
+    >
+      Próximas
+    </button>
+  </div>
+  <div class="content">
+    <app-delivery-list
+      [deliveries]="deliveries"
+      [todaySelected]="todaySelected"
+    ></app-delivery-list>
+  </div>
+
+  <footer class="footer">
+    <app-legend></app-legend>
+  </footer>
+</div>
