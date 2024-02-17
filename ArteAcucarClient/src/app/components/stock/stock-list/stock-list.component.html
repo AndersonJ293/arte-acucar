@@ -1,0 +1,19 @@
+<div class="estoque-list">
+  <div *ngFor="let item of items" class="estoqueItem">
+    <div class="itemList">
+      <div class="bgIconFora">
+        <div class="bgIconDentro">
+          <fa-icon [icon]="faBox" class="icon"></fa-icon>
+        </div>
+      </div>
+      <label for="item{{ item.id }}">{{ item.name }}</label>
+    </div>
+    <input
+      type="checkbox"
+      class="styled-checkbox"
+      id="item{{ item.id }}"
+      [checked]="isSelected(item.id)"
+      (change)="toggleSelection(item.id)"
+    />
+  </div>
+</div>

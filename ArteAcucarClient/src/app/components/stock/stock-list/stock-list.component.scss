@@ -1,0 +1,47 @@
+.estoque-list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.estoqueItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.itemList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bgIconFora {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(84, 21, 20, 0.2);
+  margin-right: 8px;
+}
+
+.bgIconDentro {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgb(84, 21, 20);
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  color: white;
+}

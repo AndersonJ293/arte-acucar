@@ -42,6 +42,8 @@ import { GraphSelectorComponent } from './components/analysis/graph-selector/gra
 import { DeliveryComponent } from './components/delivery/delivery.component';
 import { DeliveryListComponent } from './components/delivery/delivery-list/delivery-list.component';
 import { LegendComponent } from './components/delivery/legend/legend.component';
+import { StockComponent } from './components/stock/stock.component';
+import { StockListComponent } from './components/stock/stock-list/stock-list.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { LegendComponent } from './components/delivery/legend/legend.component';
     DeliveryComponent,
     DeliveryListComponent,
     LegendComponent,
+    StockComponent,
+    StockListComponent,
   ],
   imports: [
     BrowserModule,

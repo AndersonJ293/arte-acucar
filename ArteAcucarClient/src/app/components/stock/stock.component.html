@@ -1,0 +1,13 @@
+<div class="container">
+  <header>
+    <h3>Estoque</h3>
+  </header>
+
+  <app-stock-list
+    class="estoqueItem"
+    [items]="items"
+    [(selectedItems)]="selectedItems"
+  >
+  </app-stock-list>
+  <a (click)="handleSelectedItems()">Gerar lista de compra</a>
+</div>
