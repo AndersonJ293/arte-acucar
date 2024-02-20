@@ -1,11 +1,11 @@
 <div class="container">
   <div class="content">
-    <p>Meta do mês: 52</p>
+    <p>Meta do mês: {{ goal }}</p>
     <div class="indicativo">
-      <p>45</p>
-      <div class="statusPro green">
+      <p>{{ current }}</p>
+      <div class="statusPro {{ StatusColorClass }}">
         <fa-icon [icon]="faThumbsUp" class="icon"></fa-icon>
-        <span>Positivo</span>
+        <span>{{ formatSubtitle }}</span>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@ import { Component, OnChanges, SimpleChanges } from '@angular/core';
 })
 export class GoalComponent implements OnChanges {
   goal: number = 52;
-  current: number = 45;
+  current: number = 12;
   percentege: number = 0;
   goalType: string = 'venda';
 
@@ -30,7 +30,7 @@ export class GoalComponent implements OnChanges {
 
   modifyGoal(): void {}
 
-  get formatSubtitle (): string  {
+  get formatSubtitle(): string {
     if (this.percentege >= 100) {
       return 'Parabéns, você atingiu sua meta!';
     } else if (this.percentege >= 75) {
@@ -44,5 +44,5 @@ export class GoalComponent implements OnChanges {
     } else {
       return 'Não configurado';
     }
-  };
+  }
 }

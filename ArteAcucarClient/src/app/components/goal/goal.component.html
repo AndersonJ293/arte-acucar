@@ -6,7 +6,11 @@
     ></app-goal-selector>
   </div>
   <div class="content">
-    <app-progress-bar [progress]="50"></app-progress-bar>
+    <app-progress-bar
+      [progress]="percentege"
+      [current]="current"
+      [goal]="goal"
+    ></app-progress-bar>
   </div>
   <footer>
     <p>{{ formatSubtitle }}</p>

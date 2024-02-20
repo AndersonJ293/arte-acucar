@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, input } from '@angular/core';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,20 +9,34 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 export class ProgressBarComponent {
   faThumbsUp = faThumbsUp;
   @Input() progress: number = 0;
+  @Input() goal: number = 0;
+  @Input() current: number = 0;
 
-  formatSubtitle = (percent: number): string => {
-    if (percent >= 75) {
+  get formatSubtitle(): string {
+    if (this.progress >= 75) {
       return 'Perfeito';
-    } else if (percent >= 50) {
+    } else if (this.progress >= 50) {
       return 'Metade';
-    } else if (percent >= 25) {
+    } else if (this.progress >= 25) {
       return 'Vamos lá';
-    } else if (percent >= 0) {
+    } else if (this.progress >= 0) {
       return 'Começo';
     } else {
       return 'Não configurado';
     }
-  };
+  }
+
+  get StatusColorClass(): string {
+    if (this.progress >= 75) {
+      return 'green';
+    } else if (this.progress >= 50) {
+      return 'orange';
+    } else if (this.progress >= 25) {
+      return 'yellow';
+    } else {
+      return 'red';
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['progress']) {
