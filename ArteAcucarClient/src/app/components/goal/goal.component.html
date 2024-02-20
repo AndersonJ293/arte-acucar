@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="title">
+    <h3>Análise</h3>
+    <app-goal-selector
+      (goalChanged)="onGraphTypeChanged($event)"
+    ></app-goal-selector>
+  </div>
+  <div class="content">
+    <app-progress-bar [progress]="50"></app-progress-bar>
+  </div>
+  <footer>
+    <p>{{ formatSubtitle }}</p>
+  </footer>
+</div>

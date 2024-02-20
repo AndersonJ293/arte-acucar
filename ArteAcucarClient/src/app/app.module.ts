@@ -6,6 +6,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { NgChartsModule } from 'ng2-charts';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +45,9 @@ import { DeliveryListComponent } from './components/delivery/delivery-list/deliv
 import { LegendComponent } from './components/delivery/legend/legend.component';
 import { StockComponent } from './components/stock/stock.component';
 import { StockListComponent } from './components/stock/stock-list/stock-list.component';
+import { GoalComponent } from './components/goal/goal.component';
+import { ProgressBarComponent } from './components/goal/progress-bar/progress-bar.component';
+import { GoalSelectorComponent } from './components/goal/goal-selector/goal-selector.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +78,9 @@ import { StockListComponent } from './components/stock/stock-list/stock-list.com
     LegendComponent,
     StockComponent,
     StockListComponent,
+    GoalComponent,
+    ProgressBarComponent,
+    GoalSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,6 +97,11 @@ import { StockListComponent } from './components/stock/stock-list/stock-list.com
     AngularFireStorageModule,
     ReactiveFormsModule,
     NgChartsModule,
+    NgCircleProgressModule,
+    NgCircleProgressModule.forRoot({
+      responsive: true,
+      lazy: true,
+    }),
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
