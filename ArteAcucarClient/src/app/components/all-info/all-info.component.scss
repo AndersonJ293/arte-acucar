@@ -8,12 +8,10 @@
 }
 
 .content {
-  height: 100%;
-  margin-top: 24px;
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
+  height: 100%;
+  margin-top: 16px;
+  gap: 16px;
+  width: 100%;
 }

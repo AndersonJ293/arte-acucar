@@ -1,14 +1,31 @@
 <div class="small-card">
   <h4>{{ title }}</h4>
   <ul>
-    <li>Lucro: {{ profit | currency : "BRL" }}</li>
-    <li>Salário: {{ salary | currency : "BRL" }}</li>
-    <li>Custos: {{ costs | currency : "BRL" }}</li>
-    <li>Adicionais: {{ additional | currency : "BRL" }}</li>
     <li>
-      Total Líquido:
-      {{ salary + profit - costs + additional | currency : "BRL" }}
+      <h5>Lucro:</h5>
+      <p>{{ profit | currency : "BRL" }}</p>
     </li>
-    <li>Total Bruto: {{ salary + profit | currency : "BRL" }}</li>
+    <li>
+      <h5>Salário:</h5>
+      <p>{{ salary | currency : "BRL" }}</p>
+    </li>
+    <li>
+      <h5>Custos:</h5>
+      <p>{{ costs | currency : "BRL" }}</p>
+    </li>
+    <li>
+      <h5>Adicionais:</h5>
+      <p>{{ additional | currency : "BRL" }}</p>
+    </li>
+    <li>
+      <h5>Total Líquido:</h5>
+      <p>{{ salary + profit | currency : "BRL" }}</p>
+    </li>
+    <li>
+      <h5>Total Bruto:</h5>
+      <p>
+        {{ salary + profit + costs + additional | currency : "BRL" }}
+      </p>
+    </li>
   </ul>
 </div>
