@@ -48,6 +48,8 @@ import { StockListComponent } from './components/stock/stock-list/stock-list.com
 import { GoalComponent } from './components/goal/goal.component';
 import { ProgressBarComponent } from './components/goal/progress-bar/progress-bar.component';
 import { GoalSelectorComponent } from './components/goal/goal-selector/goal-selector.component';
+import { AllInfoComponent } from './components/all-info/all-info.component';
+import { CardInfoComponent } from './components/all-info/card-info/card-info.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { GoalSelectorComponent } from './components/goal/goal-selector/goal-sele
     GoalComponent,
     ProgressBarComponent,
     GoalSelectorComponent,
+    AllInfoComponent,
+    CardInfoComponent,
   ],
   imports: [
     BrowserModule,

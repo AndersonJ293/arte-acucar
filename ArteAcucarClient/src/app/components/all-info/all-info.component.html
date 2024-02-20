@@ -1,0 +1,19 @@
+<div class="card">
+  <h3>Resumo Financeiro</h3>
+  <div class="content">
+    <app-card-info
+      [title]="'Semana'"
+      [profit]="weekProfit"
+      [salary]="weekSalary"
+      [costs]="weekCosts"
+      [additional]="weekAdditional"
+    ></app-card-info>
+    <app-card-info
+      [title]="'Mês'"
+      [profit]="monthProfit"
+      [salary]="monthSalary"
+      [costs]="monthCosts"
+      [additional]="monthAdditional"
+    ></app-card-info>
+  </div>
+</div>

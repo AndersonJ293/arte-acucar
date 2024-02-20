@@ -1,0 +1,14 @@
+<div class="small-card">
+  <h4>{{ title }}</h4>
+  <ul>
+    <li>Lucro: {{ profit | currency : "BRL" }}</li>
+    <li>Salário: {{ salary | currency : "BRL" }}</li>
+    <li>Custos: {{ costs | currency : "BRL" }}</li>
+    <li>Adicionais: {{ additional | currency : "BRL" }}</li>
+    <li>
+      Total Líquido:
+      {{ salary + profit - costs + additional | currency : "BRL" }}
+    </li>
+    <li>Total Bruto: {{ salary + profit | currency : "BRL" }}</li>
+  </ul>
+</div>
