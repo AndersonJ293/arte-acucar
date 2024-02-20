@@ -72,7 +72,7 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['painel/precificacao']);
+        this.router.navigate(['painel']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
