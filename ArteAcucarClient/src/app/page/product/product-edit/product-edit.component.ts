@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../../services/firebase.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-edit',
@@ -13,16 +15,34 @@ export class ProductEditComponent implements OnInit {
   selectedItems: any[] = [];
 
   nome: string = '';
-  quantidade: number = 0;
-  adicional: number = 0;
-  porcentagemLucro: number = 0;
-  horasTrabalhadas: string = this.getHorasTrabalhadas();
+  porcentagemAdicional: number = 0;
+  _horasTrabalhadas: string = '00:00';
+
+  productId: string = '';
 
   config = JSON.parse(localStorage.getItem('config')!);
 
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(
+    private firebaseService: FirebaseService,
+    private route: ActivatedRoute,
+    private toastService: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    if (this.route.snapshot.url.some((segment) => segment.path === 'editar')) {
+      this.productId = this.route.snapshot.paramMap.get('id')!;
+
+      this.firebaseService
+        .getDocumentById('products', this.productId)
+        .subscribe((data) => {
+          this.nome = data.data.nome;
+          this.porcentagemAdicional = data.data.porcentagemAdicional;
+          this.selectedItems = data.data.items;
+          this.previewUrl = data.data.urlImage;
+        });
+    }
+
     this.firebaseService.getCollectionWithIds('pricings').subscribe((data) => {
       this.items = data;
     });
@@ -49,6 +69,7 @@ export class ProductEditComponent implements OnInit {
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
+
     this.handleFile(file);
   }
 
@@ -66,12 +87,32 @@ export class ProductEditComponent implements OnInit {
     this.open = false;
   }
 
-  getHorasTrabalhadas(): string {
-    const date = new Date();
-    return `${date.getHours()}:${date.getMinutes()}`;
+  get horasTrabalhadas(): string {
+    let minutosPrecificacoes: number = 0;
+    let horasPrecificacoes: number = 0;
+
+    if (this.selectedItems.length > 0) {
+      this.selectedItems.map((item) => {
+        const [horas, minutos] = item.data.horasTrabalhadas.split(':');
+        minutosPrecificacoes += parseInt(horas) * 60 + parseInt(minutos);
+      });
+    }
+
+    horasPrecificacoes = Math.floor(minutosPrecificacoes / 60);
+    minutosPrecificacoes = minutosPrecificacoes % 60;
+
+    this._horasTrabalhadas = `${horasPrecificacoes
+      .toString()
+      .padStart(2, '0')}:${minutosPrecificacoes.toString().padStart(2, '0')}`;
+
+    return this._horasTrabalhadas;
   }
 
-  get custoProdutos() {
+  set horasTrabalhadas(value: string) {
+    this._horasTrabalhadas = value;
+  }
+
+  get custoPrecificacoes() {
     return this.selectedItems.reduce(
       (acc, item) =>
         acc + item.usedQuantity * (item.data.precoTotal / item.data.quantidade),
@@ -80,11 +121,33 @@ export class ProductEditComponent implements OnInit {
   }
 
   get lucro() {
-    return this.custoProdutos * (this.porcentagemLucro / 100);
+    return this.selectedItems.reduce(
+      (acc, item) =>
+        acc +
+        item.data.lucro *
+          ((item.usedQuantity * (item.data.precoTotal / item.data.quantidade)) /
+            item.data.precoTotal),
+      0
+    );
   }
 
   get custoTotal() {
-    return this.custoProdutos + (this.custoProdutos * this.adicional) / 100;
+    return this.custoPrecificacoes + this.adicionalProduto;
+  }
+
+  get adicionalProduto() {
+    return this.custoPrecificacoes * (this.porcentagemAdicional / 100);
+  }
+
+  get adicionalPrecificacao() {
+    return this.selectedItems.reduce(
+      (acc, item) =>
+        acc +
+        item.data.adicional *
+          ((item.usedQuantity * (item.data.precoTotal / item.data.quantidade)) /
+            item.data.precoTotal),
+      0
+    );
   }
 
   get salario() {
@@ -95,5 +158,52 @@ export class ProductEditComponent implements OnInit {
 
   get precoTotal() {
     return this.custoTotal + this.lucro + this.salario;
+  }
+  saveProduct() {
+    const fileInput = document.getElementById('imagem') as HTMLInputElement;
+    const file = fileInput?.files?.[0];
+
+    const data = {
+      collection: 'products',
+      path: 'products',
+      firestoreData: {
+        nome: this.nome,
+        porcentagemAdicional: this.porcentagemAdicional,
+        horasTrabalhadas: this.horasTrabalhadas,
+        custoTotal: this.custoTotal,
+        lucro: parseFloat(this.lucro.toFixed(2)),
+        adicionalPrecificacao: parseFloat(
+          this.adicionalPrecificacao.toFixed(2)
+        ),
+        adicionalProduto: parseFloat(this.adicionalProduto.toFixed(2)),
+        salario: parseFloat(this.salario.toFixed(2)),
+        precoTotal: parseFloat(this.precoTotal.toFixed(2)),
+        custoPrecificacoes: this.custoPrecificacoes,
+        items: this.selectedItems,
+      },
+    };
+
+    if (this.productId !== '') {
+      try {
+        this.firebaseService.editarItem(
+          data.collection,
+          this.productId,
+          data.firestoreData
+        );
+        this.toastService.success('Produto editado com sucesso!', 'Sucesso');
+        this.router.navigate(['/painel/produto']);
+      } catch (error) {
+        this.toastService.error('Erro ao editar o produto', 'Erro');
+      }
+      return;
+    }
+
+    try {
+      this.firebaseService.postFirebaseFile(file, data);
+      this.toastService.success('Precificação salva com sucesso!', 'Sucesso');
+      this.router.navigate(['/painel/produto']);
+    } catch (error) {
+      this.toastService.error('Erro ao salvar precificação', 'Erro');
+    }
   }
 }
