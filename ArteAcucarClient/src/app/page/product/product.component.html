@@ -9,18 +9,19 @@
     <input type="text" name="" id="" />
   </header>
   <div class="cardList">
-    <div class="card" *ngFor="let produto; in: produtcs">
+    <div class="card" *ngFor="let produto of produtcs">
       <div class="cardDetail">
-        <h3>produto.data.nome</h3>
+        <h3>{{ produto.data.nome }}</h3>
         <div class="status finalizado">
           <span>Ativo</span>
         </div>
       </div>
-      <img src="assets/Arte e açúcar (1) 1.svg" alt="" />
+      <img [src]="produto.data.urlImage" alt="" />
       <div class="cardMore">
         <h4>Preço de venda</h4>
-        <p>{{ 125 | currency : "BRL" }}</p>
+        <p>{{ produto.data.precoTotal | currency : "BRL" }}</p>
       </div>
+      <button (click)="editProduct(produto.id)">Editar</button>
     </div>
   </div>
   <div

@@ -31,7 +31,7 @@ export class ProductComponent {
       });
   }
 
-  editPricing(productId: string) {
+  editProduct(productId: string) {
     this.router.navigate(['painel/produto/editar', productId]);
   }
 }
