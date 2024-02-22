@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FirebaseService } from '../../../services/firebase.service';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pricing-edit',
@@ -11,6 +13,8 @@ export class PricingEditComponent implements OnInit {
   items: any[] = [];
   selectedItems: any[] = [];
 
+  pricingId: string = '';
+
   nome: string = '';
   quantidade: number = 0;
   adicional: number = 0;
@@ -19,9 +23,28 @@ export class PricingEditComponent implements OnInit {
 
   config = JSON.parse(localStorage.getItem('config')!);
 
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(
+    private firebaseService: FirebaseService,
+    private route: ActivatedRoute,
+    private toastService: ToastrService
+  ) {}
 
   ngOnInit(): void {
+    if (this.route.snapshot.url.some((segment) => segment.path === 'editar')) {
+      this.pricingId = this.route.snapshot.paramMap.get('id')!;
+
+      this.firebaseService
+        .getDocumentById('pricings', this.pricingId)
+        .subscribe((data) => {
+          this.nome = data.data.nome;
+          this.quantidade = data.data.quantidade;
+          this.adicional = data.data.adicional;
+          this.porcentagemLucro = data.data.porcentagemLucro;
+          this.horasTrabalhadas = data.data.horasTrabalhadas;
+          this.selectedItems = data.data.items;
+        });
+    }
+
     this.firebaseService
       .getCollectionWithIds('commodities')
       .subscribe((data) => {
@@ -73,7 +96,29 @@ export class PricingEditComponent implements OnInit {
       },
     };
 
-    this.firebaseService.postFirebase(data);
+    if (this.pricingId !== '') {
+      try {
+        this.firebaseService.editarItem(
+          data.collection,
+          this.pricingId,
+          data.firestoreData
+        );
+        this.toastService.success(
+          'Precificação editada com sucesso!',
+          'Sucesso'
+        );
+      } catch (error) {
+        this.toastService.error('Erro ao editar precificação', 'Erro');
+      }
+      return;
+    }
+
+    try {
+      this.firebaseService.postFirebase(data);
+      this.toastService.success('Precificação salva com sucesso!', 'Sucesso');
+    } catch (error) {
+      this.toastService.error('Erro ao salvar precificação', 'Erro');
+    }
   }
 
   openModal() {
