@@ -22,8 +22,10 @@ jobs:
       run: |
         cd ArteAcucarClient
         npm i
+    - name: Print working directory
+        run: echo pwd
     - name: Build
-      run: npm run build -- --prod
+      run: ng build
     - uses: w9jds/firebase-action@master
       with:
         args: deploy
