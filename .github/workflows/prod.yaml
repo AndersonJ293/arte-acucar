@@ -25,6 +25,8 @@ jobs:
         run: |
           cd ArteAcucarClient
           npm run build
+      - name: Echo Firebase token
+        run: echo ${{ secrets.FIREBASE_TOKEN }}
       - uses: w9jds/firebase-action@master
         with:
           args: deploy
