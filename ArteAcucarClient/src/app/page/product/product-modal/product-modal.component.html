@@ -18,15 +18,9 @@
         (click)="toggleSelection(item)"
         [class.selected]="item.selected"
       >
-        <h3>{{ item.name }}</h3>
-        <p>Custo: {{ item.custo }}</p>
-        <p>Lucro: {{ item.lucro }}</p>
-        <p>Valor de venda: {{ item.venda }}</p>
-        <input
-          type="number"
-          [(ngModel)]="item.quantity"
-          placeholder="Quantidade"
-        />
+        <h3>{{ item.data.nome }}</h3>
+        <p>Valor de venda: {{ item.data.precoTotal | currency : "BRL" }}</p>
+        <p>Quantidade: {{ item.data.quantidade }}</p>
       </div>
     </div>
   </div>

@@ -24,7 +24,9 @@ export class FirebaseService {
 
     try {
       const now = new Date();
-      const filePath = data.path ? `${data.path}/${file.name}` : file.name;
+      const filePath = data.path
+        ? `${data.path}/${data.firestoreData.nome}`
+        : data.firestoreData.nome;
       const uploadPhoto = await this.fireStorage.upload(filePath, file);
       const url = await uploadPhoto.ref.getDownloadURL();
 

@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FirebaseService } from '../../../services/firebase.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,7 +17,7 @@ export class PricingEditComponent implements OnInit {
 
   nome: string = '';
   quantidade: number = 0;
-  adicional: number = 0;
+  porcentagemAdicional: number = 0;
   porcentagemLucro: number = 0;
   horasTrabalhadas: string = '00:00';
 
@@ -26,7 +26,8 @@ export class PricingEditComponent implements OnInit {
   constructor(
     private firebaseService: FirebaseService,
     private route: ActivatedRoute,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +39,7 @@ export class PricingEditComponent implements OnInit {
         .subscribe((data) => {
           this.nome = data.data.nome;
           this.quantidade = data.data.quantidade;
-          this.adicional = data.data.adicional;
+          this.porcentagemAdicional = data.data.porcentagemAdicional;
           this.porcentagemLucro = data.data.porcentagemLucro;
           this.horasTrabalhadas = data.data.horasTrabalhadas;
           this.selectedItems = data.data.items;
@@ -61,7 +62,11 @@ export class PricingEditComponent implements OnInit {
   }
 
   get custoTotal() {
-    return this.custoInsumos + (this.custoInsumos * this.adicional) / 100;
+    return this.custoInsumos + this.adicional;
+  }
+
+  get adicional() {
+    return (this.custoInsumos * this.porcentagemAdicional) / 100;
   }
 
   get lucro() {
@@ -85,6 +90,7 @@ export class PricingEditComponent implements OnInit {
         nome: this.nome,
         quantidade: this.quantidade,
         adicional: this.adicional,
+        porcentagemAdicional: this.porcentagemAdicional,
         porcentagemLucro: this.porcentagemLucro,
         horasTrabalhadas: this.horasTrabalhadas,
         custoInsumos: this.custoInsumos,
@@ -107,6 +113,7 @@ export class PricingEditComponent implements OnInit {
           'Precificação editada com sucesso!',
           'Sucesso'
         );
+        this.router.navigate(['/painel/precificacao']);
       } catch (error) {
         this.toastService.error('Erro ao editar precificação', 'Erro');
       }
@@ -116,6 +123,7 @@ export class PricingEditComponent implements OnInit {
     try {
       this.firebaseService.postFirebase(data);
       this.toastService.success('Precificação salva com sucesso!', 'Sucesso');
+      this.router.navigate(['/painel/precificacao']);
     } catch (error) {
       this.toastService.error('Erro ao salvar precificação', 'Erro');
     }
