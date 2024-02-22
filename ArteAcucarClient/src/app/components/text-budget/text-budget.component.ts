@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 interface Card {
   label: string;
@@ -11,6 +11,8 @@ interface Card {
   styleUrl: './text-budget.component.scss',
 })
 export class TextBudgetComponent {
+  @ViewChild('textArea') textAreaRef!: ElementRef;
+
   texto: string = '';
   cards: Card[] = [
     { label: 'Nome do orçamento', value: 'this.orcamento' },
@@ -23,15 +25,14 @@ export class TextBudgetComponent {
   ];
   draggedTexts: Card[] = [];
 
-  onDragStart(event: DragEvent, value: string) {
-    event.dataTransfer?.setData('text/plain', `{{ ${value} }}`);
+  // Improved `onDragStart` function to handle potential null reference
+  onDragStart(event: DragEvent | null, value: string) {
+    if (event?.dataTransfer) {
+      event.dataTransfer.setData('text/plain', `{{ ${value} }}`);
+    }
   }
 
-  salvarTexto() {
-    console.log('Texto salvo:', this.texto);
-  }
-
-  addCustomText() {
+  addText(value: string) {
     if (this.texto.trim() !== '') {
       this.draggedTexts.push({
         label: this.texto,
@@ -45,6 +46,20 @@ export class TextBudgetComponent {
     const index = this.draggedTexts.indexOf(card);
     if (index !== -1) {
       this.draggedTexts.splice(index, 1);
+    }
+  }
+
+  salvarTexto() {
+    console.log('Texto salvo:', this.texto);
+  }
+
+  addCustomText() {
+    if (this.texto.trim() !== '') {
+      this.draggedTexts.push({
+        label: this.texto,
+        value: this.texto,
+      });
+      this.texto = '';
     }
   }
 }
