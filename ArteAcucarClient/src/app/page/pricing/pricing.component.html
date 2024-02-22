@@ -26,7 +26,7 @@
         <p>Lucro: {{ pricing.data.lucro | currency : "BRL" }}</p>
         <p>Valor total: {{ pricing.data.precoTotal | currency : "BRL" }}</p>
       </div>
-      <button>Editar</button>
+      <button (click)="editPricing(pricing.id)">Editar</button>
     </div>
   </div>
 
