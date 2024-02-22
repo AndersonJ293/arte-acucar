@@ -30,3 +30,5 @@ jobs:
           args: deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: "./ArteAcucarClient"
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
