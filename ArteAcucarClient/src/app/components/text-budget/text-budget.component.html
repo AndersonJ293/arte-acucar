@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="cards">
+    <div
+      class="card"
+      *ngFor="let card of cards"
+      (dragstart)="onDragStart($event, card.value)"
+    >
+      {{ card.label }}
+    </div>
+  </div>
+  <textarea
+    class="text-area"
+    (ngModel)="(texto)"
+    (input)="addCustomText()"
+  ></textarea>
+  <button (click)="salvarTexto()">Salvar</button>
+  <div class="dragged-text" *ngFor="let draggedText of draggedTexts">
+    <span>{{ draggedText.value }}</span>
+    <button class="remove-button" (click)="removeDraggedText(draggedText)">
+      X
+    </button>
+  </div>
+</div>

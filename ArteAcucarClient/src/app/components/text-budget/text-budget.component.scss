@@ -1,0 +1,47 @@
+@import "../../../styles.scss";
+
+.remove-button {
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+
+.dragged-text {
+  margin-top: 10px;
+}
+
+.dragged-text span {
+  margin-right: 5px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+textarea {
+  color: $secondary-color;
+  border-radius: 8px;
+  border: 1px solid #212121;
+  padding: 10px;
+  width: 100%;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  resize: none;
+}

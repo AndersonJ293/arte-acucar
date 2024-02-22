@@ -50,6 +50,7 @@ import { ProgressBarComponent } from './components/goal/progress-bar/progress-ba
 import { GoalSelectorComponent } from './components/goal/goal-selector/goal-selector.component';
 import { AllInfoComponent } from './components/all-info/all-info.component';
 import { CardInfoComponent } from './components/all-info/card-info/card-info.component';
+import { TextBudgetComponent } from './components/text-budget/text-budget.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { CardInfoComponent } from './components/all-info/card-info/card-info.com
     GoalSelectorComponent,
     AllInfoComponent,
     CardInfoComponent,
+    TextBudgetComponent,
   ],
   imports: [
     BrowserModule,
