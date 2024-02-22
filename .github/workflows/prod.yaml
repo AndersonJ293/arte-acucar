@@ -1,33 +1,34 @@
 name: Deploy-To-Firebase-Prod
 
-on: 
+on:
   push:
-    branches: 
+    branches:
       - main
 
   workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 20.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 20.x    
-    - name: Install dependencies
-      run: |
-        cd ArteAcucarClient
-        npm i
-    - name: Build
-      run: | 
-        cd ArteAcucarClient
-        ng build
-    - uses: w9jds/firebase-action@master
-      with:
-        args: deploy
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - uses: actions/checkout@v1
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20.x
+      - name: Install dependencies
+        run: |
+          cd ArteAcucarClient
+          npm i
+      - name: Build
+        run: |
+          cd ArteAcucarClient
+          npm run build
+      - uses: w9jds/firebase-action@master
+        with:
+          args: deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_PATH: "./ArteAcucarClient"
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
