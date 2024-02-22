@@ -1,41 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../../../services/firebase.service';
 
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
   styleUrl: './product-edit.component.scss',
 })
-export class ProductEditComponent {
+export class ProductEditComponent implements OnInit {
   previewUrl: string = '';
   open: boolean = false;
+  items: any[] = [];
   selectedItems: any[] = [];
 
-  items = [
-    {
-      id: 1,
-      name: 'Precificação 1',
-      custo: '10',
-      lucro: 25,
-      venda: 40,
-      quantidade: 0,
-    },
-    {
-      id: 2,
-      name: 'Precificação 2',
-      custo: '15',
-      lucro: 30,
-      venda: 45,
-      quantidade: 0,
-    },
-    {
-      id: 3,
-      name: 'Precificação 3',
-      custo: '20',
-      lucro: 35,
-      venda: 50,
-      quantidade: 0,
-    },
-  ];
+  nome: string = '';
+  quantidade: number = 0;
+  adicional: number = 0;
+  porcentagemLucro: number = 0;
+  horasTrabalhadas: string = this.getHorasTrabalhadas();
+
+  config = JSON.parse(localStorage.getItem('config')!);
+
+  constructor(private firebaseService: FirebaseService) {}
+
+  ngOnInit(): void {
+    this.firebaseService.getCollectionWithIds('pricings').subscribe((data) => {
+      this.items = data;
+    });
+  }
 
   openModal() {
     this.open = true;
@@ -73,5 +64,36 @@ export class ProductEditComponent {
 
   closeModal() {
     this.open = false;
+  }
+
+  getHorasTrabalhadas(): string {
+    const date = new Date();
+    return `${date.getHours()}:${date.getMinutes()}`;
+  }
+
+  get custoProdutos() {
+    return this.selectedItems.reduce(
+      (acc, item) =>
+        acc + item.usedQuantity * (item.data.precoTotal / item.data.quantidade),
+      0
+    );
+  }
+
+  get lucro() {
+    return this.custoProdutos * (this.porcentagemLucro / 100);
+  }
+
+  get custoTotal() {
+    return this.custoProdutos + (this.custoProdutos * this.adicional) / 100;
+  }
+
+  get salario() {
+    const [horas, minutos] = this.horasTrabalhadas.split(':');
+    const totalHoras = parseInt(horas) + parseInt(minutos) / 60;
+    return totalHoras * parseFloat(this.config.data.salarioHora);
+  }
+
+  get precoTotal() {
+    return this.custoTotal + this.lucro + this.salario;
   }
 }

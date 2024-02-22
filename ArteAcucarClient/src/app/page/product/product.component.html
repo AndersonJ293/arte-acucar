@@ -9,9 +9,9 @@
     <input type="text" name="" id="" />
   </header>
   <div class="cardList">
-    <div class="card">
+    <div class="card" *ngFor="let produto; in: produtcs">
       <div class="cardDetail">
-        <h3>Nome produto</h3>
+        <h3>produto.data.nome</h3>
         <div class="status finalizado">
           <span>Ativo</span>
         </div>
