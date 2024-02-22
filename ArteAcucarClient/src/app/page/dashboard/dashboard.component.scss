@@ -3,8 +3,8 @@
   height: calc(100vh - 100px);
   padding: 16px;
   flex-direction: row-reverse;
-  overflow: hidden;
   gap: 16px;
+  overflow-y: hidden;
 }
 
 .card {
@@ -73,6 +73,10 @@
   .top-row,
   .bottom-row {
     flex-direction: column;
+  }
+
+  .right {
+    height: auto;
   }
 
   .top-row,
