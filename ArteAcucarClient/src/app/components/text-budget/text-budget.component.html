@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="cards">
+    <div
+      class="card"
+      *ngFor="let card of cards"
+      (dragstart)="onDragStart($event, card.label)"
+      draggable="true"
+    >
+      {{ card.label }}
+    </div>
+  </div>
+  <textarea class="text-area" (ngModel)="(texto)"></textarea>
+</div>

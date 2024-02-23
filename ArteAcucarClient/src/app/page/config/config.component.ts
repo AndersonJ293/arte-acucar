@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase.service';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-config',
@@ -9,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './config.component.scss',
 })
 export class ConfigComponent implements OnInit {
+  texto: string = '';
+
   configAtual: any = {};
 
   configForm: FormGroup = this.formBuilder.group({
@@ -24,6 +27,13 @@ export class ConfigComponent implements OnInit {
     metaRecebimento: [''],
   });
 
+  valores: { [key: string]: string } = {
+    Orçamento: 'Orçamento Aqui',
+    Nome: 'Nome Aqui',
+    Idade: 'Idade Aqui',
+    Data: 'Data Aqui',
+  };
+
   constructor(
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
@@ -34,6 +44,24 @@ export class ConfigComponent implements OnInit {
     this.configAtual = JSON.parse(localStorage.getItem('config')!);
 
     this.configForm.patchValue(this.configAtual.data);
+  }
+
+  onDragStart(event: DragEvent, value: string) {
+    event.dataTransfer?.setData('text/plain', `{{ ${value} }}`);
+  }
+
+  salvarTexto() {
+    console.log('Texto salvo:', this.texto);
+  }
+
+  substituirValores(texto: string): string {
+    for (const key in this.valores) {
+      if (this.valores.hasOwnProperty(key)) {
+        const regex = new RegExp(`{{\\s*${key}\\s*}}`, 'g');
+        texto = texto.replace(regex, this.valores[key]);
+      }
+    }
+    return texto;
   }
 
   onSubmit() {

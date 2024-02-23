@@ -1,0 +1,72 @@
+@import "../../../styles.scss";
+
+.remove-button {
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+
+.dragged-text {
+  margin-top: 10px;
+}
+
+.dragged-text span {
+  margin-right: 5px;
+}
+
+.cards {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 24px;
+  overflow-x: scroll;
+}
+
+.cards::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.card {
+  border: 1px solid $secondary-color;
+  color: $secondary-color;
+  padding: 10px;
+  border-radius: 16px;
+  transition: transform 0.2s ease;
+}
+
+.card:active {
+  transform: translateY(-4px);
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  color: $secondary-color;
+  border-radius: 8px;
+  border: 1px solid #212121;
+  padding: 10px;
+  width: 100%;
+  overflow: auto;
+  outline: none;
+  height: 150px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+}
+
+.card:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  user-select: none;
+}
