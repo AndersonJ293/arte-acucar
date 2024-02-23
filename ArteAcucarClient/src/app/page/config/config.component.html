@@ -51,35 +51,16 @@
             formControlName="validadeOrcamento"
           />
         </div>
-
-        <div class="msgGroup">
-          <label for="mensagemInicio">Inicio mensagem do orçamento</label>
-          <textarea
-            name=""
-            id="mensagemInicio"
-            cols="30"
-            rows="10"
-            formControlName="inicioMensagemOrcamento"
-          ></textarea>
-        </div>
-
-        <div class="msgGroup">
-          <label for="mensagemFim">Fim mensagem do orçamento</label>
-          <textarea
-            name=""
-            id="mensagemFim"
-            cols="30"
-            rows="10"
-            formControlName="fimMensagemOrcamento"
-          ></textarea>
-        </div>
       </div>
       <h3>Mensagem de Orçamento</h3>
       <p>
         Arraste os cards para dentro da caixa para adicionar as variáveis que
         você achar interessantes.
       </p>
-      <app-text-budget></app-text-budget>
+      <app-text-budget
+        (textChanged)="onTextChanged($event)"
+        [configForm]="configForm"
+      ></app-text-budget>
 
       <h3>Metas - Mensais</h3>
       <div class="sectionContainer">

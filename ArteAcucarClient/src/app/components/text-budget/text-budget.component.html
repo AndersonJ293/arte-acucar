@@ -9,5 +9,11 @@
       {{ card.label }}
     </div>
   </div>
-  <textarea class="text-area" (ngModel)="(texto)"></textarea>
+  <form [formGroup]="configForm">
+    <textarea
+      (change)="onChange()"
+      class="text-area"
+      formControlName="mensagemOrcamento"
+    ></textarea>
+  </form>
 </div>

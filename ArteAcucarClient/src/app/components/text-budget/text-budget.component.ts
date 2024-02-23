@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 interface Card {
   label: string;
@@ -11,6 +12,9 @@ interface Card {
   styleUrl: './text-budget.component.scss',
 })
 export class TextBudgetComponent {
+  @Input() configForm: FormGroup = new FormGroup({});
+  @Output() textChanged = new EventEmitter<string>();
+
   texto: string = '';
   cards: Card[] = [
     { label: 'Nome do orçamento', value: 'this.orcamento' },
@@ -23,11 +27,30 @@ export class TextBudgetComponent {
   ];
   draggedTexts: Card[] = [];
 
+  constructor(private formBuilder: FormBuilder) {}
+
   salvarTexto() {
-    console.log('Texto salvo:', this.texto);
+    console.log(
+      'Texto salvo:',
+      this.configForm.get('mensagemOrcamento')!.value
+    );
+  }
+
+  onChange() {
+    this.textChanged.emit(this.configForm.get('mensagemOrcamento')!.value);
   }
 
   onDragStart(event: DragEvent, value: string) {
     event.dataTransfer!.setData('text/plain', `{{ ${value} }}`);
+  }
+
+  addCustomText() {
+    if (this.texto.trim() !== '') {
+      this.draggedTexts.push({
+        label: this.texto,
+        value: this.texto,
+      });
+      this.texto = '';
+    }
   }
 }

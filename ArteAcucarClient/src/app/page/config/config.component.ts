@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase.service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { DisplayComponent } from '../display/display.component';
 
 @Component({
   selector: 'app-config',
@@ -10,18 +11,13 @@ import { Observable } from 'rxjs';
   styleUrl: './config.component.scss',
 })
 export class ConfigComponent implements OnInit {
-  texto: string = '';
-
-  configAtual: any = {};
-
   configForm: FormGroup = this.formBuilder.group({
     salarioMensal: ['', Validators.required],
     diasTrabalhoMensal: ['', Validators.required],
     horasTrabalhoDiario: ['', Validators.required],
     salarioHora: [{ value: '', disabled: true }],
     validadeOrcamento: ['', Validators.required],
-    inicioMensagemOrcamento: [''],
-    fimMensagemOrcamento: [''],
+    mensagemOrcamento: [''],
     metaQtdeOrcamento: [''],
     metaQtdeVendas: [''],
     metaRecebimento: [''],
@@ -41,17 +37,15 @@ export class ConfigComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.configAtual = JSON.parse(localStorage.getItem('config')!);
-
     this.configForm.patchValue(this.configAtual.data);
+  }
+
+  get configAtual() {
+    return DisplayComponent.config;
   }
 
   onDragStart(event: DragEvent, value: string) {
     event.dataTransfer?.setData('text/plain', `{{ ${value} }}`);
-  }
-
-  salvarTexto() {
-    console.log('Texto salvo:', this.texto);
   }
 
   substituirValores(texto: string): string {
@@ -82,8 +76,12 @@ export class ConfigComponent implements OnInit {
       this.configForm.value
     );
 
-    this.configAtual.data = this.configForm.value;
+    // this.configAtual.data = this.configForm.value;
 
     this.toastService.success('Configurações salvas com sucesso!');
+  }
+
+  onTextChanged(event: string) {
+    this.configForm.get('mensagemOrcamento')!.setValue(event);
   }
 }
