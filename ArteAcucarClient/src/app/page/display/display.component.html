@@ -1,9 +1,13 @@
+<div class="loading" *ngIf="!carregado">
+  <div class="loadingSpinner"></div>
+</div>
+
 <header class="header">
   <app-header></app-header>
 </header>
 <section>
-  <div class="display">
+  <div class="display" *ngIf="carregado">
     <router-outlet></router-outlet>
   </div>
-  <app-sidebar-menu></app-sidebar-menu>
+  <app-sidebar-menu *ngIf="carregado"></app-sidebar-menu>
 </section>
