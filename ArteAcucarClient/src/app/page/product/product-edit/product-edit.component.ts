@@ -115,7 +115,8 @@ export class ProductEditComponent implements OnInit {
   get custoPrecificacoes() {
     return this.selectedItems.reduce(
       (acc, item) =>
-        acc + item.usedQuantity * (item.data.precoTotal / item.data.quantidade),
+        acc +
+        item.usedQuantity * (item.data.custoInsumos / item.data.quantidade),
       0
     );
   }
@@ -132,7 +133,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   get custoTotal() {
-    return this.custoPrecificacoes + this.adicionalProduto;
+    return this.custoPrecificacoes + this.adicionalPrecificacao;
   }
 
   get adicionalProduto() {
@@ -157,8 +158,9 @@ export class ProductEditComponent implements OnInit {
   }
 
   get precoTotal() {
-    return this.custoTotal + this.lucro + this.salario;
+    return this.custoTotal + this.lucro + this.salario + this.adicionalProduto;
   }
+
   saveProduct() {
     const fileInput = document.getElementById('imagem') as HTMLInputElement;
     const file = fileInput?.files?.[0];
