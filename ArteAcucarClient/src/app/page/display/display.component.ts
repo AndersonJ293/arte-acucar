@@ -7,16 +7,17 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrl: './display.component.scss',
 })
 export class DisplayComponent {
-  config: any = {};
+  public static config: any = {};
 
+  carregado: boolean = false;
   constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit(): void {
     this.firebaseService
       .getDocumentById('company', localStorage.getItem('companyCode')!)
       .subscribe((data) => {
-        this.config = data;
-        localStorage.setItem('config', JSON.stringify(data));
+        DisplayComponent.config = data;
+        this.carregado = true;
       });
   }
 }
