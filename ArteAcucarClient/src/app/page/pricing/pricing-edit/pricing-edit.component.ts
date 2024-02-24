@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FirebaseService } from '../../../services/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DisplayComponent } from '../../display/display.component';
 
 @Component({
   selector: 'app-pricing-edit',
@@ -21,7 +22,9 @@ export class PricingEditComponent implements OnInit {
   porcentagemLucro: number = 0;
   horasTrabalhadas: string = '00:00';
 
-  config = JSON.parse(localStorage.getItem('config')!);
+  get config() {
+    return DisplayComponent.config;
+  }
 
   constructor(
     private firebaseService: FirebaseService,
@@ -76,7 +79,7 @@ export class PricingEditComponent implements OnInit {
   get salario() {
     const [horas, minutos] = this.horasTrabalhadas.split(':');
     const totalHoras = parseInt(horas) + parseInt(minutos) / 60;
-    return totalHoras * parseFloat(this.config.data.salarioHora);
+    return totalHoras * parseFloat(this.config.salarioHora);
   }
 
   get precoTotal() {

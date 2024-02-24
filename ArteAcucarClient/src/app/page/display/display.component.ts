@@ -16,7 +16,8 @@ export class DisplayComponent {
     this.firebaseService
       .getDocumentById('company', localStorage.getItem('companyCode')!)
       .subscribe((data) => {
-        DisplayComponent.config = data;
+        DisplayComponent.config = data.data;
+
         this.carregado = true;
       });
   }
