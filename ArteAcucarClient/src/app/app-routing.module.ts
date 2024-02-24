@@ -12,6 +12,7 @@ import { BudgetEditComponent } from './page/budget/budget-edit/budget-edit.compo
 import { ProductComponent } from './page/product/product.component';
 import { AuthGuard } from './guard/auth.guard';
 import { ProductEditComponent } from './page/product/product-edit/product-edit.component';
+import { BudgetReportComponent } from './page/budget-report/budget-report.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: 'insumos', component: CommoditiesComponent },
     ],
   },
+  { path: 'orcamento/impressao/:id', component: BudgetReportComponent },
 ];
 
 @NgModule({
