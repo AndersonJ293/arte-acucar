@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../../../services/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DisplayComponent } from '../../display/display.component';
 
 @Component({
   selector: 'app-product-edit',
@@ -17,10 +18,13 @@ export class ProductEditComponent implements OnInit {
   nome: string = '';
   porcentagemAdicional: number = 0;
   _horasTrabalhadas: string = '00:00';
+  _horasTrabalhadasInput: string = '00:00';
 
   productId: string = '';
 
-  config = JSON.parse(localStorage.getItem('config')!);
+  get config() {
+    return DisplayComponent.config;
+  }
 
   constructor(
     private firebaseService: FirebaseService,
@@ -53,6 +57,8 @@ export class ProductEditComponent implements OnInit {
   }
 
   handleSave(selectedItems: any[]) {
+    console.log(selectedItems);
+
     this.selectedItems = selectedItems;
     this.closeModal();
   }
@@ -91,10 +97,15 @@ export class ProductEditComponent implements OnInit {
     let minutosPrecificacoes: number = 0;
     let horasPrecificacoes: number = 0;
 
+    let [horasPrecificacoesInput, minutosPrecificacoesInput] =
+      this._horasTrabalhadasInput.split(':');
+
     if (this.selectedItems.length > 0) {
       this.selectedItems.map((item) => {
-        const [horas, minutos] = item.data.horasTrabalhadas.split(':');
-        minutosPrecificacoes += parseInt(horas) * 60 + parseInt(minutos);
+        if (item.usedQuantity > 0) {
+          const [horas, minutos] = item.data.horasTrabalhadas.split(':');
+          minutosPrecificacoes += parseInt(horas) * 60 + parseInt(minutos);
+        }
       });
     }
 
@@ -109,7 +120,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   set horasTrabalhadas(value: string) {
-    this._horasTrabalhadas = value;
+    this._horasTrabalhadasInput = value;
   }
 
   get custoPrecificacoes() {
@@ -124,10 +135,7 @@ export class ProductEditComponent implements OnInit {
   get lucro() {
     return this.selectedItems.reduce(
       (acc, item) =>
-        acc +
-        item.data.lucro *
-          ((item.usedQuantity * (item.data.precoTotal / item.data.quantidade)) /
-            item.data.precoTotal),
+        acc + item.data.lucro * (item.usedQuantity / item.data.quantidade),
       0
     );
   }
@@ -143,10 +151,7 @@ export class ProductEditComponent implements OnInit {
   get adicionalPrecificacao() {
     return this.selectedItems.reduce(
       (acc, item) =>
-        acc +
-        item.data.adicional *
-          ((item.usedQuantity * (item.data.precoTotal / item.data.quantidade)) /
-            item.data.precoTotal),
+        acc + item.data.adicional * (item.usedQuantity / item.data.quantidade),
       0
     );
   }
@@ -154,7 +159,7 @@ export class ProductEditComponent implements OnInit {
   get salario() {
     const [horas, minutos] = this.horasTrabalhadas.split(':');
     const totalHoras = parseInt(horas) + parseInt(minutos) / 60;
-    return totalHoras * parseFloat(this.config.data.salarioHora);
+    return totalHoras * parseFloat(this.config.salarioHora);
   }
 
   get precoTotal() {
