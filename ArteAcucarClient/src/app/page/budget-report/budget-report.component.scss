@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .container {
   display: flex;
   background-image: url("../../../assets/img/bg_orcamento.png");
@@ -7,6 +9,38 @@
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
+}
+
+header {
+  margin: 24px 0;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-self: flex-end;
+}
+
+.header .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.header .title h1,
+h3 {
+  font-family: $title-font;
+}
+
+.header .title h1 {
+  font-size: 48px;
+}
+
+.header .title h3 {
+  font-size: 24px;
 }
 
 .orcamento {
@@ -56,6 +90,36 @@
 
 .cardUnico p {
   font-weight: bold;
+}
+
+.cardItens {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 6px;
+  border-radius: 16px;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #000;
+  width: 100%;
+  text-align: center;
+}
+
+th {
+  background-color: #f9e8f2;
+  border: 1px solid #d0bdc6;
+  padding: 8px;
+  text-align: left;
+  text-align: center;
+}
+
+td {
+  border: 1px solid #d0bdc6;
+  padding: 8px;
 }
 
 .cardPagamento {
