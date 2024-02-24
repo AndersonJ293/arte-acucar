@@ -71,7 +71,10 @@ export class ConfigComponent implements OnInit {
       this.configForm.value.diasTrabalhoMensal /
       this.configForm.value.horasTrabalhoDiario;
 
-    parseFloat(this.configForm.value.salarioHora).toFixed(2);
+    this.configForm.value.salarioHora = parseFloat(
+      this.configForm.value.salarioHora
+    ).toFixed(2);
+
     this.firebaseService.editarItem(
       'company',
       this.configAtual.id,
