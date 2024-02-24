@@ -17,6 +17,9 @@
           id="email"
           #userEmail
           required
+          (keydown.enter)="
+            authService.SignIn(userEmail.value, userPassword.value)
+          "
         />
         <label for="password">Senha</label>
         <input
@@ -25,6 +28,9 @@
           id="password"
           #userPassword
           required
+          (keydown.enter)="
+            authService.SignIn(userEmail.value, userPassword.value)
+          "
         />
         <button
           class="btn btnPrimary"
