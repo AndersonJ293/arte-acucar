@@ -51,6 +51,7 @@ import { GoalSelectorComponent } from './components/goal/goal-selector/goal-sele
 import { AllInfoComponent } from './components/all-info/all-info.component';
 import { CardInfoComponent } from './components/all-info/card-info/card-info.component';
 import { TextBudgetComponent } from './components/text-budget/text-budget.component';
+import { BudgetReportComponent } from './page/budget-report/budget-report.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { TextBudgetComponent } from './components/text-budget/text-budget.compon
     AllInfoComponent,
     CardInfoComponent,
     TextBudgetComponent,
+    BudgetReportComponent,
   ],
   imports: [
     BrowserModule,
