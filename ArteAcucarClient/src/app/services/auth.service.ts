@@ -36,10 +36,9 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.SetUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
-            this.router.navigate(['painel']);
+            this.SetUserData(result.user);
           }
         });
       })
@@ -72,7 +71,6 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['painel']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
@@ -105,6 +103,7 @@ export class AuthService {
         };
 
         localStorage.setItem('companyCode', userData.companyCode);
+        this.router.navigate(['painel']);
 
         userRef.set(userData, {
           merge: true,
