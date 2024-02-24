@@ -4,6 +4,32 @@
   padding: 50px;
 }
 
+.menu {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 0;
+}
+
+.btnCancel:active {
+  transform: translateY(2px);
+}
+
+.configSection {
+  display: none;
+  animation: fadeIn 4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .card {
   padding: 24px;
   background-color: white;

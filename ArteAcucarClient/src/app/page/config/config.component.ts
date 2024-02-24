@@ -11,6 +11,8 @@ import { DisplayComponent } from '../display/display.component';
   styleUrl: './config.component.scss',
 })
 export class ConfigComponent implements OnInit {
+  selectedSection: string = 'geral';
+
   configForm: FormGroup = this.formBuilder.group({
     salarioMensal: ['', Validators.required],
     diasTrabalhoMensal: ['', Validators.required],
@@ -83,5 +85,9 @@ export class ConfigComponent implements OnInit {
 
   onTextChanged(event: string) {
     this.configForm.get('mensagemOrcamento')!.setValue(event);
+  }
+
+  showSection(section: string) {
+    this.selectedSection = section;
   }
 }
