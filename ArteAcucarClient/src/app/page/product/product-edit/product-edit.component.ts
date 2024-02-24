@@ -23,7 +23,7 @@ export class ProductEditComponent implements OnInit {
   productId: string = '';
 
   get config() {
-    return DisplayComponent.config;
+    return DisplayComponent.config.data;
   }
 
   constructor(

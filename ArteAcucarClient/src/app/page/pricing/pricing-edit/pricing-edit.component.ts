@@ -23,7 +23,7 @@ export class PricingEditComponent implements OnInit {
   horasTrabalhadas: string = '00:00';
 
   get config() {
-    return DisplayComponent.config;
+    return DisplayComponent.config.data;
   }
 
   constructor(
