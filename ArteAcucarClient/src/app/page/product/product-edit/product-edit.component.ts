@@ -59,8 +59,6 @@ export class ProductEditComponent implements OnInit {
   }
 
   handleSave(selectedItems: any[]) {
-    console.log(selectedItems);
-
     this.selectedItems = selectedItems;
     this.closeModal();
   }
