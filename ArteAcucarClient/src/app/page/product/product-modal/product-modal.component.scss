@@ -1,99 +1,97 @@
 .modalBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-  }
-  
-  .modalContent {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    padding: 24px;
-    border-radius: 16px;
-    z-index: 2;
-    max-width: 80%;
-    height: 80%;
-    overflow-y: auto;
-  }
-  
-  .modalHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .searchInput {
-    margin-bottom: 16px;
-    width: 100%;
-  }
-  
-  .modal-header h2 {
-    margin: 0;
-  }
-  
-  .close {
-    cursor: pointer;
-  }
-  
-  .modalBody {
-    margin-top: 10px;
-  }
-  
-  .cardsContainer {
-    margin-top: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-  }
-  
-  .card {
-    background-color: #f8f8fa;
-    padding: 16px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .card:hover {
-    background-color: #f9e8f2;
-  }
-  
-  .card > input {
-    margin-top: 24px;
-  }
-  
-  .selected {
-    box-shadow: 0 0 0 3px #541514;
-    background-color: #f9e8f2;
-  }
-  
-  .card.selected input {
-    border-color: #541514;
-  }
-  
-  .modalFooter {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  
-  button {
-    padding: 8px 20px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
-  
-  @media (max-width: 768px) {
-    .modalContent {
-      height: 90%;
-      max-width: 90%;
-    }
-  }
-  
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.modalContent {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  max-height: 80%;
+  max-width: 80%;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchInput {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.close {
+  cursor: pointer;
+}
+
+.modalBody {
+  margin-top: 10px;
+}
+
+.cardsContainer {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  justify-content: center;
+  max-height: 400px;
+  overflow-y: auto;
+  gap: 16px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.cardsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  background-color: #f8f8fa;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  background-color: #f9e8f2;
+}
+
+.card > input {
+  margin-top: 24px;
+}
+
+.selected {
+  box-shadow: 0 0 0 3px #541514;
+  background-color: #f9e8f2;
+}
+
+.card.selected input {
+  border-color: #541514;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+button {
+  padding: 8px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
