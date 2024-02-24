@@ -1,90 +1,141 @@
 <section class="container">
   <div class="card">
     <h2>Configurações</h2>
-    <form
-      [formGroup]="configForm"
-      autocomplete="off"
-      (ngSubmit)="onSubmit()"
-      class="formGroup"
-    >
-      <div class="sectionContainer">
-        <div class="inputGroup">
-          <label for="salarioM">Salário mensal desejado</label>
-          <input type="number" id="salarioM" formControlName="salarioMensal" />
-        </div>
-        <div class="inputGroup">
-          <label for="diasTrabalho">Dias de trabalho mensal</label>
-          <input
-            type="number"
-            id="diasTrabalho"
-            formControlName="diasTrabalhoMensal"
-          />
-        </div>
-        <div class="inputGroup">
-          <label for="horasTrabalhadas">Horas trabalhadas por dia</label>
-          <input
-            type="number"
-            id="horasTrabalhadas"
-            formControlName="horasTrabalhoDiario"
-          />
-        </div>
-        <div class="inputGroup">
-          <label for="salarioH">Salário por hora</label>
-          <input
-            type="number"
-            id="salarioH"
-            formControlName="salarioHora"
-            [value]="
-              (
-                configForm.value.salarioMensal /
-                configForm.value.diasTrabalhoMensal /
-                configForm.value.horasTrabalhoDiario
-              ).toFixed(2)
-            "
-          />
-        </div>
-        <div class="inputGroup">
-          <label for="validade">Validade do orçamento (dias)</label>
-          <input
-            type="number"
-            id="validade"
-            formControlName="validadeOrcamento"
-          />
-        </div>
-      </div>
-      <h3>Mensagem de Orçamento</h3>
-      <p>
-        Arraste os cards para dentro da caixa para adicionar as variáveis que
-        você achar interessantes.
-      </p>
-      <app-text-budget
-        (textChanged)="onTextChanged($event)"
-        [configForm]="configForm"
-      ></app-text-budget>
+    <div class="menu">
+      <button
+        (click)="showSection('geral')"
+        [class.btnSave]="selectedSection === 'geral'"
+        class="btnCancel"
+      >
+        Configurações Gerais
+      </button>
+      <button
+        (click)="showSection('mensagem')"
+        [class.btnSave]="selectedSection === 'mensagem'"
+        class="btnCancel"
+      >
+        Mensagem de Orçamento
+      </button>
+      <button
+        (click)="showSection('metas')"
+        [class.btnSave]="selectedSection === 'metas'"
+        class="btnCancel"
+      >
+        Metas Mensais
+      </button>
+      <button
+        (click)="showSection('visual')"
+        [class.btnSave]="selectedSection === 'visual'"
+        class="btnCancel"
+      >
+        Ajuste visual
+      </button>
+    </div>
 
-      <h3>Metas - Mensais</h3>
-      <div class="sectionContainer">
-        <div class="inputGroup">
-          <label for="orcamento">Meta Qtde. de Orçamento</label>
-          <input
-            type="number"
-            id="orcamento"
-            formControlName="metaQtdeOrcamento"
-          />
+    <form [formGroup]="configForm" (ngSubmit)="onSubmit()">
+      <ng-container
+        id="configGeral"
+        class="configSection"
+        *ngIf="selectedSection === 'geral'"
+      >
+        <h3>Configurações gerais</h3>
+        <div class="sectionContainer">
+          <div class="inputGroup">
+            <label for="salarioM">Salário mensal desejado</label>
+            <input
+              type="number"
+              id="salarioM"
+              formControlName="salarioMensal"
+            />
+          </div>
+          <div class="inputGroup">
+            <label for="diasTrabalho">Dias de trabalho mensal</label>
+            <input
+              type="number"
+              id="diasTrabalho"
+              formControlName="diasTrabalhoMensal"
+            />
+          </div>
+          <div class="inputGroup">
+            <label for="horasTrabalhadas">Horas trabalhadas por dia</label>
+            <input
+              type="number"
+              id="horasTrabalhadas"
+              formControlName="horasTrabalhoDiario"
+            />
+          </div>
+          <div class="inputGroup">
+            <label for="salarioH">Salário por hora</label>
+            <input
+              type="number"
+              id="salarioH"
+              formControlName="salarioHora"
+              [value]="
+                (
+                  configForm.value.salarioMensal /
+                  configForm.value.diasTrabalhoMensal /
+                  configForm.value.horasTrabalhoDiario
+                ).toFixed(2)
+              "
+            />
+          </div>
+          <div class="inputGroup">
+            <label for="validade">Validade do orçamento (dias)</label>
+            <input
+              type="number"
+              id="validade"
+              formControlName="validadeOrcamento"
+            />
+          </div>
         </div>
-        <div class="inputGroup">
-          <label for="venda">Meta Qtde. de Vendas</label>
-          <input type="number" id="venda" formControlName="metaQtdeVendas" />
+      </ng-container>
+
+      <ng-container
+        id="configMensagem"
+        class="configSection"
+        *ngIf="selectedSection === 'mensagem'"
+      >
+        <h3>Mensagem de Orçamento</h3>
+        <p>
+          Arraste os cards para dentro da caixa para adicionar as variáveis que
+          você achar interessantes.
+        </p>
+        <app-text-budget
+          (textChanged)="onTextChanged($event)"
+          [configForm]="configForm"
+        ></app-text-budget>
+      </ng-container>
+
+      <ng-container
+        id="configMetas"
+        class="configSection"
+        *ngIf="selectedSection === 'metas'"
+      >
+        <h3>Metas - Mensais</h3>
+        <div class="sectionContainer">
+          <div class="inputGroup">
+            <label for="orcamento">Meta Qtde. de Orçamento</label>
+            <input
+              type="number"
+              id="orcamento"
+              formControlName="metaQtdeOrcamento"
+            />
+          </div>
+          <div class="inputGroup">
+            <label for="venda">Meta Qtde. de Vendas</label>
+            <input type="number" id="venda" formControlName="metaQtdeVendas" />
+          </div>
+          <div class="inputGroup">
+            <label for="recebimento">Meta recebimento</label>
+            <input
+              type="number"
+              id="recebimento"
+              formControlName="metaRecebimento"
+            />
+          </div>
         </div>
-        <div class="inputGroup">
-          <label for="recebimento">Meta recebimento</label>
-          <input
-            type="number"
-            id="recebimento"
-            formControlName="metaRecebimento"
-          />
-        </div>
-      </div>
+      </ng-container>
+
       <div class="buttons">
         <button href="" class="btnSave" type="submit">Salvar</button>
         <button href="" class="btnCancel" (click)="configForm.reset()">
