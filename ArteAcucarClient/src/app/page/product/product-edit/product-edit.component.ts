@@ -17,8 +17,8 @@ export class ProductEditComponent implements OnInit {
 
   nome: string = '';
   porcentagemAdicional: number = 0;
-  _horasTrabalhadas: string = '00:00';
-  _horasTrabalhadasInput: string = '00:00';
+  valorAdicional: number = 0;
+  horasTrabalhadasAdicional: string = '00:00';
 
   productId: string = '';
 
@@ -41,7 +41,9 @@ export class ProductEditComponent implements OnInit {
         .getDocumentById('products', this.productId)
         .subscribe((data) => {
           this.nome = data.data.nome;
+          this.horasTrabalhadasAdicional = data.data.horasTrabalhadasAdicional;
           this.porcentagemAdicional = data.data.porcentagemAdicional;
+          this.valorAdicional = data.data.adicionalValorProduto;
           this.selectedItems = data.data.items;
           this.previewUrl = data.data.urlImage;
         });
@@ -93,12 +95,9 @@ export class ProductEditComponent implements OnInit {
     this.open = false;
   }
 
-  get horasTrabalhadas(): string {
+  get horasTrabalhadasPrecificacao(): string {
     let minutosPrecificacoes: number = 0;
     let horasPrecificacoes: number = 0;
-
-    let [horasPrecificacoesInput, minutosPrecificacoesInput] =
-      this._horasTrabalhadasInput.split(':');
 
     if (this.selectedItems.length > 0) {
       this.selectedItems.map((item) => {
@@ -112,15 +111,27 @@ export class ProductEditComponent implements OnInit {
     horasPrecificacoes = Math.floor(minutosPrecificacoes / 60);
     minutosPrecificacoes = minutosPrecificacoes % 60;
 
-    this._horasTrabalhadas = `${horasPrecificacoes
+    return `${horasPrecificacoes
       .toString()
       .padStart(2, '0')}:${minutosPrecificacoes.toString().padStart(2, '0')}`;
-
-    return this._horasTrabalhadas;
   }
 
-  set horasTrabalhadas(value: string) {
-    this._horasTrabalhadasInput = value;
+  get horasTrabalhadasTotal(): string {
+    let [horasPrecificacoes, minutosPrecificacoes] =
+      this.horasTrabalhadasPrecificacao.split(':');
+    let [horasAdicional, minutosAdicional] =
+      this.horasTrabalhadasAdicional.split(':');
+
+    let totalHoras = parseInt(horasPrecificacoes) + parseInt(horasAdicional);
+    let totalMinutos =
+      parseInt(minutosPrecificacoes) + parseInt(minutosAdicional);
+
+    totalHoras += Math.floor(totalMinutos / 60);
+    totalMinutos = totalMinutos % 60;
+
+    return `${totalHoras.toString().padStart(2, '0')}:${totalMinutos
+      .toString()
+      .padStart(2, '0')}`;
   }
 
   get custoPrecificacoes() {
@@ -145,7 +156,10 @@ export class ProductEditComponent implements OnInit {
   }
 
   get adicionalProduto() {
-    return this.custoPrecificacoes * (this.porcentagemAdicional / 100);
+    return (
+      this.custoPrecificacoes * (this.porcentagemAdicional / 100) +
+      this.valorAdicional
+    );
   }
 
   get adicionalPrecificacao() {
@@ -157,7 +171,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   get salario() {
-    const [horas, minutos] = this.horasTrabalhadas.split(':');
+    const [horas, minutos] = this.horasTrabalhadasTotal.split(':');
     const totalHoras = parseInt(horas) + parseInt(minutos) / 60;
     return totalHoras * parseFloat(this.config.salarioHora);
   }
@@ -176,12 +190,15 @@ export class ProductEditComponent implements OnInit {
       firestoreData: {
         nome: this.nome,
         porcentagemAdicional: this.porcentagemAdicional,
-        horasTrabalhadas: this.horasTrabalhadas,
+        horasTrabalhadasPrecificacao: this.horasTrabalhadasPrecificacao,
+        horasTrabalhadasAdicional: this.horasTrabalhadasAdicional,
+        horasTrabalhadas: this.horasTrabalhadasTotal,
         custoTotal: this.custoTotal,
         lucro: parseFloat(this.lucro.toFixed(2)),
         adicionalPrecificacao: parseFloat(
           this.adicionalPrecificacao.toFixed(2)
         ),
+        adicionalValorProduto: parseFloat(this.valorAdicional.toFixed(2)),
         adicionalProduto: parseFloat(this.adicionalProduto.toFixed(2)),
         salario: parseFloat(this.salario.toFixed(2)),
         precoTotal: parseFloat(this.precoTotal.toFixed(2)),
