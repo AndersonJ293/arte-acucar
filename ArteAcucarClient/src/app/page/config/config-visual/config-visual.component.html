@@ -1,47 +1,74 @@
 <div class="container">
   <form [formGroup]="configForm">
-    <div class="inputs">
-      <label for="primaryColor">Cor Primária:</label>
-      <input
-        type="color"
-        id="primaryColor"
-        (change)="onChange()"
-        formControlName="colorPrimaria"
-      />
-    </div>
-    <div class="inputs">
-      <label for="secondaryColor">Cor Secundária:</label>
-      <input
-        type="color"
-        id="secondaryColor"
-        (change)="onChange()"
-        formControlName="colorSecundaria"
-      />
-    </div>
-    <div class="inputs">
-      <label for="headerFont">Fonte do Cabeçalho:</label>
-      <select
-        id="headerFont"
-        (change)="onChange()"
-        formControlName="fonteTitulo"
-      >
-        <option value="Arial, sans-serif">Arial</option>
-        <option value="Verdana, sans-serif">Verdana</option>
-        <option value="Georgia, serif">Georgia</option>
-        <option value="Courgette, cursive">Courgette</option>
-        <option value="Impact, sans-serif">Impact</option>
-        <option value="Lobster, cursive">Lobster</option>
-        <option value="Playfair Display, serif">Playfair Display</option>
-        <option value="Open Sans, sans-serif">Open Sans</option>
-        <option value="Roboto, sans-serif">Roboto</option>
-        <option value="Poppins, sans-serif">Poppins</option>
+    <div>
+      <div class="inputs">
+        <label for="primaryColor">Cor Primária:</label>
+        <input
+          type="color"
+          id="primaryColor"
+          (change)="onChange()"
+          formControlName="colorPrimaria"
+        />
+      </div>
+      <div class="inputs">
+        <label for="secondaryColor">Cor Secundária:</label>
+        <input
+          type="color"
+          id="secondaryColor"
+          (change)="onChange()"
+          formControlName="colorSecundaria"
+        />
+      </div>
+      <div class="inputs">
+        <label for="headerFont">Fonte do Cabeçalho:</label>
+        <select
+          id="headerFont"
+          (change)="onChange()"
+          formControlName="fonteTitulo"
         >
-      </select>
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="Verdana, sans-serif">Verdana</option>
+          <option value="Georgia, serif">Georgia</option>
+          <option value="Courgette, cursive">Courgette</option>
+          <option value="Impact, sans-serif">Impact</option>
+          <option value="Lobster, cursive">Lobster</option>
+          <option value="Playfair Display, serif">Playfair Display</option>
+          <option value="Open Sans, sans-serif">Open Sans</option>
+          <option value="Roboto, sans-serif">Roboto</option>
+          <option value="Poppins, sans-serif">Poppins</option>
+          >
+        </select>
+      </div>
+      <div class="font-preview">
+        <p [style.font-family]="configForm.get('fonteTitulo')?.value">
+          Exemplo de Texto
+        </p>
+      </div>
     </div>
-    <div class="font-preview">
-      <p [style.font-family]="configForm.get('fonteTitulo')?.value">
-        Exemplo de Texto
-      </p>
+    <div class="logo">
+      <h4>Carregue sua logo</h4>
+      <div
+        id="drop-area"
+        (drop)="onDrop($event)"
+        (dragover)="onDragOver($event)"
+      >
+        <img *ngIf="previewUrl" [src]="previewUrl" alt="Preview" />
+        <img
+          class="picture"
+          *ngIf="!previewUrl"
+          src="../../../../assets/img/picture.png"
+          alt=""
+        />
+        <input
+          type="file"
+          id="imagem"
+          name="imagem"
+          accept="image/*"
+          style="display: none"
+          (change)="onFileSelected($event)"
+        />
+        <label for="imagem">Clique aqui para selecionar uma imagem</label>
+      </div>
     </div>
   </form>
 </div>
