@@ -29,7 +29,19 @@
         <option value="Verdana, sans-serif">Verdana</option>
         <option value="Georgia, serif">Georgia</option>
         <option value="Courgette, cursive">Courgette</option>
+        <option value="Impact, sans-serif">Impact</option>
+        <option value="Lobster, cursive">Lobster</option>
+        <option value="Playfair Display, serif">Playfair Display</option>
+        <option value="Open Sans, sans-serif">Open Sans</option>
+        <option value="Roboto, sans-serif">Roboto</option>
+        <option value="Poppins, sans-serif">Poppins</option>
+        >
       </select>
+    </div>
+    <div class="font-preview">
+      <p [style.font-family]="configForm.get('fonteTitulo')?.value">
+        Exemplo de Texto
+      </p>
     </div>
   </form>
 </div>

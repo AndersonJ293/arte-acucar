@@ -6,7 +6,7 @@ import {
   Renderer2,
 } from '@angular/core';
 import { CustomizationService } from '../../../services/customization.service';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-config-visual',
@@ -21,19 +21,7 @@ export class ConfigVisualComponent {
 
   previewUrl: string = '';
 
-  constructor(private customizationService: CustomizationService) {}
-
-  updatePrimaryColor(color: string) {
-    this.customizationService.updatePrimaryColor(color);
-  }
-
-  updateSecondaryColor(color: string) {
-    this.customizationService.updateSecondaryColor(color);
-  }
-
-  updateHeaderFont(font: string) {
-    this.customizationService.updateHeaderFont(font);
-  }
+  selectedFont: string = '';
 
   onDrop(event: any): void {
     event.preventDefault();

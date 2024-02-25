@@ -32,15 +32,21 @@ export class DisplayComponent {
   private updateCSSVariables(): void {
     document.documentElement.style.setProperty(
       '--display-primary-color',
-      this.primaryColor
+      this.primaryColor != ''
+        ? this.primaryColor
+        : (this.primaryColor = '#541514')
     );
     document.documentElement.style.setProperty(
       '--display-secondary-color',
-      this.secondaryColor
+      this.secondaryColor != ''
+        ? this.secondaryColor
+        : (this.secondaryColor = '#0067DB')
     );
     document.documentElement.style.setProperty(
       '--display-header-font',
-      this.headerFont
+      this.headerFont != ''
+        ? this.headerFont
+        : (this.headerFont = 'Poppins, sans-serif')
     );
   }
 
