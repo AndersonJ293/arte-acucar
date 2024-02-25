@@ -1,5 +1,12 @@
-import { Component, Renderer2 } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  Renderer2,
+} from '@angular/core';
 import { CustomizationService } from '../../../services/customization.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-config-visual',
@@ -7,18 +14,14 @@ import { CustomizationService } from '../../../services/customization.service';
   styleUrl: './config-visual.component.scss',
 })
 export class ConfigVisualComponent {
+  @Input() configForm: FormGroup = new FormGroup({});
+  @Output() colorPChanged = new EventEmitter<string>();
+  @Output() colorSChanged = new EventEmitter<string>();
+  @Output() fontChanged = new EventEmitter<string>();
+
   previewUrl: string = '';
-  primaryColor: string = '';
-  secondaryColor: string = '';
-  headerFont: string = '';
 
   constructor(private customizationService: CustomizationService) {}
-
-  ngOnInit() {
-    this.customizationService.updatePrimaryColor(this.primaryColor);
-    this.customizationService.updateSecondaryColor(this.secondaryColor);
-    this.customizationService.updateHeaderFont(this.headerFont);
-  }
 
   updatePrimaryColor(color: string) {
     this.customizationService.updatePrimaryColor(color);
@@ -55,5 +58,11 @@ export class ConfigVisualComponent {
     };
 
     reader.readAsDataURL(file);
+  }
+
+  onChange() {
+    this.colorPChanged.emit(this.configForm.get('colorPrimaria')!.value);
+    this.colorSChanged.emit(this.configForm.get('colorSecundaria')!.value);
+    this.fontChanged.emit(this.configForm.get('fonteTitulo')!.value);
   }
 }

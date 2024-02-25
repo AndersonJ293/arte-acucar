@@ -1,27 +1,34 @@
 <div class="container">
-  <h1>Personalize seu site!</h1>
-  <div class="inputs">
-    <label for="primaryColor">Cor Primária:</label>
-    <input type="color" id="primaryColor" [(ngModel)]="primaryColor" />
-  </div>
-  <div class="inputs">
-    <label for="secondaryColor">Cor Secundária:</label>
-    <input type="color" id="secondaryColor" [(ngModel)]="secondaryColor" />
-  </div>
-  <div class="inputs">
-    <label for="headerFont">Fonte do Cabeçalho:</label>
-    <select id="headerFont" [(ngModel)]="headerFont">
-      <option value="Arial, sans-serif">Arial</option>
-      <option value="Verdana, sans-serif">Verdana</option>
-      <option value="Georgia, serif">Georgia</option>
-    </select>
-  </div>
-  <div class="preview">
-    <h2>Exemplo de visualização</h2>
-    <p>Texto com a cor primária</p>
-    <p>Texto com a cor secundária</p>
-    <h1 style="font-family: '{{ headerFont }}'">
-      Cabeçalho com a fonte escolhida
-    </h1>
-  </div>
+  <form [formGroup]="configForm">
+    <div class="inputs">
+      <label for="primaryColor">Cor Primária:</label>
+      <input
+        type="color"
+        id="primaryColor"
+        (change)="onChange()"
+        formControlName="colorPrimaria"
+      />
+    </div>
+    <div class="inputs">
+      <label for="secondaryColor">Cor Secundária:</label>
+      <input
+        type="color"
+        id="secondaryColor"
+        (change)="onChange()"
+        formControlName="colorSecundaria"
+      />
+    </div>
+    <div class="inputs">
+      <label for="headerFont">Fonte do Cabeçalho:</label>
+      <select
+        id="headerFont"
+        (change)="onChange()"
+        formControlName="fonteTitulo"
+      >
+        <option value="Arial, sans-serif">Arial</option>
+        <option value="Verdana, sans-serif">Verdana</option>
+        <option value="Georgia, serif">Georgia</option>
+      </select>
+    </div>
+  </form>
 </div>

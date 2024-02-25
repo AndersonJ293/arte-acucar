@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
+import { CustomizationService } from '../../services/customization.service';
 
 @Component({
   selector: 'app-display',
@@ -8,9 +9,17 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class DisplayComponent {
   public static config: any = {};
+  primaryColor: string = '';
+  secondaryColor: string = '';
+  headerFont: string = '';
+
+  // @HostBinding('style.--var') var = 'red';
 
   carregado: boolean = false;
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(
+    private firebaseService: FirebaseService,
+    private customizationService: CustomizationService
+  ) {}
 
   ngOnInit(): void {
     this.firebaseService
@@ -20,5 +29,15 @@ export class DisplayComponent {
 
         this.carregado = true;
       });
+
+    this.customizationService.primaryColor$.subscribe(
+      (color) => (this.primaryColor = color)
+    );
+    this.customizationService.secondaryColor$.subscribe(
+      (color) => (this.secondaryColor = color)
+    );
+    this.customizationService.headerFont$.subscribe(
+      (font) => (this.headerFont = font)
+    );
   }
 }

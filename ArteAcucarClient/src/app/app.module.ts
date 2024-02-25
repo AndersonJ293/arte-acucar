@@ -52,6 +52,7 @@ import { AllInfoComponent } from './components/all-info/all-info.component';
 import { CardInfoComponent } from './components/all-info/card-info/card-info.component';
 import { TextBudgetComponent } from './components/text-budget/text-budget.component';
 import { BudgetReportComponent } from './page/budget-report/budget-report.component';
+import { ConfigVisualComponent } from './page/config/config-visual/config-visual.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { BudgetReportComponent } from './page/budget-report/budget-report.compon
     CardInfoComponent,
     TextBudgetComponent,
     BudgetReportComponent,
+    ConfigVisualComponent,
   ],
   imports: [
     BrowserModule,
