@@ -1,37 +1,33 @@
-<div class="modalBackground"></div>
-<div class="modalContent">
-  <div class="modalHeader">
-    <h2>Selecionar Produtos</h2>
-    <span class="close">&times;</span>
-  </div>
-  <div class="modalBody">
-    <input
-      type="text"
-      placeholder="Buscar produtos"
-      [(ngModel)]="searchInput"
-      class="searchInput"
-    />
-    <div class="cardsContainer">
-      <div
-        class="card"
-        *ngFor="let item of items"
-        (click)="toggleSelection(item)"
-        [class.selected]="item.selected"
-      >
-        <h3>{{ item.name }}</h3>
-        <p>Custo: {{ item.custo }}</p>
-        <p>Lucro: {{ item.lucro }}</p>
-        <p>Valor de venda: {{ item.venda }}</p>
-        <input
-          type="number"
-          [(ngModel)]="item.quantity"
-          placeholder="Quantidade"
-        />
+<div class="modalBackground">
+  <div class="modalContent">
+    <div class="modalHeader">
+      <h2>Selecionar Produtos</h2>
+      <span class="close" (click)="closeSelection()">&times;</span>
+    </div>
+    <div class="modalBody">
+      <input
+        type="text"
+        placeholder="Buscar produtos"
+        [(ngModel)]="searchInput"
+        class="searchInput"
+      />
+      <div class="cardsContainer">
+        <div
+          class="card"
+          *ngFor="let item of items"
+          (click)="toggleSelection(item)"
+          [class.selected]="item.selected"
+        >
+          <h3>{{ item.data.nome }}</h3>
+          <p>Custo: {{ item.data.custoTotal | currency : "BRL" }}</p>
+          <p>Lucro: {{ item.data.lucro | currency : "BRL" }}</p>
+          <p>Salário: {{ item.data.salario | currency : "BRL" }}</p>
+          <p>Valor de venda: {{ item.data.precoTotal | currency : "BRL" }}</p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="modalFooter">
-    <button class="btnCancel">Cancelar</button>
-    <button class="btnSave" (click)="saveSelection()">Salvar</button>
+    <div class="modalFooter">
+      <button class="btnSave" (click)="saveSelection()">Salvar</button>
+    </div>
   </div>
 </div>
