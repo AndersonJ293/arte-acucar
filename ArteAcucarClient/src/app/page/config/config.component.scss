@@ -127,3 +127,59 @@ textarea {
     justify-content: space-between;
   }
 }
+
+.tabs {
+  display: flex;
+  background-color: #fafafa;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.tabs button {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: bold;
+  color: #747e9f;
+  outline: none;
+  border-radius: 12px;
+}
+
+.tabs button i {
+  margin-right: 5px;
+}
+
+.tabs button.active {
+  color: #fff;
+
+  background-color: var(--display-secondary-color);
+}
+
+.configSection {
+  display: none;
+}
+
+.configSection.active {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 24px;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .tabs button {
+    flex-basis: calc(50% - 20px);
+    margin: 10px;
+  }
+}

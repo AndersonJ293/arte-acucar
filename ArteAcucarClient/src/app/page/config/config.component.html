@@ -1,34 +1,30 @@
 <section class="container">
   <div class="card">
     <h2>Configurações</h2>
-    <div class="menu">
+    <div class="tabs">
       <button
         (click)="showSection('geral')"
-        [class.btnSave]="selectedSection === 'geral'"
-        class="btnCancel"
+        [class.active]="selectedSection === 'geral'"
       >
-        Configurações Gerais
+        <i class="fas fa-cogs"></i> Configurações Gerais
       </button>
       <button
         (click)="showSection('mensagem')"
-        [class.btnSave]="selectedSection === 'mensagem'"
-        class="btnCancel"
+        [class.active]="selectedSection === 'mensagem'"
       >
-        Mensagem de Orçamento
+        <i class="fas fa-envelope"></i> Mensagem de Orçamento
       </button>
       <button
         (click)="showSection('metas')"
-        [class.btnSave]="selectedSection === 'metas'"
-        class="btnCancel"
+        [class.active]="selectedSection === 'metas'"
       >
-        Metas Mensais
+        <i class="fas fa-bullseye"></i> Metas Mensais
       </button>
       <button
         (click)="showSection('visual')"
-        [class.btnSave]="selectedSection === 'visual'"
-        class="btnCancel"
+        [class.active]="selectedSection === 'visual'"
       >
-        Ajuste visual
+        <i class="fas fa-paint-brush"></i> Ajuste visual
       </button>
     </div>
 

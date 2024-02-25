@@ -11,7 +11,7 @@ import { DisplayComponent } from '../display/display.component';
   styleUrl: './config.component.scss',
 })
 export class ConfigComponent implements OnInit {
-  selectedSection: string = 'visual';
+  selectedSection: string = 'geral';
 
   configForm: FormGroup = this.formBuilder.group({
     salarioMensal: ['', Validators.required],
