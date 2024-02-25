@@ -48,7 +48,7 @@
   padding: 10px 0;
   justify-content: center;
   overflow-y: auto;
-  max-height: calc(90vh - 210px);
+  max-height: calc(85vh - 210px);
   gap: 16px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -63,6 +63,7 @@
   padding: 16px;
   border-radius: 12px;
   cursor: pointer;
+  max-width: 90%;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
