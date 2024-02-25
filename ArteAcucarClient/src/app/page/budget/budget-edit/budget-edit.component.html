@@ -6,159 +6,210 @@
         <i class="fa fa-times"></i>
       </button>
     </header>
-    <form>
-      <div class="line">
-        <div class="groupName">
-          <label for="name">Nome </label>
-          <input type="text" id="name" name="name" required />
-        </div>
+    <div class="line">
+      <div class="groupName">
+        <label for="name">Nome </label>
+        <input type="text" id="name" name="name" required [(ngModel)]="nome" />
       </div>
-      <div class="line">
-        <div class="groupAdditional">
-          <label for="deliveryDate">Data entrega</label>
-          <input
-            type="datetime-local"
-            id="deliveryDate"
-            name="deliveryDate"
-            required
-          />
-        </div>
-        <div class="groupAdditional">
-          <label for="budgetDate">Data orçamento</label>
-          <input
-            type="datetime-local"
-            id="budgetDate"
-            name="budgetDate"
-            required
-          />
-        </div>
-      </div>
-
-      <div class="line">
-        <div class="groupProfitPercentage">
-          <label for="nameKid">Tema</label>
-          <input
-            type="text"
-            class="custom-select"
-            name="nameKid"
-            id="nameKid"
-            required
-          />
-        </div>
-        <div class="groupAdditional">
-          <label for="phone">Telefone</label>
-          <input type="tel" id="phone" name="phone" required />
-        </div>
-      </div>
-      <div class="line">
-        <div class="groupProfitPercentage">
-          <label for="qtde">Nome da criança</label>
-          <input
-            type="text"
-            class="custom-select"
-            name="theme"
-            id="theme"
-            required
-          />
-        </div>
-        <div class="groupAdditional">
-          <label for="age">Idade</label>
-          <input type="number" id="age" name="age" required />
-        </div>
-      </div>
-      <div
-        id="drop-area"
-        (drop)="onDrop($event)"
-        (dragover)="onDragOver($event)"
-      >
-        <img *ngIf="previewUrl" [src]="previewUrl" alt="Preview" />
-        <img
-          class="picture"
-          *ngIf="!previewUrl"
-          src="../../../../assets/img/picture.png"
-          alt=""
-        />
-        Solte a imagem aqui ou clique para fazer upload.
+    </div>
+    <div class="line">
+      <div class="groupAdditional">
+        <label for="deliveryDate">Data entrega</label>
         <input
-          type="file"
-          id="imagem"
-          name="imagem"
-          accept="image/*"
-          style="display: none"
-          (change)="onFileSelected($event)"
+          type="datetime-local"
+          id="deliveryDate"
+          name="deliveryDate"
+          [ngModel]="dataEntrega | date : 'yyyy-MM-ddTHH:mm'"
+          (ngModelChange)="dataEntrega = $event"
+          required
         />
-        <label for="imagem">Clique aqui para selecionar uma imagem</label>
       </div>
-      <div class="commoditiesArea">
-        <div class="header">
-          <h3>Adicionar produtos</h3>
-          <button class="btnSave" (click)="openModal()">+</button>
-        </div>
-        <div id="commodities-area" *ngIf="selectedItems.length > 0">
-          <ng-container *ngFor="let selectedItem of selectedItems">
-            <div class="selectedItem">
-              <h3>{{ selectedItem.name }}</h3>
-              <p>Custo: {{ selectedItem.custo }}</p>
-              <p>Lucro: {{ selectedItem.lucro }}</p>
-              <p>Valor de venda: {{ selectedItem.venda }}</p>
-              <input
-                type="number"
-                [(ngModel)]="selectedItem.usedQuantity"
-                placeholder="Quantidade Usada"
-              />
-              <p>
-                Valor Usado:
-                {{
-                  selectedItem.usedQuantity *
-                    (selectedItem.value / selectedItem.quantity)
-                }}
-              </p>
-            </div>
-          </ng-container>
-        </div>
+      <div class="groupAdditional">
+        <label for="budgetDate">Data orçamento</label>
+        <input
+          type="datetime-local"
+          id="budgetDate"
+          name="budgetDate"
+          [ngModel]="dataOrcamento | date : 'yyyy-MM-ddTHH:mm'"
+          (ngModelChange)="dataOrcamento = $event"
+          required
+        />
       </div>
+    </div>
 
-      <div class="line">
-        <div class="groupCostTotal">
-          <label for="costTotal">Custo Insumos</label>
-          {{ 54 | currency : "BRL" }}
-        </div>
-        <div class="groupProfitPercentage">
-          <label for="profit">Lucro</label>
-          {{ 54 | currency : "BRL" }}
-        </div>
+    <div class="line">
+      <div class="groupProfitPercentage">
+        <label for="theme">Tema</label>
+        <input
+          type="text"
+          class="custom-select"
+          name="theme"
+          id="theme"
+          required
+          [(ngModel)]="tema"
+        />
       </div>
+      <div class="groupAdditional">
+        <label for="phone">Telefone</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          [ngModel]="telefone | phone"
+          (ngModelChange)="telefone = $event"
+        />
+      </div>
+    </div>
+    <div class="line">
+      <div class="groupProfitPercentage">
+        <label for="nameKid">Nome da criança</label>
+        <input
+          type="text"
+          class="custom-select"
+          name="nameKid"
+          id="nameKid"
+          required
+          [(ngModel)]="nomeCrianca"
+        />
+      </div>
+      <div class="groupAdditional">
+        <label for="age">Idade</label>
+        <input
+          type="text"
+          id="age"
+          name="age"
+          required
+          [(ngModel)]="idadeCrianca"
+        />
+      </div>
+    </div>
 
-      <div class="line">
-        <div class="groupProductionCost">
-          <label for="productionCost">Custo Total</label>
-          {{ 54 | currency : "BRL" }}
-        </div>
-        <div class="groupSalary">
-          <label for="salary">Salário</label>
-          <p>{{ 54 | currency : "BRL" }}</p>
-        </div>
-      </div>
+    <div class="groupAdditional">
+      <label for="obs">Anotações</label>
+      <textarea
+        name="obs"
+        id="obs"
+        cols="30"
+        rows="10"
+        [(ngModel)]="anotacoes"
+      ></textarea>
+    </div>
 
-      <div class="line">
-        <div></div>
-        <div class="groupSellingPrice">
-          <label for="sellingPrice">Preço Total</label>
-          {{ 54 | currency : "BRL" }}
-        </div>
+    <div id="drop-area" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+      <img *ngIf="previewUrl" [src]="previewUrl" alt="Preview" />
+      <img
+        class="picture"
+        *ngIf="!previewUrl"
+        src="../../../../assets/img/picture.png"
+        alt=""
+      />
+      Solte a imagem aqui ou clique para fazer upload.
+      <input
+        type="file"
+        id="imagem"
+        name="imagem"
+        accept="image/*"
+        style="display: none"
+        (change)="onFileSelected($event)"
+      />
+      <label for="imagem">Clique aqui para selecionar uma imagem</label>
+    </div>
+    <div class="commoditiesArea">
+      <div class="header">
+        <h3>Selecionar produtos</h3>
+        <button class="btnSave" (click)="openModal()">+</button>
       </div>
+      <div id="commodities-area" *ngIf="selectedItems.length > 0">
+        <ng-container *ngFor="let selectedItem of selectedItems">
+          <div class="selectedItem">
+            <h3>{{ selectedItem.data.nome }}</h3>
+            <p>Custo: {{ selectedItem.data.custoTotal | currency : "BRL" }}</p>
+            <p>Lucro: {{ selectedItem.data.lucro | currency : "BRL" }}</p>
+            <p>Salário: {{ selectedItem.data.salario | currency : "BRL" }}</p>
+            <p>
+              Valor de venda:
+              {{ selectedItem.data.precoTotal | currency : "BRL" }}
+            </p>
+            <input
+              type="number"
+              [(ngModel)]="selectedItem.usedQuantity"
+              placeholder="Quantidade Usada"
+              min="0"
+            />
+            <p *ngIf="selectedItem.usedQuantity > 0">
+              Valor Total:
+              {{
+                selectedItem.data.precoTotal * selectedItem.usedQuantity
+                  | currency : "BRL"
+              }}
+            </p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
 
-      <div class="buttons">
-        <button type="submit" class="btnSave">Salvar</button>
-        <button routerLink="/painel/orcamento" type="reset" class="btnCancel">
-          Cancelar
-        </button>
+    <div class="line">
+      <div class="groupAdditional">
+        <label for="additional">Adicional %</label>
+        <input
+          type="number"
+          step="0.1"
+          min="0"
+          id="additional"
+          name="additional"
+          [(ngModel)]="porcentagemAdicional"
+          required
+        />
       </div>
-    </form>
+    </div>
+
+    <div class="line">
+      <div class="groupCostTotal">
+        <label for="costTotal">Custo Produtos</label>
+        {{ custoProdutos | currency : "BRL" }}
+      </div>
+      <div class="groupProfitPercentage">
+        <label for="profit">Lucro</label>
+        {{ lucro | currency : "BRL" }}
+      </div>
+    </div>
+
+    <div class="line">
+      <div class="groupProductionCost">
+        <label for="productionCost">Total Produtos</label>
+        {{ precoTotalProduos | currency : "BRL" }}
+      </div>
+      <div class="groupSalary">
+        <label for="salary">Salário</label>
+        <p>{{ salario | currency : "BRL" }}</p>
+      </div>
+    </div>
+
+    <div class="line">
+      <div class="groupProductionCost">
+        <label for="productionCost">Adicional Orçamento</label>
+        {{ adicionalOrcamento | currency : "BRL" }}
+      </div>
+      <div class="groupSellingPrice">
+        <label for="sellingPrice">Preço Total</label>
+        {{ precoTotal | currency : "BRL" }}
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" class="btnSave" (click)="saveBudget()">
+        Salvar
+      </button>
+      <button routerLink="/painel/orcamento" type="reset" class="btnCancel">
+        Cancelar
+      </button>
+    </div>
   </section>
 </div>
 <app-budget-modal
   (save)="handleSave($event)"
+  (close)="handleClose()"
   [items]="items"
   *ngIf="open"
   [selectedItems]="selectedItems"

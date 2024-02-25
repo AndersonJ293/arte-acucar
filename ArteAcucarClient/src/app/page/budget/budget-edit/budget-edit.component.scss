@@ -122,7 +122,7 @@ select {
   text-align: center;
   gap: 16px;
   margin-bottom: 40px;
-  margin-top: 24px;
+  margin-top: 10px;
 }
 
 .selectedItem {
@@ -130,6 +130,7 @@ select {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 8px;
+  max-width: 100%;
 }
 
 .selectedItem h3 {
@@ -145,6 +146,7 @@ select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  max-width: 100%;
 }
 
 #drop-area {
@@ -157,7 +159,7 @@ select {
   padding: 20px;
   text-align: center;
   gap: 16px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 #drop-area.active {

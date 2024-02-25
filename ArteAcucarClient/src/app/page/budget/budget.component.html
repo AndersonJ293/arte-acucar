@@ -11,32 +11,46 @@
     <input type="text" name="" id="" />
   </header>
   <div class="cardList">
-    <div class="card">
-      <div class="cardDetail">
-        <h3>Nome Orçamento</h3>
-        <div class="date">
-          <p>30/01/2024</p>
-          <div class="status cancelado">
-            <span>Cancelado</span>
+    <ng-container *ngFor="let budget of budgets">
+      <div class="card">
+        <div class="cardDetail">
+          <div class="cardDetailHeader">
+            <h3>{{ budget.data.nome }}</h3>
+            <fa-icon
+              [icon]="faPrinter"
+              class="icon"
+              (click)="printBudget(budget.id)"
+              target="_blank"
+            ></fa-icon>
+          </div>
+          <div class="date">
+            <p>
+              {{ budget.data.dataEntrega.toDate() | date : "dd/MM/yyyy HH:MM" }}
+            </p>
+            <div class="status cancelado">
+              <span>Ativo</span>
+            </div>
           </div>
         </div>
-      </div>
-      <img src="assets/Arte e açúcar (1) 1.svg" alt="" />
-      <div class="cardMore">
-        <div class="more">
-          <h4>Tema:</h4>
-          <h4>Valor Total:</h4>
+        <img src="{{ budget.data.urlImage }}" alt="" />
+        <div class="cardMore">
+          <div class="more">
+            <h4>Tema:</h4>
+            <h4>Valor Total:</h4>
+          </div>
+          <div class="more">
+            <p>{{ budget.data.tema }}</p>
+            <p>{{ budget.data.precoTotal | currency : "BRL" }}</p>
+          </div>
         </div>
-        <div class="more">
-          <p>Carros</p>
-          <p>R$ 125,00</p>
+        <div class="buttons">
+          <button class="btnCancel" (click)="editBudget(budget.id)">
+            Editar
+          </button>
+          <button class="btnSave">Transformar pedido</button>
         </div>
       </div>
-      <div class="buttons">
-        <button class="btnCancel">Excluir</button>
-        <button class="btnSave">Transformar pedido</button>
-      </div>
-    </div>
+    </ng-container>
   </div>
   <div
     routerLink="/painel/orcamento/adicionar"

@@ -2,26 +2,23 @@
 
 .modalBackground {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
 .modalContent {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: #ffffff;
   padding: 24px;
   border-radius: 16px;
-  z-index: 2;
-  max-width: 80%;
-  height: 80%;
-  overflow-y: auto;
+  max-height: 90vh;
+  max-width: 90vw;
 }
 
 .modalHeader {
@@ -48,11 +45,19 @@
 }
 
 .cardsContainer {
-  margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
+  padding: 10px 0;
   justify-content: center;
+  overflow-y: auto;
+  max-height: calc(85vh - 210px);
   gap: 16px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.cardsContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
@@ -60,6 +65,7 @@
   padding: 16px;
   border-radius: 12px;
   cursor: pointer;
+  max-width: 90%;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -90,11 +96,4 @@ button {
   padding: 8px 20px;
   margin-left: 10px;
   cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .modalContent {
-    height: 90%;
-    max-width: 90%;
-  }
 }
