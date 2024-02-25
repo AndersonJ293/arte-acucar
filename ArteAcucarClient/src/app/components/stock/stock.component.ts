@@ -23,6 +23,5 @@ export class StockComponent {
     const selectedItems = this.items.filter(
       (item) => item.id === this.selectedItems
     );
-    console.log('Itens selecionados:', selectedItems);
   }
 }

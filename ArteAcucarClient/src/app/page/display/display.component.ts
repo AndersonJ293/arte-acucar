@@ -1,43 +1,40 @@
 import { Component, HostBinding } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
-import { CustomizationService } from '../../services/customization.service';
 
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
   styleUrl: './display.component.scss',
 })
+
 export class DisplayComponent {
   public static config: any = {};
-  primaryColor: string = '';
-  secondaryColor: string = '';
-  headerFont: string = '';
-
-  // @HostBinding('style.--var') var = 'red';
-
   carregado: boolean = false;
-  constructor(
-    private firebaseService: FirebaseService,
-    private customizationService: CustomizationService
-  ) {}
+
+  constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit(): void {
     this.firebaseService
       .getDocumentById('company', localStorage.getItem('companyCode')!)
       .subscribe((data) => {
         DisplayComponent.config = data;
-
         this.carregado = true;
+        this.updateHostBindings();
       });
-
-    this.customizationService.primaryColor$.subscribe(
-      (color) => (this.primaryColor = color)
-    );
-    this.customizationService.secondaryColor$.subscribe(
-      (color) => (this.secondaryColor = color)
-    );
-    this.customizationService.headerFont$.subscribe(
-      (font) => (this.headerFont = font)
-    );
   }
+
+  private updateHostBindings(): void {
+    this.primaryColor = DisplayComponent.config.data?.colorPrimaria;
+    this.secondaryColor = DisplayComponent.config.data?.colorSecundaria;
+    this.headerFont = DisplayComponent.config.data?.fonteTitulo;
+  }
+
+  @HostBinding('style.--primary-color')
+  primaryColor: string = '#f8f8fa';
+
+  @HostBinding('style.--secondary-color')
+  secondaryColor: string = '#541514';
+
+  @HostBinding('style.--header-font')
+  headerFont: string = 'Courgette';
 }
