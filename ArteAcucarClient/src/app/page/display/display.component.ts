@@ -4,9 +4,8 @@ import { FirebaseService } from '../../services/firebase.service';
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
-  styleUrl: './display.component.scss',
+  styleUrls: ['./colors.scss', './display.component.scss'],
 })
-
 export class DisplayComponent {
   public static config: any = {};
   carregado: boolean = false;
