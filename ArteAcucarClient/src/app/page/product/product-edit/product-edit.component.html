@@ -175,6 +175,7 @@
 </div>
 <app-product-modal
   (save)="handleSave($event)"
+  (close)="handleClose()"
   [items]="items"
   *ngIf="open"
   [selectedItems]="selectedItems"

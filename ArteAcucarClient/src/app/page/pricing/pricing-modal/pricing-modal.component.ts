@@ -9,6 +9,7 @@ export class PricingModalComponent implements OnInit {
   @Input() items: any[] = [];
   @Input() selectedItems: any[] = [];
   @Output() save: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output() close: EventEmitter<void> = new EventEmitter<void>();
 
   searchInput: string = '';
 
@@ -33,5 +34,9 @@ export class PricingModalComponent implements OnInit {
 
   saveSelection() {
     this.save.emit(this.selectedItems);
+  }
+
+  closeSelection() {
+    this.close.emit();
   }
 }
