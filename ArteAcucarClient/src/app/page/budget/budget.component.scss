@@ -76,6 +76,25 @@ select {
   margin-bottom: 16px;
 }
 
+.cardDetailHeader {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 8px;
+
+  fa-icon {
+    background-color: aquamarine;
+    border-radius: 50%;
+    padding: 2px 5px 2px 8px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+  }
+}
+
 .cardDetail p {
   font-weight: bold;
   margin-right: auto;

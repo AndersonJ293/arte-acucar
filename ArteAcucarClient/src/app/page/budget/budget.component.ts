@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faAdd } from '@fortawesome/free-solid-svg-icons';
+import { faAdd, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import { MenuService } from '../../services/menu.service';
 import { FirebaseService } from '../../services/firebase.service';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class BudgetComponent implements OnInit {
   faAdd = faAdd;
+  faPrinter = faFilePdf;
   budgets: any[] = [];
 
   constructor(
@@ -33,5 +34,11 @@ export class BudgetComponent implements OnInit {
 
   editBudget(budgetId: string) {
     this.router.navigate(['painel/orcamento/editar', budgetId]);
+  }
+
+  printBudget(budgetId: string) {
+    this.router.navigate([]).then((result) => {
+      window.open(`/orcamento/impressao/${budgetId}`, '_blank');
+    });
   }
 }

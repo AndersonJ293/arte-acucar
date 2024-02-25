@@ -14,7 +14,15 @@
     <ng-container *ngFor="let budget of budgets">
       <div class="card">
         <div class="cardDetail">
-          <h3>{{ budget.data.nome }}</h3>
+          <div class="cardDetailHeader">
+            <h3>{{ budget.data.nome }}</h3>
+            <fa-icon
+              [icon]="faPrinter"
+              class="icon"
+              (click)="printBudget(budget.id)"
+              target="_blank"
+            ></fa-icon>
+          </div>
           <div class="date">
             <p>
               {{ budget.data.dataEntrega.toDate() | date : "dd/MM/yyyy HH:MM" }}
