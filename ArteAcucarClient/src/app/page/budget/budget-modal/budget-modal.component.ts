@@ -25,8 +25,6 @@ export class BudgetModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.items);
-
     this.selectedItems.map((sItem) => {
       const index = this.items.findIndex((item) => item.id === sItem.id);
       if (index !== -1) this.items[index].selected = true;
