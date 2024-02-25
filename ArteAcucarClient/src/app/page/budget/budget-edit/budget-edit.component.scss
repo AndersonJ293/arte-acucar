@@ -1,3 +1,5 @@
+@import "../../display/colors.scss";
+
 .container {
   padding: 50px;
 }
@@ -15,17 +17,6 @@ header {
   margin-bottom: 24px;
   align-items: center;
   text-align: center;
-}
-
-header > i {
-  display: flex;
-  width: 40px;
-  height: 40px;
-  color: #00cc66;
-  background-color: #00cc6633;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
 }
 
 .fechar-modal {
@@ -170,7 +161,7 @@ select {
 }
 
 #drop-area.active {
-  border-color: #007bff;
+  border-color: var(--display-secondary-color);
 }
 
 #drop-area img {
@@ -193,7 +184,7 @@ label[for="imagem"] {
 }
 
 label[for="imagem"] {
-  color: #ff3333;
+  color: var(--display-secondary-color);
   cursor: pointer;
 }
 

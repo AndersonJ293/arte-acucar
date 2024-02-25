@@ -1,3 +1,5 @@
+@import "../../display/colors.scss";
+
 .container {
   padding: 50px;
 }
@@ -169,7 +171,7 @@ select {
 }
 
 #drop-area.active {
-  border-color: #007bff;
+  border-color: var(--display-secondary-color);
 }
 
 #drop-area img {
@@ -192,7 +194,7 @@ label[for="imagem"] {
 }
 
 label[for="imagem"] {
-  color: #ff3333;
+  color: var(--display-secondary-color);
   cursor: pointer;
 }
 

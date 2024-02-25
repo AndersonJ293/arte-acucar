@@ -1,12 +1,10 @@
-@import "../../../styles.scss";
-
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100vw;
   padding: 10px 50px;
-  background-color: $primary-color;
+  background-color: var(--display-primary-color);
   height: 100px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.151);
 }
@@ -23,8 +21,8 @@ header {
 
   span {
     font-size: 2.5rem;
-    color: $secondary-color;
-    font-family: $title-font;
+    color: var(--display-secondary-color);
+    font-family: var(--display-header-font);
   }
 }
 
@@ -40,8 +38,8 @@ header {
     justify-content: center;
     text-align: center;
     border-radius: 6px;
-    border: 1px solid $secondary-color;
-    background-color: $primary-color;
+    border: 1px solid var(--display-secondary-color);
+    background-color: var(--display-primary-color);
     cursor: pointer;
     transition: 0.5s;
   }
@@ -55,7 +53,7 @@ header {
     width: 40px;
     fa-icon {
       font-size: 28px;
-      color: $secondary-color;
+      color: var(--display-secondary-color);
     }
   }
 }

@@ -1,4 +1,4 @@
-@import "../../../styles.scss";
+@import url("../../page/display/colors.scss");
 
 .remove-button {
   background-color: #ff0000;
@@ -32,8 +32,8 @@
 }
 
 .card {
-  border: 1px solid $secondary-color;
-  color: $secondary-color;
+  border: 1px solid var(--display-secondary-color);
+  color: var(--display-secondary-color);
   padding: 10px;
   border-radius: 16px;
   transition: transform 0.2s ease;
@@ -48,7 +48,7 @@
 }
 
 textarea {
-  color: $secondary-color;
+  color: var(--display-secondary-color);
   border-radius: 8px;
   border: 1px solid #212121;
   padding: 10px;

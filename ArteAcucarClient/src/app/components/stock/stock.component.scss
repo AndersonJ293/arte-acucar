@@ -1,3 +1,5 @@
+@import url("../../page/display/colors.scss");
+
 .container {
   display: flex;
   flex-direction: column;
@@ -17,10 +19,10 @@
 a {
   margin-top: 12px;
   text-align: center;
-  color: #541514;
+  color: var(--display-secondary-color);
   cursor: pointer;
 }
 
 a:hover {
-  color: #3f0f0f;
+  // color: rgba(var(--display-secondary-color), 0.8);
 }

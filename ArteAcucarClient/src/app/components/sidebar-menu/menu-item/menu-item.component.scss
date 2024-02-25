@@ -1,4 +1,4 @@
-@import "../../../../styles.scss";
+@import "../../../page/display/colors.scss";
 
 .menuItemClose,
 .menuItemOpen {
@@ -16,11 +16,11 @@
     cursor: pointer;
 
     text-decoration: none;
-    color: $secondary-color;
+    color: var(--display-secondary-color);
   }
 
   a:hover {
-    background-color: $primary-color;
+    background-color: var(--display-primary-color);
   }
 }
 

@@ -19,6 +19,7 @@ export class DisplayComponent {
         DisplayComponent.config = data;
         this.carregado = true;
         this.updateHostBindings();
+        this.updateCSSVariables();
       });
   }
 
@@ -28,12 +29,27 @@ export class DisplayComponent {
     this.headerFont = DisplayComponent.config.data?.fonteTitulo;
   }
 
-  @HostBinding('style.--primary-color')
+  private updateCSSVariables(): void {
+    document.documentElement.style.setProperty(
+      '--display-primary-color',
+      this.primaryColor
+    );
+    document.documentElement.style.setProperty(
+      '--display-secondary-color',
+      this.secondaryColor
+    );
+    document.documentElement.style.setProperty(
+      '--display-header-font',
+      this.headerFont
+    );
+  }
+
+  @HostBinding('style.--display-primary-color')
   primaryColor: string = '#f8f8fa';
 
-  @HostBinding('style.--secondary-color')
+  @HostBinding('style.--display-secondary-color')
   secondaryColor: string = '#541514';
 
-  @HostBinding('style.--header-font')
+  @HostBinding('style.--display-header-font')
   headerFont: string = 'Courgette';
 }

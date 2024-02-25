@@ -1,3 +1,5 @@
+@import "../../../page/display/colors.scss";
+
 .estoque-list {
   height: 100%;
   width: 100%;
@@ -26,7 +28,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: rgba(84, 21, 20, 0.2);
+  // background-color: rgba(var(--display-secondary-color), 0.2);
   margin-right: 8px;
 }
 
@@ -34,7 +36,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: rgb(84, 21, 20);
+  background-color: var(--display-secondary-color);
 }
 
 .icon {

@@ -31,7 +31,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css"],
+            "styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css", "src/app/page/display/colors.scss"],
             "scripts": []
           },
           "configurations": {
@@ -83,7 +83,7 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css"],
+            "styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css", "src/app/page/display/colors.scss"],
             "scripts": []
           }
         },

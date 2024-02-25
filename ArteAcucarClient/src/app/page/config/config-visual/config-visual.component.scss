@@ -1,3 +1,5 @@
+@import "../../display/colors.scss";
+
 .container {
   display: flex;
   width: 100%;
@@ -48,7 +50,7 @@ input[type="file"] {
 }
 
 #drop-area.active {
-  border-color: #007bff;
+  border-color: var(--display-secondary-color);
 }
 
 #drop-area img {
@@ -71,6 +73,6 @@ label[for="imagem"] {
 }
 
 label[for="imagem"] {
-  color: #ff3333;
+  color: var(--display-secondary-color);
   cursor: pointer;
 }

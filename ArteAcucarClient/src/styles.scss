@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+@import url("./app/page/display/colors.scss");
 
-$primary-color: #f9e8f2;
-$secondary-color: #541514;
+// $primary-color: #f9e8f2;
+// $secondary-color: #541514;
 $background-image: linear-gradient(
   -20deg,
   #ddd6f3 0%,
@@ -10,7 +11,7 @@ $background-image: linear-gradient(
   #faaca8 100%
 );
 
-$title-font: "Courgette", cursive;
+// $title-font: "Courgette", cursive;
 
 * {
   padding: 0;
@@ -60,24 +61,11 @@ ol {
   }
 }
 
-.primaryButton {
-  display: inline-flex;
-  padding: 8px 16px;
-  gap: 10px;
-  border-radius: 16px;
-  border: 1px solid #ff3333;
-  background-color: transparent;
-  color: #ff3333;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
 .btnCancel {
   padding: 4px 18px;
   border-radius: 12px;
-  border: 1px solid $secondary-color;
-  color: $secondary-color;
+  border: 1px solid var(--display-secondary-color);
+  color: var(--display-secondary-color);
   background-color: transparent;
   font-size: 16px;
   font-weight: 600;
@@ -90,7 +78,7 @@ ol {
   border-radius: 12px;
   border: none;
   color: #fff;
-  background-color: $secondary-color;
+  background-color: var(--display-secondary-color);
   font-size: 16px;
   font-weight: 600;
   transition: 0.3;
@@ -112,7 +100,7 @@ label {
 input {
   padding: 2px 10px;
   height: 40px;
-  color: $secondary-color;
+  color: var(--display-secondary-color);
   background-color: transparent;
   border-radius: 8px;
   border: 1px solid #212121;
@@ -129,7 +117,7 @@ select {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: $secondary-color;
+  background-color: var(--display-secondary-color);
   color: #fff;
   border-radius: 50%;
   width: 60px;

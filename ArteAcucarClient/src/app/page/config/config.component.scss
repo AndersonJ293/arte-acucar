@@ -1,4 +1,4 @@
-@import "../../../styles.scss";
+@import url("../display/colors.scss");
 
 .container {
   padding: 50px;
@@ -99,7 +99,7 @@ input {
 }
 
 textarea {
-  color: $secondary-color;
+  color: var(--display-secondary-color);
   border-radius: 8px;
   border: 1px solid #212121;
   padding: 10px;

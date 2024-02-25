@@ -1,3 +1,5 @@
+@import "../../display/colors.scss";
+
 .modalBackground {
   position: fixed;
   display: flex;
@@ -76,12 +78,12 @@
 }
 
 .selected {
-  box-shadow: 0 0 0 3px #541514;
+  box-shadow: 0 0 0 3px var(--display-secondary-color);
   background-color: #f9e8f2;
 }
 
 .card.selected input {
-  border-color: #541514;
+  border-color: var(--display-secondary-color);
 }
 
 .modalFooter {

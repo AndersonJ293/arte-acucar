@@ -1,3 +1,5 @@
+@import "../../../page/display/colors.scss";
+
 .bar {
   display: flex;
   align-items: center;
@@ -59,7 +61,7 @@
 
 .progress-bar {
   height: 100%;
-  background-color: #541514;
+  background-color: var(--display-secondary-color);
   transition: width 0.3s ease-in-out;
 }
 
