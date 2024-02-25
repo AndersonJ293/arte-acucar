@@ -39,8 +39,6 @@ export class CommoditieCardComponent implements OnInit {
     if (this.editMode) {
       // validação dos campos
       if (!this.validateForm()) {
-        console.log('Preencha todos os campos');
-
         this.toastService.error('Preencha todos os campos', 'Erro');
         return;
       }

@@ -136,6 +136,21 @@
         </div>
       </ng-container>
 
+      <ng-container
+        id="configMetas"
+        class="configSection"
+        *ngIf="selectedSection === 'visual'"
+      >
+        <h3>Ajustes visuais</h3>
+        <app-config-visual
+          class="sectionContainer"
+          (colorPChanged)="onColorPChanged($event)"
+          (colorSChanged)="onColorSChanged($event)"
+          (fontChanged)="onFontChanged($event)"
+          [configForm]="configForm"
+        ></app-config-visual>
+      </ng-container>
+
       <div class="buttons">
         <button href="" class="btnSave" type="submit">Salvar</button>
         <button href="" class="btnCancel" (click)="configForm.reset()">

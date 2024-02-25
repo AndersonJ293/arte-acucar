@@ -11,7 +11,7 @@ import { DisplayComponent } from '../display/display.component';
   styleUrl: './config.component.scss',
 })
 export class ConfigComponent implements OnInit {
-  selectedSection: string = 'geral';
+  selectedSection: string = 'visual';
 
   configForm: FormGroup = this.formBuilder.group({
     salarioMensal: ['', Validators.required],
@@ -22,7 +22,9 @@ export class ConfigComponent implements OnInit {
     mensagemOrcamento: [''],
     metaQtdeOrcamento: [''],
     metaQtdeVendas: [''],
-    metaRecebimento: [''],
+    colorPrimaria: [''],
+    colorSecundaria: [''],
+    fonteTitulo: [''],
   });
 
   valores: { [key: string]: string } = {
@@ -88,6 +90,18 @@ export class ConfigComponent implements OnInit {
 
   onTextChanged(event: string) {
     this.configForm.get('mensagemOrcamento')!.setValue(event);
+  }
+
+  onColorPChanged(event: string) {
+    this.configForm.get('colorPrimaria')!.setValue(event);
+  }
+
+  onColorSChanged(event: string) {
+    this.configForm.get('colorSecundaria')!.setValue(event);
+  }
+
+  onFontChanged(event: string) {
+    this.configForm.get('fonteTitulo')!.setValue(event);
   }
 
   showSection(section: string) {

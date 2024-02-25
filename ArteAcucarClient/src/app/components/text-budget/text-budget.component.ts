@@ -29,12 +29,7 @@ export class TextBudgetComponent {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  salvarTexto() {
-    console.log(
-      'Texto salvo:',
-      this.configForm.get('mensagemOrcamento')!.value
-    );
-  }
+  salvarTexto() {}
 
   onChange() {
     this.textChanged.emit(this.configForm.get('mensagemOrcamento')!.value);

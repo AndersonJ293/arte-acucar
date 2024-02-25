@@ -53,6 +53,7 @@ import { CardInfoComponent } from './components/all-info/card-info/card-info.com
 import { TextBudgetComponent } from './components/text-budget/text-budget.component';
 import { BudgetReportComponent } from './page/budget-report/budget-report.component';
 import { PhonePipe } from './pipes/phone.pipe';
+import { ConfigVisualComponent } from './page/config/config-visual/config-visual.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { PhonePipe } from './pipes/phone.pipe';
     TextBudgetComponent,
     BudgetReportComponent,
     PhonePipe,
+    ConfigVisualComponent,
   ],
   imports: [
     BrowserModule,

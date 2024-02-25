@@ -35,15 +35,12 @@ export class GraphComponent {
   loadData() {
     if (this.graphType === 'semanal') {
       this.graphLabels = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex'];
-      console.log(this.graphLabels);
       this.graphData = this.semanalData;
     } else if (this.graphType === 'mensal') {
       this.graphLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-      console.log(this.graphLabels);
       this.graphData = this.mensalData;
     } else if (this.graphType === 'anual') {
       this.graphLabels = ['2023', '2024', '2025'];
-      console.log(this.graphLabels);
       this.graphData = this.anualData;
     }
   }
