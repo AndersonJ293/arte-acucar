@@ -93,6 +93,10 @@ export class ProductEditComponent implements OnInit {
     this.open = false;
   }
 
+  handleClose() {
+    this.closeModal();
+  }
+
   get horasTrabalhadasPrecificacao(): string {
     let minutosPrecificacoes: number = 0;
     let horasPrecificacoes: number = 0;

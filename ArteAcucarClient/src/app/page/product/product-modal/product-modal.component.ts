@@ -9,7 +9,7 @@ export class ProductModalComponent implements OnInit {
   @Input() items: any[] = [];
   @Input() selectedItems: any[] = [];
   @Output() save: EventEmitter<any[]> = new EventEmitter<any[]>();
-
+  @Output() close: EventEmitter<void> = new EventEmitter<void>();
   searchInput: string = '';
 
   toggleSelection(item: any) {
@@ -33,5 +33,9 @@ export class ProductModalComponent implements OnInit {
 
   saveSelection() {
     this.save.emit(this.selectedItems);
+  }
+
+  closeSelection() {
+    this.close.emit();
   }
 }

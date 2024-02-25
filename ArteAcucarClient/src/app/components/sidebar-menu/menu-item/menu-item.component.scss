@@ -30,14 +30,16 @@
   }
 
   span {
-    display: inline;
+    visibility: visible;
+    width: auto;
   }
 }
 
 .menuItemClose {
   padding: 10px 0;
-
   span {
-    display: none;
+    text-wrap: nowrap;
+    visibility: hidden;
+    width: 0;
   }
 }

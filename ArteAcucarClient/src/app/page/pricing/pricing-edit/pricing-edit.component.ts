@@ -144,4 +144,8 @@ export class PricingEditComponent implements OnInit {
   closeModal() {
     this.open = false;
   }
+
+  handleClose() {
+    this.closeModal();
+  }
 }

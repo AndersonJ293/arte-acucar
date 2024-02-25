@@ -116,6 +116,7 @@ select {
   border: 1px solid #212121;
   margin-bottom: 24px;
   padding: 4px;
+  max-width: 100%;
 }
 
 #drop-area {
@@ -137,6 +138,7 @@ select {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 8px;
+  max-width: 100%;
 }
 
 .selectedItem h3 {

@@ -34,7 +34,7 @@
       </div>
       <div class="commoditiesArea">
         <div class="header">
-          <h3>Adicionar insumos</h3>
+          <h3>Selecionar insumos</h3>
           <button class="btnSave" (click)="openModal()">+</button>
         </div>
 
@@ -151,6 +151,7 @@
 </div>
 <app-pricing-modal
   (save)="handleSave($event)"
+  (close)="handleClose()"
   [items]="items"
   *ngIf="open"
   [selectedItems]="selectedItems"
