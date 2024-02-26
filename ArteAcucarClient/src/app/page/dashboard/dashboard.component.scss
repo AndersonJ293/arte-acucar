@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  height: calc(100vh - 100px);
+  height: calc(100dvh - 100px);
   padding: 16px;
   flex-direction: row-reverse;
   gap: 16px;

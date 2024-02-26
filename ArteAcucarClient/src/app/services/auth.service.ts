@@ -118,7 +118,6 @@ export class AuthService {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       localStorage.removeItem('companyCode');
-      localStorage.removeItem('config');
       this.router.navigate(['sign-in']);
     });
   }

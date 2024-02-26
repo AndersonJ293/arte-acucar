@@ -4,7 +4,7 @@
 .containerOpen {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px);
+  height: calc(100dvh - 100px);
   transition: 0.3s;
 }
 
