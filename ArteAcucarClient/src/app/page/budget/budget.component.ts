@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faAdd, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faAdd, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { MenuService } from '../../services/menu.service';
 import { FirebaseService } from '../../services/firebase.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class BudgetComponent implements OnInit {
   faAdd = faAdd;
-  faPrinter = faFilePdf;
+  faDownload = faDownload;
   budgets: any[] = [];
 
   constructor(
