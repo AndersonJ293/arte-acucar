@@ -2,7 +2,7 @@
   <div class="loadingSpinner"></div>
 </div>
 
-<section class="container">
+<section #screen class="container">
   <div class="orcamento">
     <header>
       <img src="../../../assets/icons/coracao_orcamento.svg" alt="coração" />
@@ -114,3 +114,13 @@
     </section>
   </div>
 </section>
+
+<div class="floatButton" (click)="downloadImage()">
+  baixar
+  <!-- <fa-icon [icon]="faAdd" class="icon"></fa-icon> -->
+</div>
+
+<div id="download">
+  <img #canvas />
+  <a #downloadLink></a>
+</div>

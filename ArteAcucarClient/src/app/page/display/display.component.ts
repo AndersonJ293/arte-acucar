@@ -18,6 +18,7 @@ export class DisplayComponent {
       .subscribe((data) => {
         DisplayComponent.config = data;
         this.carregado = true;
+        // localStorage.setItem()
         this.updateHostBindings();
         this.updateCSSVariables();
       });

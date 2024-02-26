@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirebaseService } from '../../services/firebase.service';
-import { DisplayComponent } from '../display/display.component';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-budget-report',
@@ -31,5 +31,18 @@ export class BudgetReportComponent implements OnInit {
         this.budget = data;
         this.carregado = true;
       });
+  }
+
+  @ViewChild('screen') screen?: ElementRef;
+  @ViewChild('canvas') canvas?: ElementRef;
+  @ViewChild('downloadLink') downloadLink?: ElementRef;
+
+  downloadImage() {
+    html2canvas(this.screen!.nativeElement).then((canvas) => {
+      this.canvas!.nativeElement.src = canvas.toDataURL();
+      this.downloadLink!.nativeElement.href = canvas.toDataURL('image/png');
+      this.downloadLink!.nativeElement.download = `Orcamento${this.budget.data.nome}.png`;
+      this.downloadLink!.nativeElement.click();
+    });
   }
 }
