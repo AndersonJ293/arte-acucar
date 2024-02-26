@@ -13,7 +13,7 @@ header {
   display: flex;
   height: 100%;
   align-items: center;
-  gap: 10px;
+  gap: 24px;
   img {
     max-width: auto;
     max-height: 85%;
@@ -30,7 +30,7 @@ header {
   display: flex;
   align-items: center;
   height: 100%;
-  gap: 10px;
+  gap: 24px;
 
   button {
     display: flex;
@@ -41,7 +41,7 @@ header {
     border: 1px solid var(--display-secondary-color);
     background-color: var(--display-primary-color);
     cursor: pointer;
-    transition: 0.5s;
+    transition: 0.5s ease-in;
   }
 
   button:hover {
