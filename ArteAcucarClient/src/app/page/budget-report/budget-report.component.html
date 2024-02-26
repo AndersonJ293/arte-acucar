@@ -8,7 +8,7 @@
       <img src="../../../assets/icons/coracao_orcamento.svg" alt="coração" />
       <div class="header">
         <div class="title">
-          <h1>Arte e Açúcar</h1>
+          <h1>{{ config.data.name }}</h1>
           <h3>Orçamento</h3>
         </div>
         <div class="logo">
@@ -46,10 +46,10 @@
         <div class="cardItens">
           <table>
             <tr>
-              <th><div>Qtde</div></th>
+              <th>Qtde</th>
               <th>Produto</th>
               <th>Valor Un.</th>
-              <th>Total</th>
+              <th><div class="destaque">Total</div></th>
             </tr>
             <tr *ngFor="let product of budget.data.items">
               <td>{{ product.usedQuantity }}</td>
@@ -79,7 +79,7 @@
           </div>
           <div class="pagamentoTitle">
             <h4 class="title">Pagamento</h4>
-            <h4 class="total">Total</h4>
+            <h4 class="total destaque">Total</h4>
           </div>
           <div class="pagamentoContent">
             <div class="radioGrup">
@@ -116,8 +116,7 @@
 </section>
 
 <div class="floatButton" (click)="downloadImage()">
-  baixar
-  <!-- <fa-icon [icon]="faAdd" class="icon"></fa-icon> -->
+  <fa-icon [icon]="faDownload" class="icon"></fa-icon>
 </div>
 
 <div id="download">
