@@ -2,10 +2,15 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-image: $background-image;
+  background-image: linear-gradient(
+    -20deg,
+    #0067db 0%,
+    #0067db 50%,
+    #0067db 100%
+  );
   height: 100vh;
   width: 100vw;
-  // color: $secondary-color;
+  color: white;
 }
 
 .glassEffect {
@@ -27,10 +32,10 @@ section {
 }
 
 .image {
-  width: 60%;
+  width: 50%;
   img {
-    width: 90%;
-    height: 90%;
+    width: 80%;
+    height: 80%;
     user-select: none;
     -webkit-user-drag: none;
   }
@@ -43,7 +48,7 @@ header {
 
 header > h1 {
   font-size: 48px;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 5px;
 }
 
@@ -76,7 +81,7 @@ label {
 input {
   padding: 2px 10px;
   height: 40px;
-  color: #541514;
+  color: #0067db;
   background-color: transparent;
   border-radius: 8px;
   border: 1px solid #212121;
@@ -116,7 +121,8 @@ p > a {
 
 @media (max-width: 768px) {
   .glassEffect {
-    height: 80%;
+    height: 95%;
+    width: 95%;
   }
 
   .image {
@@ -128,6 +134,6 @@ p > a {
   }
 
   h2 {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 }
