@@ -47,11 +47,14 @@ export class AuthService {
           case 'auth/invalid-email':
             this.toastr.error('Endereço de email inválido', 'Erro');
             break;
-          case 'auth/wrong-password':
+          case 'auth/invalid-credential':
             this.toastr.error('Senha incorreta', 'Erro');
             break;
           case 'auth/weak-password':
-            this.toastr.error('A senha deve ter mais de 6 caracteres');
+            this.toastr.error('A senha deve ter mais de 6 caracteres', 'Erro');
+            break;
+          case 'auth/missing-password':
+            this.toastr.error('Digite sua senha!', 'Erro');
             break;
           case 'auth/user-not-found':
             this.toastr.error('Usuário não encontrado', 'Erro');
