@@ -129,6 +129,21 @@ export class FirebaseService {
     }
   }
 
+  async uploadImage(
+    path: string,
+    imageName: string,
+    file: any
+  ): Promise<string | null> {
+    try {
+      const filePath = path ? `${path}/${imageName}` : imageName;
+      const uploadPhoto = await this.fireStorage.upload(filePath, file);
+      const url = await uploadPhoto.ref.getDownloadURL();
+      return url;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async excluirItem(collection: string, id: string): Promise<void> {
     try {
       await this.firestore.collection(collection).doc(id).delete();

@@ -52,12 +52,9 @@
         (drop)="onDrop($event)"
         (dragover)="onDragOver($event)"
       >
-        <img *ngIf="previewUrl" [src]="previewUrl" alt="Preview" />
         <img
-          class="picture"
-          *ngIf="!previewUrl"
-          src="../../../../assets/img/picture.png"
-          alt=""
+          [src]="previewUrl || '../../../../assets/img/picture.png'"
+          alt="Preview"
         />
         <input
           type="file"

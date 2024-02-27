@@ -95,3 +95,9 @@ form {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+a {
+  color: var(--display-secondary-color);
+  cursor: pointer;
+  margin-top: 24px;
+}

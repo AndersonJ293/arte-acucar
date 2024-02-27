@@ -14,4 +14,8 @@ export class HeaderComponent {
   constructor(private menuService: MenuService) {}
 
   handleMenu = this.menuService.handleMenu;
+
+  get companyLogo() {
+    return DisplayComponent.config.data.logo;
+  }
 }

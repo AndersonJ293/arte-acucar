@@ -11,7 +11,9 @@ import { DisplayComponent } from '../display/display.component';
   styleUrl: './config.component.scss',
 })
 export class ConfigComponent implements OnInit {
-  selectedSection: string = 'geral';
+  selectedSection: string = 'visual';
+  previewUrl: string = '';
+  file?: any;
 
   configForm: FormGroup = this.formBuilder.group({
     salarioMensal: ['', Validators.required],
@@ -25,6 +27,7 @@ export class ConfigComponent implements OnInit {
     colorPrimaria: [''],
     colorSecundaria: [''],
     fonteTitulo: [''],
+    logo: [''],
   });
 
   valores: { [key: string]: string } = {
@@ -62,10 +65,22 @@ export class ConfigComponent implements OnInit {
     return texto;
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.configForm.invalid) {
       this.toastService.error('Preencha todos os campos obrigatórios!');
       return;
+    }
+
+    console.log(this.file);
+
+    if (this.file != null) {
+      const urlImage = await this.firebaseService.uploadImage(
+        'company/logo',
+        this.configAtual.id,
+        this.file
+      );
+
+      this.configForm.value.logo = urlImage;
     }
 
     this.configForm.value.salarioHora =
@@ -88,6 +103,10 @@ export class ConfigComponent implements OnInit {
     this.toastService.success('Configurações salvas com sucesso!');
   }
 
+  updateImageAndSubmit() {
+    // const companyName = this.configForm.value.name
+  }
+
   onTextChanged(event: string) {
     this.configForm.get('mensagemOrcamento')!.setValue(event);
   }
@@ -102,6 +121,10 @@ export class ConfigComponent implements OnInit {
 
   onFontChanged(event: string) {
     this.configForm.get('fonteTitulo')!.setValue(event);
+  }
+
+  onLogoChanged(event: any) {
+    this.file = event;
   }
 
   showSection(section: string) {
