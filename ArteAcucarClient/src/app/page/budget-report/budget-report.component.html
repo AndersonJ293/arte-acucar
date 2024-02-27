@@ -2,8 +2,8 @@
   <div class="loadingSpinner"></div>
 </div>
 
-<section #screen class="container">
-  <div class="orcamento">
+<div class="wrapper">
+  <section #screen class="container">
     <header>
       <img src="../../../assets/icons/coracao_orcamento.svg" alt="coração" />
       <div class="header">
@@ -44,61 +44,79 @@
           />
         </div>
         <div class="cardItens">
-          <table>
-            <tr>
-              <th>Qtde</th>
-              <th>Produto</th>
-              <th>Valor Un.</th>
-              <th><div class="destaque">Total</div></th>
-            </tr>
-            <tr *ngFor="let product of budget.data.items">
-              <td>{{ product.usedQuantity }}</td>
-              <td>
-                <div class="productInfo">
-                  <span>{{ product.data.nome }}</span>
-                  <!-- <li>Massa: baunilha</li>
-                  <li>Recheio: brifadeiro e ninho</li> -->
-                </div>
-              </td>
-              <td>{{ product.data.precoTotal | currency : "BRL" }}</td>
-              <td>
-                {{
-                  product.data.precoTotal * product.usedQuantity
-                    | currency : "BRL"
-                }}
-              </td>
-            </tr>
-          </table>
+          <div class="tableWrapper">
+            <table>
+              <tr>
+                <th>Qtde</th>
+                <th>Produto</th>
+                <th>Valor Un.</th>
+                <th><div class="destaque">Total</div></th>
+              </tr>
+              <tr *ngFor="let product of budget.data.items">
+                <td>{{ product.usedQuantity }}</td>
+                <td>
+                  <div class="productInfo">
+                    <span>{{ product.data.nome }}</span>
+                    <!-- <li>Massa: baunilha</li>
+											<li>Recheio: brifadeiro e ninho</li> -->
+                  </div>
+                </td>
+                <td>{{ product.data.precoTotal | currency : "BRL" }}</td>
+                <td>
+                  {{
+                    product.data.precoTotal * product.usedQuantity
+                      | currency : "BRL"
+                  }}
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
+
         <div class="cardPagamento">
-          <div class="pagamentoTitle">
-            <h4 class="title">Adicional Tema</h4>
-            <h4 class="total">
-              {{ budget.data.adicionalOrcamento | currency : "BRL" }}
-            </h4>
-          </div>
-          <div class="pagamentoTitle">
-            <h4 class="title">Pagamento</h4>
-            <h4 class="total destaque">Total</h4>
-          </div>
-          <div class="pagamentoContent">
-            <div class="radioGrup">
-              <div class="radio">
-                <input type="radio" id="pix" name="pagamento" value="30" />
-                <label for="pix">Pix</label><br />
-              </div>
-              <div class="radio">
-                <input type="radio" id="card" name="pagamento" value="30" />
-                <label for="card">Cartão</label><br />
-              </div>
-              <div class="radio">
-                <input type="radio" id="money" name="pagamento" value="30" />
-                <label for="money">Dinheiro</label><br />
-              </div>
-            </div>
-            <div class="valueTotal">
-              <h4>{{ budget.data.precoTotal | currency : "BRL" }}</h4>
-            </div>
+          <div class="tableWrapper">
+            <table class="pagamentoTable">
+              <tr>
+                <th>Pagamento</th>
+                <th>Adicional Tema</th>
+                <th><div class="destaque">Total</div></th>
+              </tr>
+              <tr>
+                <td>
+                  <div class="pagamentoContent">
+                    <div class="radio">
+                      <input
+                        type="radio"
+                        id="pix"
+                        name="pagamento"
+                        value="30"
+                      />
+                      <label for="pix">Pix</label><br />
+                    </div>
+                    <div class="radio">
+                      <input
+                        type="radio"
+                        id="card"
+                        name="pagamento"
+                        value="30"
+                      />
+                      <label for="card">Cartão</label><br />
+                    </div>
+                    <div class="radio">
+                      <input
+                        type="radio"
+                        id="money"
+                        name="pagamento"
+                        value="30"
+                      />
+                      <label for="money">Dinheiro</label><br />
+                    </div>
+                  </div>
+                </td>
+                <td>{{ budget.data.adicionalOrcamento | currency : "BRL" }}</td>
+                <td>{{ budget.data.precoTotal | currency : "BRL" }}</td>
+              </tr>
+            </table>
           </div>
         </div>
         <div class="cardObs">
@@ -106,20 +124,20 @@
           <textarea
             name="anotacoes"
             id="anotacoes"
-            rows="6"
+            rows="4"
             [value]="budget.data.anotacoes"
           ></textarea>
         </div>
       </form>
     </section>
+  </section>
+
+  <div class="floatButton" (click)="downloadImage()">
+    <fa-icon [icon]="faDownload" class="icon"></fa-icon>
   </div>
-</section>
 
-<div class="floatButton" (click)="downloadImage()">
-  <fa-icon [icon]="faDownload" class="icon"></fa-icon>
-</div>
-
-<div id="download">
-  <img #canvas />
-  <a #downloadLink></a>
+  <div id="download">
+    <img #canvas />
+    <a #downloadLink></a>
+  </div>
 </div>
