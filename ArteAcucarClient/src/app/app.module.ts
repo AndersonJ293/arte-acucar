@@ -54,6 +54,7 @@ import { TextBudgetComponent } from './components/text-budget/text-budget.compon
 import { BudgetReportComponent } from './page/budget-report/budget-report.component';
 import { PhonePipe } from './pipes/phone.pipe';
 import { ConfigVisualComponent } from './page/config/config-visual/config-visual.component';
+import { NotFoundComponent } from './page/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { ConfigVisualComponent } from './page/config/config-visual/config-visual
     BudgetReportComponent,
     PhonePipe,
     ConfigVisualComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
