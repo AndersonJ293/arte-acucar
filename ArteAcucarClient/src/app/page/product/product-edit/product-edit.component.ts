@@ -3,6 +3,7 @@ import { FirebaseService } from '../../../services/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DisplayComponent } from '../../display/display.component';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product-edit',
@@ -14,6 +15,8 @@ export class ProductEditComponent implements OnInit {
   open: boolean = false;
   items: any[] = [];
   selectedItems: any[] = [];
+  enviando: boolean = false;
+  faSpinner = faSpinner;
 
   nome: string = '';
   porcentagemAdicional: number = 0;
@@ -21,6 +24,7 @@ export class ProductEditComponent implements OnInit {
   horasTrabalhadasAdicional: string = '00:00';
 
   productId: string = '';
+  _precoTotalInput: number = 0;
 
   get config() {
     return DisplayComponent.config.data;
@@ -46,6 +50,7 @@ export class ProductEditComponent implements OnInit {
           this.valorAdicional = data.data.adicionalValorProduto;
           this.selectedItems = data.data.items;
           this.previewUrl = data.data.urlImage;
+          this._precoTotalInput = data.data.precoTotal - this.precoTotal2;
         });
     }
 
@@ -146,6 +151,17 @@ export class ProductEditComponent implements OnInit {
   }
 
   get lucro() {
+    return (
+      this.selectedItems.reduce(
+        (acc, item) =>
+          acc + item.data.lucro * (item.usedQuantity / item.data.quantidade),
+        0
+      ) +
+      this._precoTotalInput / 2
+    );
+  }
+
+  get lucro2() {
     return this.selectedItems.reduce(
       (acc, item) =>
         acc + item.data.lucro * (item.usedQuantity / item.data.quantidade),
@@ -175,14 +191,47 @@ export class ProductEditComponent implements OnInit {
   get salario() {
     const [horas, minutos] = this.horasTrabalhadasTotal.split(':');
     const totalHoras = parseInt(horas) + parseInt(minutos) / 60;
+    return (
+      totalHoras * parseFloat(this.config.salarioHora) +
+      this._precoTotalInput / 2
+    );
+  }
+
+  get salario2() {
+    const [horas, minutos] = this.horasTrabalhadasTotal.split(':');
+    const totalHoras = parseInt(horas) + parseInt(minutos) / 60;
     return totalHoras * parseFloat(this.config.salarioHora);
   }
 
   get precoTotal() {
-    return this.custoTotal + this.lucro + this.salario + this.adicionalProduto;
+    return parseFloat(
+      (
+        this.custoTotal +
+        this.lucro2 +
+        this.salario2 +
+        this.adicionalProduto +
+        this._precoTotalInput
+      ).toFixed(2)
+    );
+  }
+
+  get precoTotal2() {
+    return parseFloat(
+      (
+        this.custoTotal +
+        this.lucro2 +
+        this.salario2 +
+        this.adicionalProduto
+      ).toFixed(2)
+    );
+  }
+
+  set precoTotal(value: number) {
+    this._precoTotalInput = value - this.precoTotal2;
   }
 
   saveProduct() {
+    this.enviando = true;
     const fileInput = document.getElementById('imagem') as HTMLInputElement;
     const file = fileInput?.files?.[0];
 
@@ -218,6 +267,7 @@ export class ProductEditComponent implements OnInit {
         );
         this.toastService.success('Produto editado com sucesso!', 'Sucesso');
         this.router.navigate(['/painel/produto']);
+        this.enviando = false;
       } catch (error) {
         this.toastService.error('Erro ao editar o produto', 'Erro');
       }
@@ -228,6 +278,7 @@ export class ProductEditComponent implements OnInit {
       this.firebaseService.postFirebaseFile(file, data);
       this.toastService.success('Precificação salva com sucesso!', 'Sucesso');
       this.router.navigate(['/painel/produto']);
+      this.enviando = false;
     } catch (error) {
       this.toastService.error('Erro ao salvar precificação', 'Erro');
     }

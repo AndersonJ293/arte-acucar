@@ -2,8 +2,10 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase.service';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
 import { DisplayComponent } from '../display/display.component';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-config',
@@ -13,6 +15,7 @@ import { DisplayComponent } from '../display/display.component';
 export class ConfigComponent implements OnInit {
   selectedSection: string = 'visual';
   previewUrl: string = '';
+  enviando: boolean = false;
   file?: any;
 
   configForm: FormGroup = this.formBuilder.group({
@@ -40,8 +43,11 @@ export class ConfigComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private firebaseService: FirebaseService,
-    private toastService: ToastrService
-  ) {}
+    private toastService: ToastrService,
+    library: FaIconLibrary
+  ) {
+    library.addIconPacks(fas, far);
+  }
 
   ngOnInit(): void {
     this.configForm.patchValue(this.configAtual.data);
@@ -70,8 +76,7 @@ export class ConfigComponent implements OnInit {
       this.toastService.error('Preencha todos os campos obrigatórios!');
       return;
     }
-
-    console.log(this.file);
+    this.enviando = true;
 
     if (this.file != null) {
       const urlImage = await this.firebaseService.uploadImage(
@@ -101,6 +106,7 @@ export class ConfigComponent implements OnInit {
     // this.configAtual.data = this.configForm.value;
 
     this.toastService.success('Configurações salvas com sucesso!');
+    this.enviando = false;
   }
 
   updateImageAndSubmit() {

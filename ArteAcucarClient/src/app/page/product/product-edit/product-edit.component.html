@@ -66,7 +66,7 @@
                 min="0"
                 [(ngModel)]="selectedItem.usedQuantity"
               />
-              <p>
+              <p *ngIf="selectedItem.usedQuantity > 0">
                 Valor Usado:
                 {{
                   selectedItem.usedQuantity *
@@ -158,13 +158,24 @@
         </div>
         <div class="groupSellingPrice">
           <label for="sellingPrice">Preço Total</label>
-          {{ precoTotal | currency : "BRL" }}
+          <input
+            type="number"
+            id="sellingPrice"
+            name="sellingPrice"
+            [(ngModel)]="precoTotal"
+          />
         </div>
       </div>
 
       <div class="buttons">
-        <button type="submit" class="btnSave" (click)="saveProduct()">
-          Salvar
+        <button
+          type="submit"
+          class="btnSave"
+          (click)="saveProduct()"
+          [disabled]="enviando"
+        >
+          <fa-icon [icon]="faSpinner" [spin]="true" *ngIf="enviando"></fa-icon>
+          <p *ngIf="!enviando">Salvar</p>
         </button>
         <button routerLink="/painel/produto" type="reset" class="btnCancel">
           Cancelar
