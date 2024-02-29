@@ -29,6 +29,7 @@ export class BudgetEditComponent implements OnInit {
   idadeCrianca: string = '';
   anotacoes: string = '';
   porcentagemAdicional: number = 0;
+  valorAdicional: number = 0;
   cep: string = '';
   rua: string = '';
   bairro: string = '';
@@ -61,6 +62,7 @@ export class BudgetEditComponent implements OnInit {
           this.idadeCrianca = data.data.idadeCrianca;
           this.anotacoes = data.data.anotacoes;
           this.porcentagemAdicional = data.data.porcentagemAdicional;
+          this.valorAdicional = data.data.valorAdicional;
           this.selectedItems = data.data.items;
           this.endereco = data.data.endereco;
         });
@@ -175,7 +177,10 @@ export class BudgetEditComponent implements OnInit {
   }
 
   get adicionalOrcamento(): number {
-    return this.precoTotalProduos * (this.porcentagemAdicional / 100);
+    return (
+      this.precoTotalProduos * (this.porcentagemAdicional / 100) +
+      this.valorAdicional
+    );
   }
 
   get salario(): number {
@@ -216,6 +221,7 @@ export class BudgetEditComponent implements OnInit {
         idadeCrianca: this.idadeCrianca,
         anotacoes: this.anotacoes,
         porcentagemAdicional: this.porcentagemAdicional,
+        valorAdicional: this.valorAdicional,
         horasTrabalhadas: this.horasTrabalhadasProdutos,
         custoProdutos: parseFloat(this.custoProdutos.toFixed(2)),
         lucro: parseFloat(this.lucro.toFixed(2)),
