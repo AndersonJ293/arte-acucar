@@ -102,6 +102,25 @@ form {
   width: 100%;
 }
 
+.textArea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  label {
+    margin-bottom: 8px;
+  }
+
+  input {
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid #212121;
+    margin-bottom: 24px;
+    padding: 4px;
+    width: 100%;
+  }
+}
+
 label {
   margin-bottom: 8px;
 }
