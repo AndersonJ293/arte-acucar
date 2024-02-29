@@ -21,6 +21,7 @@ export class ProductEditComponent implements OnInit {
   horasTrabalhadasAdicional: string = '00:00';
 
   productId: string = '';
+  _precoTotalInput: number = 0;
 
   get config() {
     return DisplayComponent.config.data;
@@ -46,6 +47,7 @@ export class ProductEditComponent implements OnInit {
           this.valorAdicional = data.data.adicionalValorProduto;
           this.selectedItems = data.data.items;
           this.previewUrl = data.data.urlImage;
+          this._precoTotalInput = data.data.precoTotal - this.precoTotal2;
         });
     }
 
@@ -146,6 +148,17 @@ export class ProductEditComponent implements OnInit {
   }
 
   get lucro() {
+    return (
+      this.selectedItems.reduce(
+        (acc, item) =>
+          acc + item.data.lucro * (item.usedQuantity / item.data.quantidade),
+        0
+      ) +
+      this._precoTotalInput / 2
+    );
+  }
+
+  get lucro2() {
     return this.selectedItems.reduce(
       (acc, item) =>
         acc + item.data.lucro * (item.usedQuantity / item.data.quantidade),
@@ -175,11 +188,43 @@ export class ProductEditComponent implements OnInit {
   get salario() {
     const [horas, minutos] = this.horasTrabalhadasTotal.split(':');
     const totalHoras = parseInt(horas) + parseInt(minutos) / 60;
+    return (
+      totalHoras * parseFloat(this.config.salarioHora) +
+      this._precoTotalInput / 2
+    );
+  }
+
+  get salario2() {
+    const [horas, minutos] = this.horasTrabalhadasTotal.split(':');
+    const totalHoras = parseInt(horas) + parseInt(minutos) / 60;
     return totalHoras * parseFloat(this.config.salarioHora);
   }
 
   get precoTotal() {
-    return this.custoTotal + this.lucro + this.salario + this.adicionalProduto;
+    return parseFloat(
+      (
+        this.custoTotal +
+        this.lucro2 +
+        this.salario2 +
+        this.adicionalProduto +
+        this._precoTotalInput
+      ).toFixed(2)
+    );
+  }
+
+  get precoTotal2() {
+    return parseFloat(
+      (
+        this.custoTotal +
+        this.lucro2 +
+        this.salario2 +
+        this.adicionalProduto
+      ).toFixed(2)
+    );
+  }
+
+  set precoTotal(value: number) {
+    this._precoTotalInput = value - this.precoTotal2;
   }
 
   saveProduct() {
