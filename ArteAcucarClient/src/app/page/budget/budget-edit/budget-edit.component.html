@@ -198,8 +198,14 @@
     </div>
 
     <div class="buttons">
-      <button type="submit" class="btnSave" (click)="saveBudget()">
-        Salvar
+      <button
+        type="submit"
+        class="btnSave"
+        (click)="saveBudget()"
+        [disabled]="enviando"
+      >
+        <fa-icon [icon]="faSpinner" [spin]="true" *ngIf="enviando"></fa-icon>
+        <p *ngIf="!enviando">Salvar</p>
       </button>
       <button routerLink="/painel/orcamento" type="reset" class="btnCancel">
         Cancelar

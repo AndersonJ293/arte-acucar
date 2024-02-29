@@ -76,6 +76,11 @@ h3 {
 
   .btnSave {
     width: 45%;
+
+    &:disabled {
+      filter: opacity(0.8);
+      cursor: not-allowed;
+    }
   }
 }
 

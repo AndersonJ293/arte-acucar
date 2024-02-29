@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FirebaseService } from '../../../services/firebase.service';
 import { DisplayComponent } from '../../display/display.component';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-budget-edit',
@@ -14,6 +15,8 @@ export class BudgetEditComponent implements OnInit {
   open: boolean = false;
   items: any[] = [];
   selectedItems: any[] = [];
+  enviando: boolean = false;
+  faSpinner = faSpinner;
 
   nome: string = '';
   _dataEntrega?: Date;
@@ -177,6 +180,7 @@ export class BudgetEditComponent implements OnInit {
   }
 
   saveBudget() {
+    this.enviando = true;
     const fileInput = document.getElementById('imagem') as HTMLInputElement;
     const file = fileInput?.files?.[0];
 
@@ -212,6 +216,7 @@ export class BudgetEditComponent implements OnInit {
         );
         this.toastService.success('Orçamento editado com sucesso!', 'Sucesso');
         this.router.navigate(['/painel/orcamento']);
+        this.enviando = false;
       } catch (error) {
         this.toastService.error('Erro ao editar o orçamento', 'Erro');
       }
@@ -222,6 +227,7 @@ export class BudgetEditComponent implements OnInit {
       this.firebaseService.postFirebaseFile(file, data);
       this.toastService.success('Orçamento salvo com sucesso!', 'Sucesso');
       this.router.navigate(['/painel/orcamento']);
+      this.enviando = false;
     } catch (error) {
       this.toastService.error('Erro ao salvar orçamento', 'Erro');
     }

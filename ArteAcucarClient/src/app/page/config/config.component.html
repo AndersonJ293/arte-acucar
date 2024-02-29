@@ -149,7 +149,14 @@
       </ng-container>
 
       <div class="buttons">
-        <button href="" class="btnSave" type="submit">Salvar</button>
+        <button href="" class="btnSave" type="submit" [disabled]="enviando">
+          <fa-icon
+            [icon]="['fas', 'spinner']"
+            [spin]="true"
+            *ngIf="enviando"
+          ></fa-icon>
+          <p *ngIf="!enviando">Salvar</p>
+        </button>
         <button href="" class="btnCancel" (click)="configForm.reset()">
           Limpar
         </button>

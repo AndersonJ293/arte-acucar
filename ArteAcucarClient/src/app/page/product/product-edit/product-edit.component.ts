@@ -3,6 +3,7 @@ import { FirebaseService } from '../../../services/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DisplayComponent } from '../../display/display.component';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product-edit',
@@ -14,6 +15,8 @@ export class ProductEditComponent implements OnInit {
   open: boolean = false;
   items: any[] = [];
   selectedItems: any[] = [];
+  enviando: boolean = false;
+  faSpinner = faSpinner;
 
   nome: string = '';
   porcentagemAdicional: number = 0;
@@ -228,6 +231,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   saveProduct() {
+    this.enviando = true;
     const fileInput = document.getElementById('imagem') as HTMLInputElement;
     const file = fileInput?.files?.[0];
 
@@ -263,6 +267,7 @@ export class ProductEditComponent implements OnInit {
         );
         this.toastService.success('Produto editado com sucesso!', 'Sucesso');
         this.router.navigate(['/painel/produto']);
+        this.enviando = false;
       } catch (error) {
         this.toastService.error('Erro ao editar o produto', 'Erro');
       }
@@ -273,6 +278,7 @@ export class ProductEditComponent implements OnInit {
       this.firebaseService.postFirebaseFile(file, data);
       this.toastService.success('Precificação salva com sucesso!', 'Sucesso');
       this.router.navigate(['/painel/produto']);
+      this.enviando = false;
     } catch (error) {
       this.toastService.error('Erro ao salvar precificação', 'Erro');
     }

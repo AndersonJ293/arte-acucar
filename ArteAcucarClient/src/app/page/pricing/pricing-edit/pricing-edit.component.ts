@@ -3,6 +3,7 @@ import { FirebaseService } from '../../../services/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DisplayComponent } from '../../display/display.component';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pricing-edit',
@@ -13,6 +14,8 @@ export class PricingEditComponent implements OnInit {
   open: boolean = false;
   items: any[] = [];
   selectedItems: any[] = [];
+  enviando: boolean = false;
+  faSpinner = faSpinner;
 
   pricingId: string = '';
 
@@ -87,6 +90,7 @@ export class PricingEditComponent implements OnInit {
   }
 
   savePricing() {
+    this.enviando = true;
     const data = {
       collection: 'pricings',
       firestoreData: {
@@ -117,6 +121,7 @@ export class PricingEditComponent implements OnInit {
           'Sucesso'
         );
         this.router.navigate(['/painel/precificacao']);
+        this.enviando = false;
       } catch (error) {
         this.toastService.error('Erro ao editar precificação', 'Erro');
       }
@@ -127,6 +132,7 @@ export class PricingEditComponent implements OnInit {
       this.firebaseService.postFirebase(data);
       this.toastService.success('Precificação salva com sucesso!', 'Sucesso');
       this.router.navigate(['/painel/precificacao']);
+      this.enviando = false;
     } catch (error) {
       this.toastService.error('Erro ao salvar precificação', 'Erro');
     }

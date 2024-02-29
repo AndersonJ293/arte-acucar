@@ -135,8 +135,14 @@
       </div>
 
       <div class="buttons">
-        <button type="submit" class="btnSave" (click)="savePricing()">
-          Salvar
+        <button
+          type="submit"
+          class="btnSave"
+          (click)="savePricing()"
+          [disabled]="enviando"
+        >
+          <fa-icon [icon]="faSpinner" [spin]="true" *ngIf="enviando"></fa-icon>
+          <p *ngIf="!enviando">Salvar</p>
         </button>
         <button
           routerLink="/painel/precificacao"
