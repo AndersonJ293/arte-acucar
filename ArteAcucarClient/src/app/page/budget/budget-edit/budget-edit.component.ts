@@ -14,6 +14,8 @@ export class BudgetEditComponent implements OnInit {
   open: boolean = false;
   items: any[] = [];
   selectedItems: any[] = [];
+  temEndereco: boolean = false;
+  endereco: any = {};
 
   nome: string = '';
   _dataEntrega?: Date;
@@ -24,6 +26,12 @@ export class BudgetEditComponent implements OnInit {
   idadeCrianca: string = '';
   anotacoes: string = '';
   porcentagemAdicional: number = 0;
+  cep: string = '';
+  rua: string = '';
+  bairro: string = '';
+  numero: string = '';
+  cidade: string = '';
+  estado: string = '';
 
   budgetId: string = '';
 
@@ -51,6 +59,7 @@ export class BudgetEditComponent implements OnInit {
           this.anotacoes = data.data.anotacoes;
           this.porcentagemAdicional = data.data.porcentagemAdicional;
           this.selectedItems = data.data.items;
+          this.endereco = data.data.endereco;
         });
     }
 
@@ -180,6 +189,16 @@ export class BudgetEditComponent implements OnInit {
     const fileInput = document.getElementById('imagem') as HTMLInputElement;
     const file = fileInput?.files?.[0];
 
+    if (this.temEndereco)
+      this.endereco = {
+        cep: this.cep,
+        rua: this.rua,
+        bairro: this.bairro,
+        numero: this.numero,
+        estado: this.estado,
+        cidade: this.cidade,
+      };
+
     const data = {
       collection: 'budgets',
       path: 'budgets',
@@ -200,6 +219,7 @@ export class BudgetEditComponent implements OnInit {
         salario: parseFloat(this.salario.toFixed(2)),
         precoTotal: parseFloat(this.precoTotal.toFixed(2)),
         items: this.selectedItems,
+        endereco: this.endereco,
       },
     };
 

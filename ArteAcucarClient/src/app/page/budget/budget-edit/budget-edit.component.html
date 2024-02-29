@@ -2,6 +2,7 @@
   <section>
     <header>
       <h3>Adicionar Orçamento</h3>
+
       <button class="fechar-modal">
         <i class="fa fa-times"></i>
       </button>
@@ -63,7 +64,7 @@
     </div>
     <div class="line">
       <div class="groupProfitPercentage">
-        <label for="nameKid">Nome da criança</label>
+        <label for="nameKid">Nome exposição</label>
         <input
           type="text"
           class="custom-select"
@@ -85,15 +86,65 @@
       </div>
     </div>
 
-    <div class="groupAdditional">
-      <label for="obs">Anotações</label>
-      <textarea
-        name="obs"
-        id="obs"
-        cols="30"
-        rows="10"
-        [(ngModel)]="anotacoes"
-      ></textarea>
+    <div class="">
+      <div class="groupAdditional">
+        <label for="obs">Anotações</label>
+        <textarea
+          name="obs"
+          id="obs"
+          cols="30"
+          rows="10"
+          [(ngModel)]="anotacoes"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="address">
+      <div class="hasAddress">
+        <span>Encomenda para entrega? </span>
+        <label for="temEndereco">{{ temEndereco ? "Sim" : "Não" }}</label>
+        <input
+          type="checkbox"
+          id="temEndereco"
+          name="temEndereco"
+          [(ngModel)]="temEndereco"
+        />
+      </div>
+    </div>
+
+    <h3 *ngIf="temEndereco">Endereço de entrega</h3>
+
+    <div *ngIf="temEndereco" class="line">
+      <div class="groupAdditional">
+        <label for="rua">Rua</label>
+        <input type="text" id="rua" name="rua" [(ngModel)]="rua" />
+      </div>
+      <div class="groupAdditional">
+        <label for="numero">Número</label>
+        <input type="text" id="numero" name="numero" [(ngModel)]="numero" />
+      </div>
+    </div>
+
+    <div *ngIf="temEndereco" class="line">
+      <div class="groupAdditional">
+        <label for="cep">CEP</label>
+        <input type="text" id="cep" name="cep" [(ngModel)]="cep" />
+      </div>
+      <div class="groupAdditional">
+        <label for="bairro">Bairro</label>
+        <input type="text" id="bairro" name="bairro" [(ngModel)]="bairro" />
+      </div>
+    </div>
+
+    <div *ngIf="temEndereco" class="line">
+      <div class="groupAdditional">
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" name="cidade" [(ngModel)]="estado" />
+      </div>
+      <div class="groupAdditional">
+        <label for="estado">Estado</label>
+        <input type="text" id="estado" name="estado" [(ngModel)]="estado" />
+      </div>
     </div>
 
     <div id="drop-area" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
