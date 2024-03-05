@@ -3,6 +3,7 @@ import { faAdd, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { MenuService } from '../../services/menu.service';
 import { FirebaseService } from '../../services/firebase.service';
 import { Router } from '@angular/router';
+import { DisplayComponent } from '../display/display.component';
 
 @Component({
   selector: 'app-budget',
@@ -13,6 +14,7 @@ export class BudgetComponent implements OnInit {
   faAdd = faAdd;
   faDownload = faDownload;
   budgets: any[] = [];
+  companyName: string = DisplayComponent.config.data.name;
 
   constructor(
     private firebaseService: FirebaseService,
@@ -21,6 +23,10 @@ export class BudgetComponent implements OnInit {
 
   get menuOpen() {
     return MenuService.menuOpen;
+  }
+
+  get companyLogo() {
+    return DisplayComponent.config.data.logo;
   }
 
   ngOnInit(): void {

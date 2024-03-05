@@ -32,7 +32,10 @@
             </div>
           </div>
         </div>
-        <img src="{{ budget.data.urlImage }}" alt="" />
+        <img
+          [src]="budget.data.urlImage ? companyLogo : budget.data.urlImage"
+          alt="Imagem Orçamento"
+        />
         <div class="cardMore">
           <div class="more">
             <h4>Tema:</h4>
