@@ -21,7 +21,7 @@ export class BudgetEditComponent implements OnInit {
   endereco: any = {};
 
   nome: string = '';
-  _dataEntrega?: Date;
+  _dataEntrega: Date = new Date();
   _dataOrcamento: Date = new Date();
   tema: string = '';
   telefone: string = '';
@@ -78,7 +78,7 @@ export class BudgetEditComponent implements OnInit {
   }
 
   get dataEntrega(): any {
-    return this._dataEntrega ?? '';
+    return this._dataEntrega;
   }
 
   get dataOrcamento(): Date {
