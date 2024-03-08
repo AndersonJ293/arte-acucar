@@ -1,0 +1,6 @@
+@PCPApi_HostAddress = http://localhost:5296
+
+GET {{PCPApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
