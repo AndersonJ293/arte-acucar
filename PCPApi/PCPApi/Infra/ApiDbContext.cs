@@ -20,4 +20,5 @@ public class ApiDbContext : DbContext
     public DbSet<Unit>? Units { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<VisualConfig> VisualConfigs { get; set; }
+    
 }

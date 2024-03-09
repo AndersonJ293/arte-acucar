@@ -5,9 +5,9 @@ namespace PCPApi.Repositories;
 
 public class Repository<T> : IRepository<T> where T : class
 {
-    protected readonly ApiDbContext _context;
+    public  readonly ApiDbContext _context;
 
-    protected Repository(ApiDbContext context)
+    public  Repository(ApiDbContext context)
     {
         _context = context;
     }
