@@ -7,10 +7,11 @@ namespace PCPApi.Entities;
 public class Company
 {
     [Key]
-    [Column("companyId")]
-    public int CompanyId { get; set; }
+    [Column("companyid")]
+    public int Id { get; set; }
 
     [MaxLength(255)]
-    [Column("companyName")]
+    [Column("companyname")]
     public string CompanyName { get; set; }
+    
 }
