@@ -12,19 +12,29 @@ public class BudgetAddress
     public int AddressId { get; set; }
 
     [Column("budgetId")]
+    [Required]
     public int BudgetId { get; set; }
 
     [Column("street")]
+    [Required]
+    [MaxLength(255)]
     public string Street { get; set; }
 
     [Column("city")]
-    public string City { get; set; }
+    [MaxLength(255)]
+    public string? City { get; set; }
+
+    [Column("housenumber")]
+    [Required]
+    public int HouseNumber { get; set; }
 
     [Column("addressState")]
-    public string AddressState { get; set; }
+    [MaxLength(255)]
+    public string? AddressState { get; set; }
 
     [Column("zip_code")]
-    public string ZipCode { get; set; }
+    [MaxLength(20)]
+    public string? ZipCode { get; set; }
 
     [Column("created_at")]
     public DateTime CreatedAt { get; set; }

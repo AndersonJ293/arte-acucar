@@ -8,13 +8,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Commodity
 {
     [Key]
-    [Column("commoditiId")]
+    [Column("commoditied")]
     public int CommodityId { get; set; }
 
-    [Column("unitId")]
+    [Column("unitid")]
+    [Required]
     public int UnitId { get; set; }
 
-    [Column("companyId")]
+    [Column("companyid")]
+    [Required]
     public int CompanyId { get; set; }
 
     [MaxLength(255)]
@@ -22,17 +24,19 @@ public class Commodity
     public string Brand { get; set; }
 
     [MaxLength(255)]
-    [Column("commoditiesName")]
+    [Column("commoditiename")]
+    [Required]
     public string CommodityName { get; set; }
 
-    [MaxLength(255)]
-    [Column("price")]
-    public string Price { get; set; }
+    [Column("price", TypeName = "numeric(18,2)")]
+    [Required]
+    public decimal Price { get; set; }
 
-    [Column("quantity")]
+    [Column("quantity", TypeName = "numeric(18,5)")]
+    [Required]
     public int Quantity { get; set; }
 
-    [Column("stock")]
+    [Column("stock", TypeName = "numeric(18,2)")]
     public int Stock { get; set; }
 
     [Column("created_at")]
@@ -41,9 +45,9 @@ public class Commodity
     [Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 
-    [ForeignKey("UnitId")]
+    [ForeignKey("unitid")]
     public Unit Unit { get; set; }
 
-    [ForeignKey("CompanyId")]
+    [ForeignKey("companyid")]
     public Company Company { get; set; }
 }

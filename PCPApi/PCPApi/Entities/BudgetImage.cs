@@ -3,17 +3,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PCPApi.Entities;
 
-[Table("company")]
-public class Company
+[Table("budget_images")]
+public class BudgetImage
 {
     [Key]
-    [Column("companyid")]
-    public int Id { get; set; }
+    [Column("budget_imageid")]
+    public int BudgetImageId { get; set; }
 
-    [MaxLength(255)]
-    [Column("companyname")]
+    [Column("budgetid")]
     [Required]
-    public string CompanyName { get; set; }
+    public int BudgetId { get; set; }
+
+    [Column("urlimage")]
+    [MaxLength(255)]
+    public string? UrlImage { get; set; }
 
     [Column("created_at", TypeName = "timestamp")]
     public DateTime CreatedAt { get; set; }

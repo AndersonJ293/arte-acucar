@@ -7,19 +7,26 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class BudgetConfig
 {
     [Key]
-    [Column("budgetConfigId")]
+    [Column("budgetconfigid")]
     public int BudgetConfigId { get; set; }
 
-    [Column("companyId")]
+    [Column("companyid")]
+    [Required]
     public int CompanyId { get; set; }
 
-    [MaxLength(255)]
-    [Column("budgetMessage")]
-    public string BudgetMessage { get; set; }
+    [Column("budgetmessage")]
+    [MaxLength(1000)]
+    public string? BudgetMessage { get; set; }
 
-    [Column("budgetValidity")]
+    [Column("budgetvalidity")]
     public int BudgetValidity { get; set; }
 
-    [ForeignKey("CompanyId")]
+    [Column("created_at", TypeName = "timestamp")]
+    public DateTime CreatedAt { get; set; }
+
+    [Column("updated_at", TypeName = "timestamp")]
+    public DateTime UpdatedAt { get; set; }
+
+    [ForeignKey("companyId")]
     public Company Company { get; set; }
 }

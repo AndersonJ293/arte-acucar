@@ -12,8 +12,9 @@ public class GeneralConfig
     public int Id { get; set; }
 
     [Column("companyid")]
+    [Required]
     public int CompanyId { get; set; }
-    
+
     [JsonIgnore]
     public Company Company { get; set; }
 
@@ -23,16 +24,15 @@ public class GeneralConfig
     [Column("dailyworkhours")]
     public int DailyWorkHours { get; set; }
 
-    [MaxLength(255)]
-    [Column("hourlysalary")]
-    public string HourlySalary { get; set; }
+    [Column("hourlysalary", TypeName = "numeric(18,2)")]
+    public decimal HourlySalary { get; set; }
 
-    [Column("monthlysalary")]
+    [Column("monthlysalary", TypeName = "numeric(18,2)")]
     public int MonthlySalary { get; set; }
 
-    [MaxLength(255)]
-    [Column("updated_at")]
-    public string UpdatedAt { get; set; }
-    
-}
+    [Column("created_at", TypeName = "timestamp")]
+    public DateTime CreatedAt { get; set; }
 
+    [Column("updated_at", TypeName = "timestamp")]
+    public DateTime UpdatedAt { get; set; }
+}

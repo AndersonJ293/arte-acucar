@@ -8,68 +8,61 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Pricing
 {
     [Key]
-    [Column("pricingId")]
+    [Column("pricingid")]
     public int PricingId { get; set; }
 
-    [Column("commoditiId")]
+    [Column("commoditieid")]
+    [Required]
     public int CommodityId { get; set; }
 
-    [Column("companyId")]
+    [Column("companyid")]
+    [Required]
     public int CompanyId { get; set; }
 
+    [Column("pricingName")]
     [MaxLength(255)]
-    [Column("brand")]
-    public string Brand { get; set; }
+    public string? PricingName { get; set; }
 
-    [MaxLength(255)]
-    [Column("pricingsName")]
-    public string PricingsName { get; set; }
+    [Column("quantity", TypeName = "numeric(18,2)")]
+    public decimal Quantity { get; set; }
 
-    [Column("price", TypeName = "numeric(10,2)")]
-    public decimal Price { get; set; }
-
-    [Column("quantity")]
-    public int Quantity { get; set; }
-
-    [Column("stock")]
-    public int Stock { get; set; }
-
-    [Column("additional", TypeName = "numeric(10,5)")]
+    [Column("additional", TypeName = "numeric(18,2)")]
     public decimal Additional { get; set; }
 
-    [Column("costOfInputs", TypeName = "numeric(10,5)")]
-    public decimal CostOfInputs { get; set; }
+    [Column("costofcommodities", TypeName = "numeric(18,2)")]
+    public decimal CostOfCommodities { get; set; }
 
-    [Column("totalCost", TypeName = "numeric(10,5)")]
+    [Column("totalcost", TypeName = "numeric(18,2)")]
     public decimal TotalCost { get; set; }
 
-    [Column("workedHours")]
-    public TimeSpan WorkedHours { get; set; }
+    [Column("workedhours")]
+    [MaxLength(10)]
+    public string WorkedHours { get; set; } = "00:00";
 
-    [Column("profit", TypeName = "numeric(10,2)")]
+    [Column("profit", TypeName = "numeric(18,2)")]
     public decimal Profit { get; set; }
 
-    [Column("additionalPercentage")]
-    public int AdditionalPercentage { get; set; }
+    [Column("additionalPercentage", TypeName = "numeric(18,2)")]
+    public decimal AdditionalPercentage { get; set; }
 
-    [Column("profitPercentage")]
-    public int ProfitPercentage { get; set; }
+    [Column("profitPercentage", TypeName = "numeric(18,2)")]
+    public decimal ProfitPercentage { get; set; }
 
-    [Column("totalPrice", TypeName = "numeric(10,5)")]
+    [Column("totalPrice", TypeName = "numeric(18,2)")]
     public decimal TotalPrice { get; set; }
 
-    [Column("salary", TypeName = "numeric(10,2)")]
+    [Column("salary", TypeName = "numeric(18,2)")]
     public decimal Salary { get; set; }
 
-    [Column("created_at")]
+    [Column("created_at", TypeName = "timestamp")]
     public DateTime CreatedAt { get; set; }
 
-    [Column("updated_at")]
+    [Column("updated_at", TypeName = "timestamp")]
     public DateTime UpdatedAt { get; set; }
 
-    [ForeignKey("CommodityId")]
+    [ForeignKey("commoditieid")]
     public Commodity Commodity { get; set; }
 
-    [ForeignKey("CompanyId")]
+    [ForeignKey("companyid")]
     public Company Company { get; set; }
 }

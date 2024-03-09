@@ -7,12 +7,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Unit
 {
     [Key]
-    [Column("unitId")]
+    [Column("unitid")]
     public int UnitId { get; set; }
 
+    [Column("unitabr")]
+    [MaxLength(5)]
+    public string UnitAbr { get; set; }
+
     [MaxLength(255)]
-    [Column("unitName")]
-    public string UnitName { get; set; }
+    [Column("unitdesc")]
+    public string UnitDesc { get; set; }
+
+    [Column("created_at", TypeName = "timestamp")]
+    public DateTime CreatedAt { get; set; }
+
+    [Column("updated_at", TypeName = "timestamp")]
+    public DateTime UpdatedAt { get; set; }
 
     [InverseProperty("Unit")]
     public List<Commodity> Commodities { get; set; }

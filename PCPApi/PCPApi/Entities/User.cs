@@ -9,19 +9,23 @@ public class User
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int UserId { get; set; }
 
-    [ForeignKey("Company")]
+    [ForeignKey("companyid")]
     public int CompanyId { get; set; }
 
-    [Required]
     [MaxLength(255)]
+    [Required]
     public string DisplayName { get; set; }
 
-    [Required]
     [MaxLength(255)]
+    [Required]
     public string Email { get; set; }
 
     [MaxLength(255)]
-    public string PhotoURL { get; set; }
+    public string? PhotoURL { get; set; }
+
+    public DateTime CreatedAt { get; set; }
+
+    public DateTime UpdatedAt { get; set; }
 
     // Navigation property
     public Company Company { get; set; }

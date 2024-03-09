@@ -8,55 +8,56 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Product
 {
     [Key]
-    [Column("productId")]
+    [Column("productid")]
     public int ProductId { get; set; }
 
-    [Column("companyId")]
+    [Column("companyid")]
+    [Required]
     public int CompanyId { get; set; }
 
-    [Column("pricingId")]
-    public int PricingId { get; set; }
-
+    [Column("productname")]
     [MaxLength(255)]
-    [Column("productsName")]
-    public string ProductsName { get; set; }
+    [Required]
+    public string ProductName { get; set; }
 
-    [Column("additionalPricing", TypeName = "numeric(10,2)")]
+    [Column("additionalpricing", TypeName = "numeric(18,2)")]
     public decimal AdditionalPricing { get; set; }
 
-    [Column("additionalProduct", TypeName = "numeric(10,2)")]
+    [Column("additionalproduct", TypeName = "numeric(18,2)")]
     public decimal AdditionalProduct { get; set; }
 
-    [Column("additionalProductValue", TypeName = "numeric(10,2)")]
+    [Column("additionalproductvalue", TypeName = "numeric(18,2)")]
     public decimal AdditionalProductValue { get; set; }
 
-    [Column("totalPricingCost", TypeName = "numeric(10,2)")]
+    [Column("totalpricingcost", TypeName = "numeric(18,2)")]
     public decimal TotalPricingCost { get; set; }
 
-    [Column("totalCost", TypeName = "numeric(10,2)")]
+    [Column("totalcost", TypeName = "numeric(18,2)")]
     public decimal TotalCost { get; set; }
 
-    [Column("profit", TypeName = "numeric(10,2)")]
+    [Column("profit", TypeName = "numeric(18,2)")]
     public decimal Profit { get; set; }
 
-    [Column("additionalHoursWorked")]
-    public TimeSpan AdditionalHoursWorked { get; set; }
+    [Column("workedhours")]
+    [MaxLength(10)]
+    public string WorkedHours { get; set; } = "00:00";
 
-    [Column("additionalPricingHoursWorked")]
-    public TimeSpan AdditionalPricingHoursWorked { get; set; }
+    [Column("additionalhoursworked")]
+    [MaxLength(10)]
+    public string AdditionalHoursWorked { get; set; } = "00:00";
 
-    [Column("salary", TypeName = "numeric(10,2)")]
+    [Column("additionalpricinghoursworked")]
+    [MaxLength(10)]
+    public string AdditionalPricingHoursWorked { get; set; } = "00:00";
+
+    [Column("salary", TypeName = "numeric(18,2)")]
     public decimal Salary { get; set; }
 
-    [Column("additionalPercentage")]
-    public int AdditionalPercentage { get; set; }
+    [Column("additionalPercentage", TypeName = "numeric(18,2)")]
+    public decimal AdditionalPercentage { get; set; }
 
-    [Column("totalPrice", TypeName = "numeric(10,2)")]
+    [Column("totalPrice", TypeName = "numeric(18,2)")]
     public decimal TotalPrice { get; set; }
-
-    [MaxLength(255)]
-    [Column("urlImage")]
-    public string UrlImage { get; set; }
 
     [Column("created_at")]
     public DateTime CreatedAt { get; set; }
@@ -69,4 +70,8 @@ public class Product
 
     [ForeignKey("PricingId")]
     public Pricing Pricing { get; set; }
+
+    public List<Product>? Products { get; set; }
+    public List<Pricing>? Pricings { get; set; }
+    public List<ProductImage>? ProductImages { get; set; }
 }

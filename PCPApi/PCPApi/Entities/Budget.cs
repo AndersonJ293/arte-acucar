@@ -13,49 +13,62 @@ public class Budget
     public int BudgetId { get; set; }
 
     [Column("companyId")]
+    [Required]
     public int CompanyId { get; set; }
 
-    [Column("additionalBudget", TypeName = "numeric(10,2)")]
+    [Column("additionalBudget", TypeName = "numeric(18,2)")]
     public decimal AdditionalBudget { get; set; }
 
     [Column("notes")]
-    public string Notes { get; set; }
+    [MaxLength(1000)]
+    public string? Notes { get; set; }
 
-    [Column("totalProductCost", TypeName = "numeric(10,2)")]
+    [Column("totalProductCost", TypeName = "numeric(18,2)")]
     public decimal TotalProductCost { get; set; }
 
-    [Column("deliveryDate")]
+    [Column("deliveryDate", TypeName = "timestamp")]
+    [Required]
     public DateTime DeliveryDate { get; set; }
 
-    [Column("budgetDate")]
+    [Column("budgetDate", TypeName = "timestamp")]
+    [Required]
     public DateTime BudgetDate { get; set; }
 
     [Column("hoursWorked")]
-    public string HoursWorked { get; set; }
+    [MaxLength(10)]
+    public string? HoursWorked { get; set; }
 
     [Column("childAge")]
-    public string ChildAge { get; set; }
+    public int ChildAge { get; set; }
 
-    [Column("profit", TypeName = "numeric(10,2)")]
+    [Column("profit", TypeName = "numeric(18,2)")]
     public decimal Profit { get; set; }
 
     [Column("childName")]
-    public string ChildName { get; set; }
+    [MaxLength(255)]
+    public string? ChildName { get; set; }
+
+    [Column("budgetName")]
+    [Required]
+    [MaxLength(120)]
+    public string BudgetName { get; set; }
 
     [Column("additionalPercentage")]
     public int AdditionalPercentage { get; set; }
 
-    [Column("totalPrice", TypeName = "numeric(10,2)")]
+    [Column("totalPrice", TypeName = "numeric(18,2)")]
     public decimal TotalPrice { get; set; }
 
+    [Column("salary", TypeName = "numeric(18,2)")]
+    public decimal salary { get; set; }
+
     [Column("phone")]
-    public string Phone { get; set; }
+    [MaxLength(255)]
+    public string? Phone { get; set; }
 
     [Column("theme")]
-    public string Theme { get; set; }
-
-    [Column("imageURL")]
-    public string ImageURL { get; set; }
+    [MaxLength(255)]
+    public string? Theme { get; set; }
 
     [Column("additionalValue", TypeName = "numeric(10,2)")]
     public decimal AdditionalValue { get; set; }
@@ -67,6 +80,7 @@ public class Budget
     public DateTime UpdatedAt { get; set; }
 
     public Company Company { get; set; }
-    public List<BudgetAddress> Addresses { get; set; }
-    public List<BudgetItem> Items { get; set; }
+    public BudgetAddress? Address { get; set; }
+    public List<Product> Products { get; set; }
+    public List<BudgetImage>? BudgetImages { get; set; }
 }
