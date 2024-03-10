@@ -3,18 +3,24 @@ using PCPApi.Infra;
 
 namespace PCPApi.Repositories;
 
-public class Repository<T> : IRepository<T> where T : class
+public class Repository<T> : IRepository<T>
+    where T : class
 {
-    public  readonly ApiDbContext _context;
+    public readonly ApiDbContext _context;
 
-    public  Repository(ApiDbContext context)
+    public Repository(ApiDbContext context)
     {
         _context = context;
     }
-    
+
     public IEnumerable<T> GetAll()
     {
-        return  _context.Set<T>().ToList();
+        return _context.Set<T>().ToList();
+    }
+
+    public IEnumerable<T> GetAllByCompany(Expression<Func<T, bool>> predicate)
+    {
+        return _context.Set<T>().Where(predicate).ToList();
     }
 
     public T? Get(Expression<Func<T, bool>> predicate)
