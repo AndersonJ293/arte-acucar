@@ -1,4 +1,6 @@
-﻿namespace PCPApi.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace PCPApi.Entities;
 
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -8,20 +10,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Commodity
 {
     [Key]
-    [Column("commoditied")]
+    [Column("commoditieid")]
     public int CommodityId { get; set; }
 
-    [Column("unitid")]
-    [Required]
-    public int UnitId { get; set; }
-
-    [Column("companyid")]
-    [Required]
-    public int CompanyId { get; set; }
+    // [Column("unitid")]
+    // [Required]
+    // public int UnitId { get; set; }
+    //
+    // [Column("companyid")]
+    // [Required]
+    // public int CompanyId { get; set; }
 
     [MaxLength(255)]
     [Column("brand")]
-    public string Brand { get; set; }
+    public string? Brand { get; set; }
 
     [MaxLength(255)]
     [Column("commoditiename")]
@@ -45,9 +47,16 @@ public class Commodity
     [Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 
-    [ForeignKey("unitid")]
-    public Unit Unit { get; set; }
+    [Column("unitid")]
+    public int UnitId { get; set; }
 
-    [ForeignKey("companyid")]
-    public Company Company { get; set; }
+    [ForeignKey("UnitId")]
+    public virtual Unit Unit { get; set; }
+
+    [Column("companyid")]
+    [Required]
+    public int CompanyId { get; set; }
+
+    [ForeignKey("CompanyId")]
+    public Company Company { get; set; } = null!;
 }
