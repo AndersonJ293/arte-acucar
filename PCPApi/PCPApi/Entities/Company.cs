@@ -8,7 +8,7 @@ public class Company
 {
     [Key]
     [Column("companyid")]
-    public int Id { get; set; }
+    public int CompanyId { get; set; }
 
     [MaxLength(255)]
     [Column("companyname")]

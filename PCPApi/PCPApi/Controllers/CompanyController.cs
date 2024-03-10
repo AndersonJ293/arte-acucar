@@ -28,7 +28,7 @@ public class CompanyController : ControllerBase
     [HttpGet("{id:int}")]
     public ActionResult<Company> Get(int id)
     {
-        var company = _repository.Get(c => c.Id == id);
+        var company = _repository.Get(c => c.CompanyId == id);
         if (company is null) 
             return NoContent();
         
